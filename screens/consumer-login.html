@@ -87,14 +87,13 @@
     </div>
 
     <div class="auth">
-      <div class="auth-eye">Sign in to Pulse</div>
-      <div class="phone-field" onclick="sendPrompt('Enter your phone number to receive a sign-in code.')">
-        <span class="cc">&#127482;&#127480; +1</span>
-        <span class="ph">Phone number</span>
+      <button class="signin" onclick="go('consumer-welcome.html')">Create account</button>
+      <button class="alt" onclick="go('consumer-feed.html')" style="margin-top:10px;">Log in</button>
+      <div class="divider">or continue with</div>
+      <div class="alts" style="display:flex;gap:9px;">
+        <button class="alt" style="flex:1;" onclick="go('consumer-welcome.html')">&#63743;&nbsp; Apple</button>
+        <button class="alt" style="flex:1;" onclick="go('consumer-welcome.html')">Google</button>
       </div>
-      <button class="signin" onclick="go('consumer-welcome.html')">Send my code</button>
-      <div class="divider">or</div>
-      <button class="alt" onclick="go('consumer-welcome.html')">&#63743;&nbsp;&nbsp;Continue with Apple</button>
       <div class="terms">By continuing you agree to Pulse's <a onclick="sendPrompt('Open the Terms of Service.')">Terms</a> &amp; <a onclick="sendPrompt('Open the Privacy Policy.')">Privacy Policy</a>.</div>
     </div>
 

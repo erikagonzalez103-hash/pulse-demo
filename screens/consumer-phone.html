@@ -1,0 +1,76 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pulse · Your number</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles/tokens.css">
+<link rel="stylesheet" href="../styles/components.css">
+<style>
+/* — screen-specific only — */
+.atmosphere{position:absolute;inset:0;pointer-events:none;z-index:0;
+  background:radial-gradient(ellipse 80% 45% at 50% 14%,rgba(202,168,113,.11),transparent 60%);}
+.body{padding:16px 24px 30px;}
+.steps{display:flex;gap:6px;margin-bottom:26px;}
+.steps i{height:3px;flex:1;border-radius:2px;background:var(--hair);}
+.steps i.on{background:var(--gold);}
+.headline{font-family:var(--font-display);font-weight:400;font-size:23px;color:var(--text);line-height:1.18;margin-bottom:14px;}
+.reason{background:var(--gold-soft);border:1px solid var(--border);border-radius:13px;padding:13px 15px;margin-bottom:22px;display:flex;gap:11px;align-items:flex-start;}
+.reason .d{width:6px;height:6px;border-radius:50%;background:var(--gold);box-shadow:0 0 8px var(--gold);margin-top:5px;flex-shrink:0;}
+.reason .rt{font-size:12px;color:var(--text-dim);line-height:1.5;}
+.reason .rt b{color:var(--gold);font-weight:500;}
+.phonefield{display:flex;gap:9px;margin-bottom:14px;}
+.cc{background:rgba(255,255,255,.025);border:1px solid var(--border-soft);border-radius:13px;padding:14px 14px;color:var(--text-dim);font-size:15px;font-family:var(--font-display);white-space:nowrap;}
+.inp{flex:1;background:rgba(255,255,255,.025);border:1px solid var(--border-soft);border-radius:13px;padding:14px 16px;color:var(--text);font-family:var(--font-display);font-size:16px;outline:none;transition:border-color .2s;}
+.inp::placeholder{color:var(--text-faint);font-family:var(--font-body);font-weight:300;}
+.inp:focus{border-color:var(--gold-deep);}
+.sendcode{width:100%;background:var(--gold);color:var(--ink-on-gold);border:none;border-radius:999px;padding:14px;font-family:var(--font-body);font-weight:600;font-size:14px;cursor:pointer;transition:all .2s;}
+.sendcode:hover{box-shadow:0 0 22px rgba(202,168,113,.35);}
+.divider{display:flex;align-items:center;gap:12px;margin:18px 0;color:var(--text-faint);font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;font-family:var(--font-sub);}
+.divider::before,.divider::after{content:"";flex:1;height:1px;background:var(--hair);}
+.alts{display:flex;gap:9px;}
+.alt{flex:1;background:none;border:1px solid var(--hair);color:var(--text);border-radius:999px;padding:12px;font-family:var(--font-body);font-size:13px;cursor:pointer;transition:all .2s;}
+.alt:hover{border-color:var(--gold-deep);}
+.fineprint{text-align:center;font-size:10px;color:var(--text-faint);line-height:1.6;margin-top:18px;}
+</style></head><body>
+
+<div class="context">
+  <div class="k">Consumer Prototype · Onboarding — Phone</div>
+  <h1>Phone (required, with a reason)</h1>
+  <p>The product's nervous system — texting powers the live loop. Required at account creation, but framed entirely on the benefit, never as a demand.</p>
+</div>
+
+<div class="phone">
+  <div class="notch"></div>
+  <div class="atmosphere"></div>
+  <div class="app-row">
+    <button class="back" onclick="go('consumer-name.html')">&#8249;</button>
+    <span class="app-title">Create account</span>
+    <span class="app-pad"></span>
+  </div>
+  <div class="body">
+    <div class="steps"><i class="on"></i><i class="on"></i><i></i></div>
+    <h2 class="headline">Nice to meet you, Erika.</h2>
+
+    <div class="reason">
+      <span class="d"></span>
+      <div class="rt"><b>Never miss a live offer near you.</b> Add your number so Pulse can text you the moment something worth your night opens up.</div>
+    </div>
+
+    <div class="phonefield">
+      <span class="cc">&#127482;&#127480; +1</span>
+      <input class="inp" type="tel" placeholder="Phone number" autocomplete="tel">
+    </div>
+    <button class="sendcode" onclick="go('consumer-personalize.html')">Send code</button>
+
+    <div class="divider">or continue with</div>
+    <div class="alts">
+      <button class="alt" onclick="go('consumer-personalize.html')">&#63743;&nbsp; Apple</button>
+      <button class="alt" onclick="go('consumer-personalize.html')">Google</button>
+    </div>
+
+    <div class="fineprint">We text live offers &amp; check-in confirmations. Standard rates may apply.</div>
+  </div>
+</div>
+<script src="../scripts/nav.js"></script>
+</body></html>

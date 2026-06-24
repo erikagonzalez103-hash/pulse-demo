@@ -1,0 +1,53 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pulse · You're in</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles/tokens.css">
+<link rel="stylesheet" href="../styles/components.css">
+<style>
+/* — screen-specific only — */
+.bloom-bg{position:absolute;inset:0;pointer-events:none;z-index:0;
+  background:radial-gradient(ellipse 90% 50% at 50% 38%,rgba(202,168,113,.15),transparent 62%);}
+.body{padding:30px 28px 40px;position:relative;z-index:2;min-height:460px;display:flex;flex-direction:column;}
+.moment{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;}
+.pulse-mark{position:relative;width:80px;height:80px;display:flex;align-items:center;justify-content:center;margin-bottom:24px;}
+.pulse-mark .core{width:16px;height:16px;border-radius:50%;background:var(--gold);box-shadow:0 0 18px rgba(202,168,113,.8);z-index:2;}
+.pulse-mark .ring{position:absolute;inset:0;margin:auto;width:28px;height:28px;border-radius:50%;border:1.5px solid var(--gold);opacity:0;}
+.eyebrow{font-family:var(--font-sub);font-size:10px;letter-spacing:.3em;color:var(--gold);text-transform:uppercase;margin-bottom:12px;}
+.headline{font-family:var(--font-display);font-weight:400;font-size:30px;color:var(--text);line-height:1.14;margin-bottom:12px;}
+.subline{font-size:13.5px;color:var(--text-dim);line-height:1.55;max-width:250px;margin-bottom:34px;}
+.go{width:100%;max-width:240px;background:var(--gold);color:var(--ink-on-gold);border:none;border-radius:999px;padding:14px;font-family:var(--font-body);font-weight:600;font-size:14px;cursor:pointer;transition:all .2s;margin-bottom:16px;}
+.go:hover{box-shadow:0 0 22px rgba(202,168,113,.35);}
+.skip{background:none;border:none;color:var(--gold);font-family:var(--font-body);font-size:13px;cursor:pointer;}
+.skip:hover{text-decoration:underline;}
+@media (prefers-reduced-motion: no-preference){
+  .pulse-mark .ring{animation:rip 2.6s ease-out infinite;}
+  .pulse-mark .ring.r2{animation-delay:.9s;}
+  @keyframes rip{0%{opacity:.7;transform:scale(1);}80%{opacity:0;transform:scale(2.8);}100%{opacity:0;}}
+}
+</style></head><body>
+
+<div class="context">
+  <div class="k">Consumer Prototype · Onboarding — Personalize fork</div>
+  <h1>Personalize? (the fork)</h1>
+  <p>The account is already created — this optional polish sits after, so skipping never costs the signup. A celebratory beat: "you're in." Skip drops straight to the (working) cold-start feed.</p>
+</div>
+
+<div class="phone">
+  <div class="notch"></div>
+  <div class="bloom-bg"></div>
+  <div class="body">
+    <div class="moment">
+      <div class="pulse-mark"><span class="ring"></span><span class="ring r2"></span><span class="core"></span></div>
+      <div class="eyebrow">Account created</div>
+      <h2 class="headline">You're in.</h2>
+      <div class="subline">Want a feed that's tuned to you? It takes a few taps.</div>
+      <button class="go" onclick="go('consumer-vibe.html')">Personalize my feed</button>
+      <button class="skip" onclick="go('consumer-feed.html')">Skip for now &#8594;</button>
+    </div>
+  </div>
+</div>
+<script src="../scripts/nav.js"></script>
+</body></html>

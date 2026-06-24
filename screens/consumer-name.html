@@ -1,0 +1,56 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pulse · Your name</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles/tokens.css">
+<link rel="stylesheet" href="../styles/components.css">
+<style>
+/* — screen-specific only — */
+.atmosphere{position:absolute;inset:0;pointer-events:none;z-index:0;
+  background:radial-gradient(ellipse 80% 45% at 50% 14%,rgba(202,168,113,.11),transparent 60%);}
+.body{padding:16px 24px 30px;}
+.steps{display:flex;gap:6px;margin-bottom:26px;}
+.steps i{height:3px;flex:1;border-radius:2px;background:var(--hair);}
+.steps i.on{background:var(--gold);}
+.eyebrow{font-family:var(--font-sub);font-size:10px;letter-spacing:.26em;color:var(--gold);text-transform:uppercase;margin-bottom:10px;}
+.headline{font-family:var(--font-display);font-weight:400;font-size:25px;color:var(--text);line-height:1.18;margin-bottom:8px;}
+.subline{font-size:12.5px;color:var(--text-dim);line-height:1.5;margin-bottom:28px;}
+.lbl{font-size:10.5px;color:var(--text-dim);letter-spacing:.04em;margin-bottom:7px;}
+.inp{width:100%;background:rgba(255,255,255,.025);border:1px solid var(--border-soft);border-radius:13px;padding:14px 16px;color:var(--text);font-family:var(--font-display);font-size:16px;outline:none;transition:border-color .2s;margin-bottom:16px;}
+.inp::placeholder{color:var(--text-faint);font-family:var(--font-body);font-weight:300;}
+.inp:focus{border-color:var(--gold-deep);}
+</style></head><body>
+
+<div class="context">
+  <div class="k">Consumer Prototype · Onboarding — Name</div>
+  <h1>Name (first)</h1>
+  <p>From the dashboard spec: warmth before logistics. Name comes first — a gracious open, like being greeted at a fine restaurant — and carries forward into the next step.</p>
+</div>
+
+<div class="phone">
+  <div class="notch"></div>
+  <div class="atmosphere"></div>
+  <div class="app-row">
+    <button class="back" onclick="go('consumer-login.html')">&#8249;</button>
+    <span class="app-title">Create account</span>
+    <span class="app-pad"></span>
+  </div>
+  <div class="body">
+    <div class="steps"><i class="on"></i><i></i><i></i></div>
+    <div class="eyebrow">Welcome to Pulse</div>
+    <h2 class="headline">First, the introductions.</h2>
+    <div class="subline">A warm, gracious open — like being greeted at a fine restaurant.</div>
+
+    <div class="lbl">First name</div>
+    <input class="inp" type="text" placeholder="Erika" autocomplete="given-name">
+    <div class="lbl">Last name</div>
+    <input class="inp" type="text" placeholder="Gonzalez" autocomplete="family-name">
+  </div>
+  <div class="foot">
+    <button class="primary" onclick="go('consumer-phone.html')">Continue</button>
+  </div>
+</div>
+<script src="../scripts/nav.js"></script>
+</body></html>

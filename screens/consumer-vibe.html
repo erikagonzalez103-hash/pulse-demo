@@ -1,0 +1,68 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pulse · Pick your vibe</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles/tokens.css">
+<link rel="stylesheet" href="../styles/components.css">
+<style>
+/* — screen-specific only — */
+.atmosphere{position:absolute;inset:0;pointer-events:none;z-index:0;
+  background:radial-gradient(ellipse 80% 40% at 50% 6%,rgba(202,168,113,.10),transparent 55%);}
+.body{padding:16px 22px 110px;}
+.steps{display:flex;gap:6px;margin-bottom:22px;}
+.steps i{height:3px;flex:1;border-radius:2px;background:var(--hair);}
+.steps i.on{background:var(--gold);}
+.headline{font-family:var(--font-display);font-weight:400;font-size:23px;color:var(--text);line-height:1.18;margin-bottom:6px;}
+.subline{font-size:12px;color:var(--text-dim);line-height:1.5;margin-bottom:20px;}
+.vibegrid{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+.tile{position:relative;aspect-ratio:1/1;border-radius:14px;overflow:hidden;cursor:pointer;border:1px solid var(--border-soft);transition:transform .15s,border-color .15s;}
+.tile:hover{transform:translateY(-2px);border-color:var(--gold-deep);}
+.tile.sel{border:2px solid var(--gold);}
+.tile .lbl{position:absolute;left:0;right:0;bottom:0;padding:11px 12px;font-family:var(--font-display);font-weight:500;font-size:14px;color:var(--text);line-height:1.15;background:linear-gradient(0deg,rgba(6,9,15,.88),rgba(6,9,15,.2) 70%,transparent);}
+.tile .check{position:absolute;top:8px;right:8px;width:22px;height:22px;border-radius:50%;background:var(--gold);color:var(--ink-on-gold);display:none;align-items:center;justify-content:center;font-size:11px;font-weight:700;box-shadow:0 0 12px rgba(202,168,113,.6);}
+.tile.sel .check{display:flex;}
+</style></head><body>
+
+<div class="context">
+  <div class="k">Consumer Prototype · Onboarding — Vibe grid</div>
+  <h1>Pick your vibe (photo grid)</h1>
+  <p>Even setup feels like the product — categories chosen by tapping photos, not icon chips. This is the taste capture that makes "matched to you" honest (Review 01 #4), and it carries family &amp; dog-friendly so those guests are served (#18/#19). Optional: tap or skip.</p>
+</div>
+
+<div class="phone">
+  <div class="notch"></div>
+  <div class="atmosphere"></div>
+  <div class="app-row">
+    <button class="back" onclick="go('consumer-personalize.html')">&#8249;</button>
+    <span class="app-title">Personalize</span>
+    <span class="app-pad"></span>
+  </div>
+  <div class="body">
+    <div class="steps"><i class="on"></i><i class="on"></i><i class="on"></i></div>
+    <h2 class="headline">Pick your vibe</h2>
+    <div class="subline">Optional — tap what's you, and your feed tunes to it. Or skip.</div>
+
+    <div class="vibegrid">
+      <div class="tile sel" style="background:radial-gradient(ellipse 80% 70% at 60% 30%,rgba(216,132,63,.55),transparent 60%),linear-gradient(135deg,#3a1f12,#0c0a10);" onclick="this.classList.toggle('sel')">
+        <span class="check">&#10003;</span><span class="lbl">Intimate dinners</span></div>
+      <div class="tile" style="background:radial-gradient(ellipse 80% 70% at 60% 30%,rgba(187,39,38,.4),transparent 60%),linear-gradient(135deg,#2a1420,#0c0a10);" onclick="this.classList.toggle('sel')">
+        <span class="check">&#10003;</span><span class="lbl">Lively &amp; late</span></div>
+      <div class="tile sel" style="background:radial-gradient(ellipse 80% 70% at 60% 30%,rgba(122,90,40,.5),transparent 60%),linear-gradient(135deg,#2a2412,#0c0a10);" onclick="this.classList.toggle('sel')">
+        <span class="check">&#10003;</span><span class="lbl">Culture &amp; openings</span></div>
+      <div class="tile" style="background:radial-gradient(ellipse 80% 70% at 60% 30%,rgba(83,150,79,.4),transparent 60%),linear-gradient(135deg,#16241a,#0c0a10);" onclick="this.classList.toggle('sel')">
+        <span class="check">&#10003;</span><span class="lbl">Patios &amp; dog-friendly</span></div>
+      <div class="tile" style="background:radial-gradient(ellipse 80% 70% at 60% 30%,rgba(120,140,180,.4),transparent 60%),linear-gradient(135deg,#1a2030,#0c0a10);" onclick="this.classList.toggle('sel')">
+        <span class="check">&#10003;</span><span class="lbl">Family-friendly</span></div>
+      <div class="tile" style="background:radial-gradient(ellipse 80% 70% at 60% 30%,rgba(90,150,140,.4),transparent 60%),linear-gradient(135deg,#13231f,#0c0a10);" onclick="this.classList.toggle('sel')">
+        <span class="check">&#10003;</span><span class="lbl">Wellness &amp; studios</span></div>
+    </div>
+  </div>
+  <div class="foot">
+    <button class="secondary" onclick="go('consumer-feed.html')">Skip</button>
+    <button class="primary" onclick="go('consumer-feed.html')">Continue</button>
+  </div>
+</div>
+<script src="../scripts/nav.js"></script>
+</body></html>
