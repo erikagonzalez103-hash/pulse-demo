@@ -1,0 +1,70 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pulse · Choose Offer Type</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles/tokens.css">
+<link rel="stylesheet" href="../styles/components.css">
+<style>
+/* — screen-specific only — */
+.atmosphere{position:absolute;inset:0;pointer-events:none;z-index:0;
+  background:radial-gradient(ellipse 80% 50% at 50% 12%,rgba(202,168,113,.10),transparent 60%),
+            radial-gradient(ellipse 70% 40% at 50% 88%,rgba(122,59,30,.07),transparent 65%);}
+.body{padding:20px 22px 30px;}
+.eyebrow{font-family:var(--font-sub);font-size:10px;letter-spacing:.26em;color:var(--gold);text-transform:uppercase;margin-bottom:10px;}
+.headline{font-family:var(--font-display);font-weight:400;font-size:25px;color:var(--text);line-height:1.18;margin-bottom:6px;}
+.subline{font-size:12.5px;color:var(--text-dim);line-height:1.5;margin-bottom:24px;}
+.engine{position:relative;background:rgba(255,255,255,.025);border:1px solid var(--border-soft);border-radius:16px;padding:18px 18px 16px;margin-bottom:14px;cursor:pointer;overflow:hidden;transition:border-color .2s,transform .2s;}
+.engine:hover{border-color:var(--gold-deep);transform:translateY(-2px);}
+.engine.primary{border-color:var(--gold);background:rgba(255,255,255,.03);}
+.engine.primary:hover{border-color:var(--gold);}
+.engine-bloom{position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% 0%,rgba(202,168,113,.10),transparent 65%);pointer-events:none;}
+.engine .e-eye{font-family:var(--font-sub);font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-bottom:8px;position:relative;display:flex;align-items:center;justify-content:space-between;}
+.engine .rec{color:var(--gold-deep);font-size:8px;letter-spacing:.16em;}
+.engine .e-name{font-family:var(--font-display);font-weight:500;font-size:20px;color:var(--text);line-height:1.2;margin-bottom:8px;position:relative;}
+.engine .e-desc{font-size:12.5px;color:var(--text-dim);line-height:1.55;margin-bottom:14px;position:relative;}
+.engine .e-tags{font-family:var(--font-sub);font-size:8.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--text-faint);position:relative;}
+.engine .e-tags b{color:var(--gold-deep);font-weight:400;}
+.note{font-size:11px;color:var(--text-faint);line-height:1.55;text-align:center;margin-top:18px;font-style:italic;}
+</style></head><body>
+
+<div class="context">
+  <div class="k">Vendor Prototype · Create → Choose type</div>
+  <h1>Choose offer type</h1>
+  <p>The fork that sets the rules. The engine — not a blanket platform rule — decides the mechanics and the language.</p>
+</div>
+
+<div class="phone">
+  <div class="notch"></div>
+  <div class="atmosphere"></div>
+  <div class="app-row">
+    <button class="back" onclick="go('vendor-02-offer-management.html')">&#8249;</button>
+    <span class="app-title">New offer</span>
+    <span class="app-pad"></span>
+  </div>
+  <div class="body">
+    <div class="eyebrow">New offer</div>
+    <h2 class="headline">What kind of offer?</h2>
+    <div class="subline">Pick the engine that fits the room. You can change it before you publish.</div>
+
+    <div class="engine primary" onclick="go('vendor-02b-offer-builder.html')">
+      <div class="engine-bloom"></div>
+      <div class="e-eye"><span>Exclusive engine</span><span class="rec">Recommended for Laurent</span></div>
+      <div class="e-name">Access, not discount</div>
+      <div class="e-desc">For invitation-led rooms. The value is getting in — a table, a seat, a moment. No discounts, ever.</div>
+      <div class="e-tags"><b>Invitation</b> · Limited access · Reserve</div>
+    </div>
+
+    <div class="engine" onclick="go('vendor-02b-offer-builder-standard.html')">
+      <div class="e-eye"><span>Standard engine</span></div>
+      <div class="e-name">Offer, used with care</div>
+      <div class="e-desc">For open offers — fitness, retail, beauty, casual dining. Discounts allowed, deployed carefully, never the whole identity.</div>
+      <div class="e-tags"><b>Promotion</b> · Open offer · Claim in Pulse</div>
+    </div>
+
+    <div class="note">The engine sets the rules. Nail one, then extend.</div>
+  </div>
+</div>
+<script src="../scripts/nav.js"></script>
+</body></html>

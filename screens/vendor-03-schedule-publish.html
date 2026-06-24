@@ -1,0 +1,75 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pulse · Schedule &amp; Publish</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles/tokens.css">
+<link rel="stylesheet" href="../styles/components.css">
+<style>
+/* — screen-specific only — */
+.atmosphere{position:absolute;inset:0;pointer-events:none;z-index:0;
+  background:radial-gradient(ellipse 80% 50% at 50% 12%,rgba(202,168,113,.10),transparent 60%),
+            radial-gradient(ellipse 70% 40% at 50% 88%,rgba(122,59,30,.07),transparent 65%);}
+.body{padding:20px 22px 120px;}
+.eyebrow{font-family:var(--font-sub);font-size:10px;letter-spacing:.26em;color:var(--gold);text-transform:uppercase;margin-bottom:10px;}
+.headline{font-family:var(--font-display);font-weight:400;font-size:25px;color:var(--text);line-height:1.18;margin-bottom:26px;}
+.sec{margin:22px 0 11px;}
+/* field / seg / chips now shared in components.css */
+.summary{margin-top:24px;background:rgba(255,255,255,.02);border:1px solid var(--hair);border-radius:13px;padding:15px 16px;display:flex;gap:11px;align-items:flex-start;}
+.summary .dot{width:6px;height:6px;border-radius:50%;background:var(--gold);box-shadow:0 0 8px var(--gold);margin-top:5px;flex-shrink:0;}
+.summary .st{font-size:12.5px;color:var(--text-dim);line-height:1.5;}
+.summary .st b{color:var(--text);font-weight:500;}
+</style></head><body>
+
+<div class="context">
+  <div class="k">Vendor Prototype · Create → Schedule</div>
+  <h1>Schedule &amp; publish</h1>
+  <p>The step between a finished offer and a live one. Set when it opens, then send it to the feed.</p>
+</div>
+
+<div class="phone">
+  <div class="notch"></div>
+  <div class="atmosphere"></div>
+  <div class="app-row">
+    <button class="back" onclick="go('vendor-02b-offer-builder.html')">&#8249;</button>
+    <span class="app-title">Review &amp; publish</span>
+    <span class="app-pad"></span>
+  </div>
+  <div class="body">
+    <div class="eyebrow">Chef's counter — six seats</div>
+    <h2 class="headline">When does it open?</h2>
+
+    <div class="field" onclick="sendPrompt('Edit the date and time for the Chef\'s counter seating.')">
+      <div class="fval">Tuesday, Jun 23<small>6:30 PM · $175 prix fixe</small></div>
+      <div class="fedit">Edit</div>
+    </div>
+
+    <div class="sec">Repeats</div>
+    <div class="seg">
+      <button class="on">One-time</button>
+      <button>Weekly</button>
+      <button>Custom</button>
+    </div>
+
+    <div class="sec">Day-part</div>
+    <div class="chips">
+      <span class="chip">Brunch</span>
+      <span class="chip">Lunch</span>
+      <span class="chip">Happy hour</span>
+      <span class="chip on">Dinner</span>
+      <span class="chip">Late night</span>
+    </div>
+
+    <div class="summary">
+      <span class="dot"></span>
+      <div class="st"><b>Six seats open to your matched guests, claimed in Pulse.</b> It stays on the feed until the counter fills or the seating passes — whichever comes first.</div>
+    </div>
+  </div>
+  <div class="foot">
+    <button class="secondary" onclick="go('vendor-02-offer-management.html')">Save draft</button>
+    <button class="primary" onclick="go('vendor-04-live-offer.html')">Publish — go live</button>
+  </div>
+</div>
+<script src="../scripts/nav.js"></script>
+</body></html>

@@ -1,0 +1,104 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pulse · Sign in</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles/tokens.css">
+<link rel="stylesheet" href="../styles/components.css">
+<style>
+/* — screen-specific only — */
+.body{padding:0;}
+/* hero — Dallas skyline over a near-black sky */
+.hero{position:relative;height:404px;overflow:hidden;
+  background:radial-gradient(ellipse 90% 60% at 50% 78%,rgba(202,168,113,.16),transparent 62%),
+            linear-gradient(180deg,var(--bg) 0%,#0a0e16 60%,#0c1119 100%);}
+.stars{position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(1px 1px at 20% 24%,rgba(242,238,227,.5),transparent),
+            radial-gradient(1px 1px at 68% 16%,rgba(242,238,227,.35),transparent),
+            radial-gradient(1px 1px at 84% 30%,rgba(242,238,227,.45),transparent),
+            radial-gradient(1px 1px at 40% 12%,rgba(242,238,227,.3),transparent);}
+.skyline{position:absolute;left:0;right:0;bottom:0;height:150px;}
+.skyline svg{width:100%;height:100%;display:block;}
+.horizon{position:absolute;left:0;right:0;bottom:148px;height:1px;background:linear-gradient(90deg,transparent,rgba(202,168,113,.5),transparent);}
+.brandmark{position:absolute;left:0;right:0;top:84px;text-align:center;z-index:2;}
+.pulse-mark{position:relative;width:54px;height:54px;display:inline-flex;align-items:center;justify-content:center;margin-bottom:18px;}
+.pulse-mark .core{width:13px;height:13px;border-radius:50%;background:var(--gold);box-shadow:0 0 16px rgba(202,168,113,.7);z-index:2;}
+.pulse-mark .ring{position:absolute;inset:0;margin:auto;width:22px;height:22px;border-radius:50%;border:1.5px solid var(--gold);opacity:0;}
+.wordmark{font-family:var(--font-sub);font-weight:600;font-size:30px;letter-spacing:.42em;color:var(--text);text-indent:.42em;margin-bottom:14px;}
+.wordmark .s{display:inline-block;transform:rotate(13deg);color:var(--gold);}
+.tagline{font-family:var(--font-display);font-weight:400;font-style:italic;font-size:15px;color:var(--gold);letter-spacing:.01em;}
+/* auth zone */
+.auth{padding:28px 24px 30px;position:relative;z-index:2;}
+.auth-eye{font-family:var(--font-sub);font-size:9.5px;letter-spacing:.26em;text-transform:uppercase;color:var(--text-faint);text-align:center;margin-bottom:16px;}
+.phone-field{background:rgba(255,255,255,.025);border:1px solid var(--border-soft);border-radius:13px;padding:14px 16px;display:flex;align-items:center;gap:11px;cursor:pointer;transition:border-color .2s;margin-bottom:12px;}
+.phone-field:hover{border-color:var(--gold-deep);}
+.phone-field .cc{font-size:14px;color:var(--text-dim);font-family:var(--font-body);}
+.phone-field .ph{font-size:14px;color:var(--text-faint);font-family:var(--font-body);}
+.signin{width:100%;background:var(--gold);color:var(--ink-on-gold);border:none;border-radius:999px;padding:14px;font-family:var(--font-body);font-weight:600;font-size:14px;cursor:pointer;transition:all .2s;}
+.signin:hover{box-shadow:0 0 22px rgba(202,168,113,.35);}
+.signin:active{transform:scale(.99);}
+.divider{display:flex;align-items:center;gap:12px;margin:18px 0;color:var(--text-faint);font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;font-family:var(--font-sub);}
+.divider::before,.divider::after{content:"";flex:1;height:1px;background:var(--hair);}
+.alt{width:100%;background:none;border:1px solid var(--hair);color:var(--text);border-radius:999px;padding:13px;font-family:var(--font-body);font-size:13.5px;cursor:pointer;transition:all .2s;}
+.alt:hover{border-color:var(--gold-deep);}
+.terms{text-align:center;font-size:10px;color:var(--text-faint);line-height:1.6;margin-top:18px;}
+.terms a{color:var(--text-dim);cursor:pointer;text-decoration:underline;}
+@media (prefers-reduced-motion: no-preference){
+  .pulse-mark .ring{animation:rip 2.8s ease-out infinite;}
+  .pulse-mark .ring.r2{animation-delay:1.1s;}
+  @keyframes rip{0%{opacity:.7;transform:scale(1);}80%{opacity:0;transform:scale(2.6);}100%{opacity:0;}}
+}
+</style></head><body>
+
+<div class="context">
+  <div class="k">Consumer Prototype · Sign in</div>
+  <h1>Skyline login</h1>
+  <p>The first thing a guest sees. The Dallas skyline resolves out of a near-black sky into the auth zone — the city, then the way in. "Dallas, check your Pulse."</p>
+</div>
+
+<div class="phone">
+  <div class="notch"></div>
+  <div class="body">
+
+    <div class="hero">
+      <div class="stars"></div>
+      <div class="brandmark">
+        <div class="pulse-mark"><span class="ring"></span><span class="ring r2"></span><span class="core"></span></div>
+        <div class="wordmark">PUL<span class="s">S</span>E</div>
+        <div class="tagline">Dallas, check your Pulse.</div>
+      </div>
+      <div class="horizon"></div>
+      <div class="skyline">
+        <svg viewBox="0 0 380 150" preserveAspectRatio="none" aria-label="Dallas skyline">
+          <!-- Reunion Tower: mast + ball, left of centre -->
+          <line x1="92" y1="150" x2="92" y2="58" stroke="var(--gold-deep)" stroke-width="3"/>
+          <circle cx="92" cy="52" r="11" fill="none" stroke="var(--gold)" stroke-width="2.5"/>
+          <circle cx="92" cy="52" r="3" fill="var(--gold)"/>
+          <!-- skyline silhouette -->
+          <path d="M0 150 L0 110 L24 110 L24 96 L44 96 L44 104 L60 104 L60 70 L74 70 L74 150
+                   L108 150 L108 84 L122 84 L122 74 L132 74 L132 84 L150 84 L150 44 L162 44 L162 30 L172 30 L172 44 L186 44 L186 150
+                   L210 150 L210 64 L226 64 L226 54 L238 54 L238 64 L256 64 L256 150
+                   L284 150 L284 90 L300 90 L300 78 L312 78 L312 90 L328 90 L328 150
+                   L350 150 L350 100 L368 100 L368 88 L380 88 L380 150 Z"
+                fill="var(--bg)" stroke="var(--gold-deep)" stroke-width="1.5"/>
+        </svg>
+      </div>
+    </div>
+
+    <div class="auth">
+      <div class="auth-eye">Sign in to Pulse</div>
+      <div class="phone-field" onclick="sendPrompt('Enter your phone number to receive a sign-in code.')">
+        <span class="cc">&#127482;&#127480; +1</span>
+        <span class="ph">Phone number</span>
+      </div>
+      <button class="signin" onclick="go('consumer-welcome.html')">Send my code</button>
+      <div class="divider">or</div>
+      <button class="alt" onclick="go('consumer-welcome.html')">&#63743;&nbsp;&nbsp;Continue with Apple</button>
+      <div class="terms">By continuing you agree to Pulse's <a onclick="sendPrompt('Open the Terms of Service.')">Terms</a> &amp; <a onclick="sendPrompt('Open the Privacy Policy.')">Privacy Policy</a>.</div>
+    </div>
+
+  </div>
+</div>
+<script src="../scripts/nav.js"></script>
+</body></html>

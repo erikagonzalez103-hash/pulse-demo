@@ -1,0 +1,128 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pulse · Offer (full)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles/tokens.css">
+<link rel="stylesheet" href="../styles/components.css">
+<style>
+/* — screen-specific only — */
+.body{padding:0 0 110px;}
+.back-float{position:absolute;top:34px;left:16px;z-index:6;width:34px;height:34px;border-radius:50%;background:rgba(6,9,15,.55);border:1px solid var(--hair);color:var(--gold);font-size:17px;display:flex;align-items:center;justify-content:center;cursor:pointer;}
+.save-float{position:absolute;top:34px;right:16px;z-index:6;width:34px;height:34px;border-radius:50%;background:rgba(6,9,15,.55);border:1px solid var(--hair);color:var(--gold);font-size:14px;display:flex;align-items:center;justify-content:center;cursor:pointer;}
+.hero-img{height:212px;position:relative;
+  background:radial-gradient(ellipse 70% 90% at 68% 24%,rgba(216,132,63,.4),transparent 60%),linear-gradient(135deg,#241a12,#0c0a10 72%);}
+.hero-img::after{content:"";position:absolute;inset:0;background:rgba(6,9,15,.35);}
+.hero-img .glow{position:absolute;left:0;right:0;bottom:0;height:62%;background:linear-gradient(0deg,var(--bg),transparent);z-index:1;}
+.heat-ring{position:absolute;top:32px;right:60px;z-index:5;width:46px;height:46px;}
+.heat-ring::before{content:"";position:absolute;inset:-2px;border-radius:50%;background:rgba(6,9,15,.45);}
+.heat-ring svg{position:relative;width:100%;height:100%;transform:rotate(-90deg);}
+.heat-ring .track{fill:none;stroke:rgba(255,255,255,.16);stroke-width:3.5;}
+.heat-ring .fill{fill:none;stroke:url(#heat);stroke-width:3.5;stroke-linecap:round;}
+#heat stop:nth-of-type(1){stop-color:var(--gold);}
+#heat stop:nth-of-type(2){stop-color:var(--heat-mid);}
+#heat stop:nth-of-type(3){stop-color:var(--red-bright);}
+.heat-ring .dotc{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;}
+.heat-ring .dotc i{width:4px;height:4px;border-radius:50%;background:var(--red-bright);box-shadow:0 0 6px var(--red-bright);}
+.fullpill{position:absolute;top:34px;left:60px;z-index:5;font-family:var(--font-sub);font-size:8.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--red-bright);background:rgba(6,9,15,.6);border:1px solid color-mix(in srgb, var(--red-bright) 45%, transparent);border-radius:999px;padding:6px 11px;}
+.content{padding:4px 22px 0;position:relative;z-index:2;margin-top:-30px;}
+.venue{font-family:var(--font-sub);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:8px;}
+.title{font-family:var(--font-display);font-weight:500;font-size:26px;color:var(--text);line-height:1.16;margin-bottom:8px;}
+.meta{font-size:12.5px;color:var(--text-dim);margin-bottom:18px;}
+.claim{background:rgba(255,255,255,.025);border:1px solid var(--border-soft);border-radius:14px;padding:14px 16px;margin-bottom:18px;}
+.claim-bar{height:6px;border-radius:3px;background:var(--bg-input);overflow:hidden;position:relative;margin-bottom:9px;}
+.claim-bar i{position:absolute;left:0;top:0;bottom:0;width:100%;background:linear-gradient(90deg,var(--gold-deep),var(--gold));border-radius:3px;}
+.claim-row{display:flex;align-items:center;justify-content:space-between;}
+.claim-row .left{font-size:12.5px;color:var(--text);}
+.claim-row .left b{color:var(--gold);font-weight:500;}
+.claim-row .when{font-size:10.5px;color:var(--text-faint);}
+.sec{font-family:var(--font-sub);font-size:9.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--text-faint);margin:0 0 11px;}
+.desc{font-size:13.5px;color:var(--text-dim);line-height:1.6;margin-bottom:24px;}
+/* waitlist notice */
+.waitnote{display:flex;gap:11px;align-items:flex-start;background:rgba(255,255,255,.02);border:1px solid var(--hair);border-radius:12px;padding:14px 16px;margin-bottom:24px;}
+.waitnote .d{width:6px;height:6px;border-radius:50%;background:var(--gold);box-shadow:0 0 8px var(--gold);margin-top:5px;flex-shrink:0;}
+.waitnote .wt{font-size:12px;color:var(--text-dim);line-height:1.55;}
+.waitnote .wt b{color:var(--text);font-weight:500;}
+/* similar nearby rail */
+.simrow{display:flex;align-items:center;justify-content:space-between;padding:13px 0;border-top:1px solid var(--hair);cursor:pointer;}
+.simrow:last-child{border-bottom:1px solid var(--hair);}
+.simrow .si .sn{font-family:var(--font-display);font-weight:400;font-size:15px;color:var(--text);line-height:1.2;}
+.simrow .si .ss{font-size:10.5px;color:var(--text-faint);margin-top:3px;}
+.simrow .sgo{color:var(--gold);font-size:13px;}
+.simwrap{margin-bottom:8px;}
+/* full CTA in footer */
+.foot .primary.wait{background:var(--gold);color:var(--ink-on-gold);}
+.foot .fullbtn{flex:0;white-space:nowrap;background:none;border:1px solid var(--hair);color:var(--text-faint);border-radius:999px;padding:12px 16px;font-family:var(--font-body);font-size:13px;cursor:default;}
+</style></head><body>
+
+<div class="context">
+  <div class="k">Consumer Prototype · Offer detail — SOLD OUT state</div>
+  <h1>Offer detail · full</h1>
+  <p>The missing state from Review 01 (#1): when a counter is full, the guest is NOT routed to the heartbeat. The claim becomes a waitlist, with similar live rooms nearby so a blocked claim never dead-ends.</p>
+</div>
+
+<div class="phone">
+  <div class="notch"></div>
+
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+    <linearGradient id="heat" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0%" stop-color="#CAA871"/><stop offset="55%" stop-color="#D8843F"/><stop offset="100%" stop-color="#BB2726"/>
+    </linearGradient>
+  </defs></svg>
+
+  <div class="body">
+    <button class="back-float" onclick="go('consumer-feed.html')">&#8249;</button>
+    <button class="save-float" onclick="sendPrompt('Save this offer to your list.')">&#9734;</button>
+
+    <div class="hero-img">
+      <span class="fullpill">Claimed out</span>
+      <span class="heat-ring">
+        <svg viewBox="0 0 46 46"><circle class="track" cx="23" cy="23" r="20"/><circle class="fill" cx="23" cy="23" r="20" stroke-dasharray="126" stroke-dashoffset="0"/></svg>
+        <span class="dotc"><i></i></span>
+      </span>
+      <span class="glow"></span>
+    </div>
+
+    <div class="content">
+      <div class="venue">The Marfa Room · Deep Ellum</div>
+      <div class="title">Last-call flight — agave &amp; amaro</div>
+      <div class="meta">Tonight · from 9 PM · walk-in counter</div>
+
+      <div class="claim">
+        <div class="claim-bar"><i></i></div>
+        <div class="claim-row">
+          <span class="left"><b>Full</b> — 12 of 12 claimed</span>
+          <span class="when">filled 20 min ago</span>
+        </div>
+      </div>
+
+      <div class="waitnote">
+        <span class="d"></span>
+        <div class="wt"><b>This one filled fast.</b> Join the waitlist and Pulse pings you the moment a seat frees — first in line, claimed in one tap.</div>
+      </div>
+
+      <div class="sec">The night</div>
+      <div class="desc">A late flight of agave and amaro pours at the back counter — the room's quiet hour, when the bartenders pour what they love. Twelve seats, one seating.</div>
+
+      <div class="sec">Still live near you</div>
+      <div class="simwrap">
+        <div class="simrow" onclick="go('consumer-detail.html')">
+          <div class="si"><div class="sn">Chef's counter — six seats</div><div class="ss">Laurent · Lakewood · 2 left</div></div>
+          <span class="sgo">&#8594;</span>
+        </div>
+        <div class="simrow" onclick="go('consumer-feed.html')">
+          <div class="si"><div class="sn">Opening night — new works</div><div class="ss">Continental Gin · Exposition Park · free</div></div>
+          <span class="sgo">&#8594;</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <div class="foot">
+    <button class="fullbtn">Counter full</button>
+    <button class="primary wait" onclick="sendPrompt('Join the waitlist — we\'ll notify you if a seat frees.')">Join the waitlist</button>
+  </div>
+</div>
+<script src="../scripts/nav.js"></script>
+</body></html>

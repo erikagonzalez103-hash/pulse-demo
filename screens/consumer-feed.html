@@ -1,0 +1,188 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pulse · Feed</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles/tokens.css">
+<link rel="stylesheet" href="../styles/components.css">
+<style>
+/* — screen-specific only — */
+.atmosphere{position:absolute;inset:0;pointer-events:none;z-index:0;
+  background:radial-gradient(ellipse 80% 40% at 50% 4%,rgba(202,168,113,.10),transparent 55%);}
+.mono{width:30px;height:30px;border-radius:50%;background:rgba(202,168,113,.12);border:1px solid var(--gold-deep);display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-size:13px;color:var(--gold);cursor:pointer;}
+.loc{display:flex;align-items:center;gap:7px;}
+.loc .pin{color:var(--gold);font-size:13px;}
+.loc .lt{font-family:var(--font-sub);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--text);}
+.body{padding:14px 20px 84px;}
+.greet{margin-bottom:18px;}
+.greet .eye{font-family:var(--font-sub);font-size:10px;letter-spacing:.26em;color:var(--gold);text-transform:uppercase;margin-bottom:8px;display:flex;align-items:center;gap:7px;}
+.greet .eye .live{width:5px;height:5px;border-radius:50%;background:var(--gold);box-shadow:0 0 8px var(--gold);}
+.greet h2{font-family:var(--font-display);font-weight:400;font-size:24px;color:var(--text);line-height:1.15;}
+/* filters */
+.timeseg{margin-bottom:12px;}
+.catscroll{display:flex;gap:8px;overflow-x:auto;padding-bottom:4px;margin-bottom:20px;-ms-overflow-style:none;scrollbar-width:none;}
+.catscroll::-webkit-scrollbar{display:none;}
+.catscroll .chip{white-space:nowrap;flex-shrink:0;}
+/* heat ring on the card image */
+.heat-ring{position:absolute;top:10px;right:10px;z-index:4;width:42px;height:42px;}
+.heat-ring::before{content:"";position:absolute;inset:-2px;border-radius:50%;background:rgba(6,9,15,.45);}
+.heat-ring svg{position:relative;width:100%;height:100%;transform:rotate(-90deg);}
+.heat-ring .track{fill:none;stroke:rgba(255,255,255,.16);stroke-width:3.5;}
+.heat-ring .fill{fill:none;stroke:url(#heat);stroke-width:3.5;stroke-linecap:round;}
+.heat-ring .dotc{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;}
+.heat-ring .dotc i{width:4px;height:4px;border-radius:50%;background:var(--gold);box-shadow:0 0 6px var(--gold);}
+.fc-meta .heat-word{font-family:var(--font-sub);font-size:8.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold-deep);}
+/* heat gradient stops driven by tokens (no hardcoded amber) */
+#heat stop:nth-of-type(1){stop-color:var(--gold);}
+#heat stop:nth-of-type(2){stop-color:var(--heat-mid);}
+#heat stop:nth-of-type(3){stop-color:var(--red-bright);}
+.feedcard .newpill.soldout{color:var(--red-bright);border-color:color-mix(in srgb, var(--red-bright) 45%, transparent);}
+.feedcard .heat-word.wait{color:var(--gold);}
+/* bottom tab bar */
+.tabbar{position:absolute;left:0;right:0;bottom:0;z-index:25;display:flex;background:linear-gradient(0deg,var(--bg) 72%,transparent);border-top:1px solid var(--hair);padding:10px 0 16px;}
+.tab{flex:1;display:flex;flex-direction:column;align-items:center;gap:5px;background:none;border:none;cursor:pointer;color:var(--text-faint);font-family:var(--font-sub);font-size:8.5px;letter-spacing:.16em;text-transform:uppercase;}
+.tab .ti{font-size:15px;line-height:1;}
+.tab.on{color:var(--gold);}
+</style></head><body>
+
+<div class="context">
+  <div class="k">Consumer Prototype · Card feed</div>
+  <h1>The feed</h1>
+  <p>The heart of the consumer app — Dallas right now, ranked by live momentum. Each card carries a heat ring; the same card a vendor saw in their "how guests see it" preview. Filters narrow by time, category, neighborhood.</p>
+</div>
+
+<div class="phone">
+  <div class="notch"></div>
+  <div class="atmosphere"></div>
+  <div class="app-row">
+    <div class="loc"><span class="pin">&#9906;</span><span class="lt">Dallas</span></div>
+    <span class="app-title">Pulse</span>
+    <div class="mono" onclick="sendPrompt('Open your Pulse profile.')">A</div>
+  </div>
+
+  <!-- shared heat gradient (mirrors the dashboard momentum ring) -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+    <linearGradient id="heat" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0%" stop-color="#CAA871"/><stop offset="55%" stop-color="#D8843F"/><stop offset="100%" stop-color="#BB2726"/>
+    </linearGradient>
+  </defs></svg>
+
+  <div class="body">
+    <div class="greet">
+      <div class="eye"><span class="live"></span><span id="feed-eye">Tonight · live</span></div>
+      <h2 id="feed-head">Where Dallas is right now.</h2>
+    </div>
+
+    <div class="seg timeseg">
+      <button class="on" onclick="pulseWhen(this,'Tonight · live','Where Dallas is right now.')">Tonight</button>
+      <button onclick="pulseWhen(this,'This weekend','What\'s building for the weekend.')">This weekend</button>
+      <button onclick="pulseWhen(this,'Anytime','The rooms worth planning around.')">Anytime</button>
+    </div>
+    <div class="catscroll">
+      <span class="chip on">All</span>
+      <span class="chip" onclick="sendPrompt('Filter to Dining.')">Dining</span>
+      <span class="chip" onclick="sendPrompt('Filter to Nightlife.')">Nightlife</span>
+      <span class="chip" onclick="sendPrompt('Filter to Wellness.')">Wellness</span>
+      <span class="chip" onclick="sendPrompt('Filter to Culture.')">Culture</span>
+      <span class="chip" onclick="sendPrompt('Open neighborhood and more filters.')">Neighborhood &#9662;</span>
+    </div>
+
+    <!-- 1 · Laurent — hot (continuity with the vendor flow) -->
+    <div class="feedcard" onclick="go('consumer-detail.html')">
+      <div class="img">
+        <span class="newpill">Filling fast</span>
+        <span class="heat-ring">
+          <svg viewBox="0 0 44 44"><circle class="track" cx="22" cy="22" r="19"/><circle class="fill" cx="22" cy="22" r="19" stroke-dasharray="119" stroke-dashoffset="18"/></svg>
+          <span class="dotc"><i></i></span>
+        </span>
+        <span class="glow"></span>
+      </div>
+      <div class="fc-body">
+        <div class="venue">Laurent · Lakewood</div>
+        <div class="fc-name">Chef's counter — six seats</div>
+        <div class="fc-meta">
+          <span class="seats">Tue · 6:30 PM · 2 of 6 left</span>
+          <span class="heat-word">Claim in Pulse</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2 · cocktail bar — nightlife, warming -->
+    <div class="feedcard" onclick="go('consumer-detail-full.html')">
+      <div class="img">
+        <span class="newpill soldout">Claimed out</span>
+        <span class="heat-ring">
+          <svg viewBox="0 0 44 44"><circle class="track" cx="22" cy="22" r="19"/><circle class="fill" cx="22" cy="22" r="19" stroke-dasharray="119" stroke-dashoffset="0"/></svg>
+          <span class="dotc"><i></i></span>
+        </span>
+        <span class="glow"></span>
+      </div>
+      <div class="fc-body">
+        <div class="venue">The Marfa Room · Deep Ellum</div>
+        <div class="fc-name">Last-call flight — agave &amp; amaro</div>
+        <div class="fc-meta">
+          <span class="seats">Tonight · 9 PM · full</span>
+          <span class="heat-word wait">Waitlist open</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3 · Priya's studio — wellness, new (Standard engine continuity) -->
+    <div class="feedcard" onclick="sendPrompt('Open Priya\'s intro pack offer.')">
+      <div class="img">
+        <span class="newpill">New on Pulse</span>
+        <span class="heat-ring">
+          <svg viewBox="0 0 44 44"><circle class="track" cx="22" cy="22" r="19"/><circle class="fill" cx="22" cy="22" r="19" stroke-dasharray="119" stroke-dashoffset="77"/></svg>
+          <span class="dotc"><i></i></span>
+        </span>
+        <span class="glow"></span>
+      </div>
+      <div class="fc-body">
+        <div class="venue">Studio Priya · Bishop Arts</div>
+        <div class="fc-name">Intro pack — three classes</div>
+        <div class="fc-meta">
+          <span class="seats">All week · $39 for newcomers</span>
+          <span class="heat-word">Claim in Pulse</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4 · gallery — culture -->
+    <div class="feedcard" onclick="sendPrompt('Open the Continental Gin gallery opening.')">
+      <div class="img">
+        <span class="newpill">Tonight only</span>
+        <span class="heat-ring">
+          <svg viewBox="0 0 44 44"><circle class="track" cx="22" cy="22" r="19"/><circle class="fill" cx="22" cy="22" r="19" stroke-dasharray="119" stroke-dashoffset="36"/></svg>
+          <span class="dotc"><i></i></span>
+        </span>
+        <span class="glow"></span>
+      </div>
+      <div class="fc-body">
+        <div class="venue">Continental Gin · Exposition Park</div>
+        <div class="fc-name">Opening night — new works</div>
+        <div class="fc-meta">
+          <span class="seats">Tonight · 7–10 PM · free</span>
+          <span class="heat-word">RSVP in Pulse</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="tabbar">
+    <button class="tab on"><span class="ti">&#9906;</span>Feed</button>
+    <button class="tab" onclick="sendPrompt('Open your saved offers.')"><span class="ti">&#9734;</span>Saved</button>
+    <button class="tab" onclick="sendPrompt('Open your check-ins and plans.')"><span class="ti">&#9788;</span>You</button>
+  </div>
+</div>
+<script>
+  function pulseWhen(btn, eye, head){
+    document.querySelectorAll('.timeseg button').forEach(function(b){ b.classList.remove('on'); });
+    btn.classList.add('on');
+    document.getElementById('feed-eye').textContent = eye;
+    document.getElementById('feed-head').textContent = head;
+  }
+</script>
+<script src="../scripts/nav.js"></script>
+</body></html>

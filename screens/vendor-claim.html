@@ -1,0 +1,105 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pulse · Claim your venue</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles/tokens.css">
+<link rel="stylesheet" href="../styles/components.css">
+<style>
+/* — screen-specific only — */
+.atmosphere{position:absolute;inset:0;pointer-events:none;z-index:0;
+  background:radial-gradient(ellipse 90% 50% at 50% 6%,rgba(202,168,113,.13),transparent 58%),
+            radial-gradient(ellipse 70% 40% at 50% 92%,rgba(122,59,30,.07),transparent 65%);}
+.skyline-soft{position:absolute;left:0;right:0;bottom:0;height:13%;opacity:.07;pointer-events:none;z-index:0;
+  background:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 120' preserveAspectRatio='none'><path d='M0 120 L0 75 L20 75 L20 60 L40 60 L40 70 L60 70 L60 45 L72 45 L72 35 L82 35 L82 50 L98 50 L98 30 L110 30 L110 22 L120 22 L120 50 L140 50 L140 65 L160 65 L160 40 L180 40 L180 55 L200 55 L200 30 L215 30 L215 20 L228 20 L228 38 L245 38 L245 60 L265 60 L265 50 L285 50 L285 70 L305 70 L305 55 L325 55 L325 75 L345 75 L345 65 L365 65 L365 80 L385 80 L385 70 L400 70 L400 120 Z' fill='%23CAA871'/></svg>") center bottom/100% 100% no-repeat;}
+.body{padding:8px 22px 30px;}
+.brandmark{display:flex;flex-direction:column;align-items:center;text-align:center;margin-bottom:22px;}
+.pulse-mark{position:relative;width:64px;height:64px;display:flex;align-items:center;justify-content:center;margin-bottom:14px;}
+.pulse-mark .core{width:14px;height:14px;border-radius:50%;background:var(--gold);box-shadow:0 0 16px rgba(202,168,113,.7);z-index:2;}
+.pulse-mark .ring{position:absolute;inset:0;margin:auto;width:24px;height:24px;border-radius:50%;border:1.5px solid var(--gold);opacity:0;}
+.eyebrow{font-family:var(--font-sub);font-size:10px;letter-spacing:.28em;color:var(--gold);text-transform:uppercase;margin-bottom:9px;}
+.headline{font-family:var(--font-display);font-weight:400;font-size:25px;color:var(--text);line-height:1.18;margin-bottom:8px;text-align:center;}
+.subline{font-size:12.5px;color:var(--text-dim);line-height:1.55;text-align:center;max-width:300px;margin:0 auto 24px;}
+.venue-field{background:rgba(255,255,255,.025);border:1px solid var(--border-soft);border-radius:13px;padding:14px 16px;display:flex;align-items:center;gap:11px;cursor:pointer;transition:border-color .2s;margin-bottom:26px;}
+.venue-field:hover{border-color:var(--gold-deep);}
+.venue-field .ic{color:var(--gold);font-size:15px;line-height:1;}
+.venue-field .vt{font-size:14px;color:var(--text-faint);font-family:var(--font-body);}
+.sec{margin:0 0 12px;}
+.path{position:relative;background:rgba(255,255,255,.025);border:1px solid var(--border-soft);border-radius:16px;padding:18px 18px 16px;margin-bottom:14px;cursor:pointer;overflow:hidden;transition:border-color .2s,transform .2s;}
+.path:hover{border-color:var(--gold-deep);transform:translateY(-2px);}
+.path.primary{border-color:var(--gold);background:rgba(255,255,255,.03);}
+.path.primary:hover{border-color:var(--gold);}
+.path-bloom{position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% 0%,rgba(202,168,113,.10),transparent 65%);pointer-events:none;}
+.path .p-eye{font-family:var(--font-sub);font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-bottom:8px;position:relative;display:flex;align-items:center;justify-content:space-between;}
+.path .rec{color:var(--gold-deep);font-size:8px;letter-spacing:.16em;}
+.path .p-name{font-family:var(--font-display);font-weight:500;font-size:19px;color:var(--text);line-height:1.2;margin-bottom:8px;position:relative;}
+.path .p-desc{font-size:12.5px;color:var(--text-dim);line-height:1.55;position:relative;}
+.guardrail{margin-top:6px;background:rgba(255,255,255,.02);border:1px solid var(--hair);border-radius:12px;padding:13px 15px;display:flex;gap:10px;align-items:flex-start;}
+.guardrail .dot{width:6px;height:6px;border-radius:50%;background:var(--gold);box-shadow:0 0 8px var(--gold);margin-top:5px;flex-shrink:0;}
+.guardrail .gt{font-size:11.5px;color:var(--text-dim);line-height:1.5;}
+.guardrail .gt b{color:var(--text);font-weight:500;}
+@media (prefers-reduced-motion: no-preference){
+  .pulse-mark .ring{animation:rip 2.6s ease-out infinite;}
+  .pulse-mark .ring.r2{animation-delay:.9s;}
+  @keyframes rip{0%{opacity:.7;transform:scale(1);}80%{opacity:0;transform:scale(2.6);}100%{opacity:0;}}
+}
+</style></head><body>
+
+<div class="context">
+  <div class="k">Vendor Prototype · Claim / onboarding</div>
+  <h1>Claim your venue</h1>
+  <p>The front door for a vendor. Pulse is invitation-led, so the two paths — concierge for launch partners, self-serve for everyone after — both end in a reviewed, in-voice room. From the HER House anchor.</p>
+</div>
+
+<div class="phone">
+  <div class="notch"></div>
+  <div class="atmosphere"></div>
+  <div class="skyline-soft"></div>
+  <div class="app-row">
+    <span class="app-pad"></span>
+    <span class="app-title">Pulse for venues</span>
+    <span class="app-pad"></span>
+  </div>
+  <div class="body">
+
+    <div class="brandmark">
+      <div class="pulse-mark">
+        <span class="ring"></span><span class="ring r2"></span>
+        <span class="core"></span>
+      </div>
+      <div class="eyebrow">Dallas · by invitation</div>
+    </div>
+
+    <h2 class="headline">Bring your room to Pulse.</h2>
+    <div class="subline">Every venue is reviewed before it goes live — Pulse stays curated by design. Start by finding yours.</div>
+
+    <div class="venue-field" onclick="sendPrompt('Search for your venue by name or address to claim it.')">
+      <span class="ic">&#9906;</span>
+      <span class="vt">Find your venue — name or address</span>
+    </div>
+
+    <div class="sec">How would you like to start?</div>
+
+    <div class="path primary" onclick="go('vendor-01-dashboard-new.html')">
+      <div class="path-bloom"></div>
+      <div class="p-eye"><span>Concierge</span><span class="rec">For launch partners</span></div>
+      <div class="p-name">Set it up with Pulse</div>
+      <div class="p-desc">A Pulse partner builds your first offers with you — in your voice, matched to your room. The way the HER House venues come on.</div>
+    </div>
+
+    <div class="path" onclick="go('vendor-01-dashboard-new.html')">
+      <div class="p-eye"><span>Self-serve</span></div>
+      <div class="p-name">Claim it yourself</div>
+      <div class="p-desc">Verify you run the venue, then build your first offer in minutes. We review it, then it's live.</div>
+    </div>
+
+    <div class="guardrail">
+      <span class="dot"></span>
+      <div class="gt"><b>Curation is the product.</b> Both paths are reviewed before going live — that's what keeps the feed worth a guest's attention.</div>
+    </div>
+
+  </div>
+</div>
+<script src="../scripts/nav.js"></script>
+</body></html>

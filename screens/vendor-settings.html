@@ -1,0 +1,133 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pulse · Venue Settings</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles/tokens.css">
+<link rel="stylesheet" href="../styles/components.css">
+<style>
+/* — screen-specific only — */
+.atmosphere{position:absolute;inset:0;pointer-events:none;z-index:0;
+  background:radial-gradient(ellipse 80% 50% at 50% 10%,rgba(202,168,113,.10),transparent 60%);}
+.body{padding:18px 22px 110px;}
+.vhead{display:flex;align-items:center;gap:14px;margin-bottom:28px;}
+.vhead .mono{width:54px;height:54px;border-radius:50%;background:rgba(202,168,113,.12);border:1px solid var(--gold-deep);display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-size:24px;color:var(--gold);flex-shrink:0;}
+.vhead .vn{font-family:var(--font-display);font-weight:500;font-size:21px;color:var(--text);line-height:1.1;}
+.vhead .vs{font-size:11.5px;color:var(--text-dim);margin-top:5px;}
+.vhead .vedit{margin-left:auto;color:var(--gold);font-size:11.5px;cursor:pointer;white-space:nowrap;}
+.sec{margin:0 0 6px;}
+.group{background:rgba(255,255,255,.02);border:1px solid var(--hair);border-radius:14px;padding:2px 16px;margin-bottom:22px;}
+.srow{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:14px 0;border-bottom:1px solid var(--hair);cursor:pointer;}
+.srow:last-child{border-bottom:none;}
+.srow.static{cursor:default;}
+.srow .sl{font-size:13.5px;color:var(--text);}
+.srow .sl small{display:block;font-size:11px;color:var(--text-faint);margin-top:3px;line-height:1.4;}
+.srow .sv{font-size:12.5px;color:var(--text-dim);display:flex;align-items:center;gap:9px;white-space:nowrap;}
+.srow .sv .chev{color:var(--gold);font-size:13px;}
+.srow .sv .tag{font-family:var(--font-sub);font-size:8.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold-deep);}
+/* toggle */
+.toggle{width:40px;height:23px;border-radius:999px;background:var(--bg-input);border:1px solid var(--hair);position:relative;cursor:pointer;transition:all .2s;flex-shrink:0;}
+.toggle.on{background:var(--gold-soft);border-color:var(--gold-deep);}
+.toggle .knob{position:absolute;top:2px;left:2px;width:17px;height:17px;border-radius:50%;background:var(--text-faint);transition:all .2s;}
+.toggle.on .knob{left:19px;background:var(--gold);box-shadow:0 0 8px rgba(202,168,113,.6);}
+.signout{width:100%;background:none;border:1px solid var(--hair);color:var(--text-dim);border-radius:999px;padding:13px;font-family:var(--font-body);font-size:13px;cursor:pointer;transition:all .2s;margin-top:4px;}
+.signout:hover{border-color:var(--gold-deep);color:var(--text);}
+.foot-note{text-align:center;font-size:10.5px;color:var(--text-faint);margin-top:16px;letter-spacing:.04em;}
+</style></head><body>
+
+<div class="context">
+  <div class="k">Vendor Prototype · Venue settings</div>
+  <h1>Account &amp; venue settings</h1>
+  <p>What the venue mark opens. Profile, hours, the default engine, and notification preferences — including the slipping alert, which a vendor can dial to their own rhythm but is on by default.</p>
+</div>
+
+<div class="phone">
+  <div class="notch"></div>
+  <div class="atmosphere"></div>
+  <div class="app-row">
+    <button class="back" onclick="go('vendor-01-dashboard.html')">&#8249;</button>
+    <span class="app-title">Settings</span>
+    <span class="app-pad"></span>
+  </div>
+  <div class="body">
+
+    <div class="vhead">
+      <div class="mono">L</div>
+      <div>
+        <div class="vn">Laurent</div>
+        <div class="vs">Lakewood · Fine dining</div>
+      </div>
+      <span class="vedit" onclick="sendPrompt('Edit the venue name, neighborhood and category.')">Edit</span>
+    </div>
+
+    <div class="sec">Venue profile</div>
+    <div class="group">
+      <div class="srow" onclick="sendPrompt('Edit the lead photo that fronts your feed card.')">
+        <div class="sl">Lead photo<small>The image that fronts your feed card</small></div>
+        <div class="sv"><span class="tag">Set</span><span class="chev">&#8250;</span></div>
+      </div>
+      <div class="srow" onclick="sendPrompt('Edit your venue story — the words in your voice.')">
+        <div class="sl">Venue story</div>
+        <div class="sv">In your voice<span class="chev">&#8250;</span></div>
+      </div>
+      <div class="srow" onclick="sendPrompt('Edit your neighborhood.')">
+        <div class="sl">Neighborhood</div>
+        <div class="sv">Lakewood<span class="chev">&#8250;</span></div>
+      </div>
+    </div>
+
+    <div class="sec">Service</div>
+    <div class="group">
+      <div class="srow" onclick="sendPrompt('Edit the days you serve.')">
+        <div class="sl">Service days</div>
+        <div class="sv">Tue–Sun<span class="chev">&#8250;</span></div>
+      </div>
+      <div class="srow" onclick="sendPrompt('Edit your default day-parts.')">
+        <div class="sl">Day-parts</div>
+        <div class="sv">Dinner · Late<span class="chev">&#8250;</span></div>
+      </div>
+      <div class="srow" onclick="go('vendor-02a-choose-type.html')">
+        <div class="sl">Default engine<small>The rules new offers start with</small></div>
+        <div class="sv"><span class="tag">Exclusive</span><span class="chev">&#8250;</span></div>
+      </div>
+    </div>
+
+    <div class="sec">Notifications</div>
+    <div class="group">
+      <div class="srow static">
+        <div class="sl">Slipping alerts<small>A nudge when a night runs behind your norm</small></div>
+        <div class="toggle on" onclick="this.classList.toggle('on')"><span class="knob"></span></div>
+      </div>
+      <div class="srow static">
+        <div class="sl">Milestones &amp; weekly recap</div>
+        <div class="toggle on" onclick="this.classList.toggle('on')"><span class="knob"></span></div>
+      </div>
+      <div class="srow static">
+        <div class="sl">Every new claim</div>
+        <div class="toggle" onclick="this.classList.toggle('on')"><span class="knob"></span></div>
+      </div>
+    </div>
+
+    <div class="sec">Team &amp; account</div>
+    <div class="group">
+      <div class="srow" onclick="sendPrompt('Add a staff member to this venue.')">
+        <div class="sl">Team access<small>1 owner · add hosts &amp; managers</small></div>
+        <div class="sv"><span class="chev">&#8250;</span></div>
+      </div>
+      <div class="srow" onclick="sendPrompt('Open billing and plan details.')">
+        <div class="sl">Plan &amp; billing</div>
+        <div class="sv">Launch partner<span class="chev">&#8250;</span></div>
+      </div>
+    </div>
+
+    <button class="signout" onclick="go('vendor-claim.html')">Sign out</button>
+    <div class="foot-note">Pulse · Dallas</div>
+
+  </div>
+  <div class="foot">
+    <button class="primary" onclick="go('vendor-01-dashboard.html')">Done</button>
+  </div>
+</div>
+<script src="../scripts/nav.js"></script>
+</body></html>

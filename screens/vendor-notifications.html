@@ -1,0 +1,116 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pulse · Notifications</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles/tokens.css">
+<link rel="stylesheet" href="../styles/components.css">
+<style>
+/* — screen-specific only — */
+.atmosphere{position:absolute;inset:0;pointer-events:none;z-index:0;
+  background:radial-gradient(ellipse 80% 50% at 50% 10%,rgba(202,168,113,.10),transparent 60%);}
+.body{padding:18px 22px 40px;}
+.eyebrow{font-family:var(--font-sub);font-size:10px;letter-spacing:.26em;color:var(--gold);text-transform:uppercase;margin-bottom:9px;}
+.headline{font-family:var(--font-display);font-weight:400;font-size:24px;color:var(--text);line-height:1.18;margin-bottom:22px;}
+/* the slipping alert — heat / time-sensitive, gentle never alarm */
+.alert{position:relative;background:var(--red-soft);border:1px solid color-mix(in srgb, var(--red-bright) 35%, transparent);border-radius:15px;padding:16px 17px;margin-bottom:24px;overflow:hidden;}
+.alert .a-eye{font-family:var(--font-sub);font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:var(--red-bright);margin-bottom:8px;display:flex;align-items:center;gap:7px;}
+.alert .a-eye .heat{width:6px;height:6px;border-radius:50%;background:var(--red-bright);box-shadow:0 0 8px var(--red-bright);}
+.alert .a-name{font-family:var(--font-display);font-weight:500;font-size:17px;color:var(--text);line-height:1.25;margin-bottom:7px;}
+.alert .a-body{font-size:12.5px;color:var(--text-dim);line-height:1.55;margin-bottom:14px;}
+.alert .a-body b{color:var(--text);font-weight:500;}
+.alert .levers{display:flex;flex-wrap:wrap;gap:8px;}
+.lever{border:1px solid var(--gold-deep);background:var(--gold-soft);color:var(--gold);border-radius:999px;padding:8px 14px;font-size:11.5px;font-family:var(--font-body);cursor:pointer;transition:all .2s;}
+.lever:hover{border-color:var(--gold);box-shadow:0 0 14px rgba(202,168,113,.2);}
+.lever.ghost{background:none;border-color:var(--hair);color:var(--text-dim);}
+.lever.ghost:hover{border-color:var(--gold-deep);color:var(--text);box-shadow:none;}
+.honest-note{font-size:10.5px;color:var(--text-faint);margin-top:11px;font-style:italic;line-height:1.5;}
+/* notification feed */
+.day{font-family:var(--font-sub);font-size:9.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--text-faint);margin:0 0 12px;}
+.notif{display:flex;gap:12px;align-items:flex-start;padding:13px 0;border-bottom:1px solid var(--hair);}
+.notif:last-child{border-bottom:none;}
+.notif .nd{width:7px;height:7px;border-radius:50%;margin-top:5px;flex-shrink:0;background:var(--gold);box-shadow:0 0 8px var(--gold);}
+.notif .nd.read{background:var(--text-faint);box-shadow:none;}
+.notif .ntitle{font-size:13px;color:var(--text);line-height:1.45;}
+.notif .ntitle b{color:var(--gold);font-weight:500;}
+.notif .nmeta{font-size:10.5px;color:var(--text-faint);margin-top:4px;}
+.group{margin-bottom:24px;}
+.group:last-child{margin-bottom:0;}
+</style></head><body>
+
+<div class="context">
+  <div class="k">Vendor Prototype · Notifications</div>
+  <h1>Notifications &amp; slipping alert</h1>
+  <p>What the bell opens. Insight-first and self-relative by day-part — a slipping night is framed as honest levers the vendor already controls, never "buy a boost." Heat-red marks time-sensitivity, kept gentle.</p>
+</div>
+
+<div class="phone">
+  <div class="notch"></div>
+  <div class="atmosphere"></div>
+  <div class="app-row">
+    <button class="back" onclick="go('vendor-01-dashboard.html')">&#8249;</button>
+    <span class="app-title">Notifications</span>
+    <span class="app-pad"></span>
+  </div>
+  <div class="body">
+    <h2 class="headline">What's moving tonight</h2>
+
+    <div class="alert">
+      <div class="a-eye"><span class="heat"></span>Worth a look</div>
+      <div class="a-name">Thursday's counter is trending behind your norm.</div>
+      <div class="a-body">By 7 PM your Thursday seatings are usually <b>two-thirds full</b>. Right now it's at <b>2 of 6</b>. Still plenty of time — here's what's earned the most lift before.</div>
+      <div class="levers">
+        <button class="lever" onclick="sendPrompt('Refresh the lead photo on tonight\'s counter to re-surface it in the feed.')">Refresh lead photo</button>
+        <button class="lever ghost" onclick="sendPrompt('Adjust tonight\'s seating time.')">Shift the hour</button>
+      </div>
+      <div class="honest-note">Levers you already control — Pulse never sells placement. The feed earns its order.</div>
+    </div>
+
+    <div class="group">
+      <div class="day">Today</div>
+      <div class="notif" onclick="sendPrompt('Open the guest-fit match detail.')">
+        <span class="nd"></span>
+        <div>
+          <div class="ntitle">A <b>celebration party of two</b> just claimed the counter — your strongest match.</div>
+          <div class="nmeta">22 min ago · guest-fit</div>
+        </div>
+      </div>
+      <div class="notif" onclick="go('vendor-04-live-offer.html')">
+        <span class="nd"></span>
+        <div>
+          <div class="ntitle"><b>4 of 6 seats</b> claimed on Chef's counter.</div>
+          <div class="nmeta">1 hr ago · Chef's counter — six seats</div>
+        </div>
+      </div>
+      <div class="notif" onclick="go('vendor-analytics.html')">
+        <span class="nd"></span>
+        <div>
+          <div class="ntitle">You passed <b>100 saves</b> this week — ahead of last week by 24.</div>
+          <div class="nmeta">This afternoon · milestone</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="group">
+      <div class="day">Earlier this week</div>
+      <div class="notif" onclick="sendPrompt('Open the past Sunday supper offer.')">
+        <span class="nd read"></span>
+        <div>
+          <div class="ntitle">Last Sunday's supper <b>filled</b> — 100% before service.</div>
+          <div class="nmeta">Last Sun · long table</div>
+        </div>
+      </div>
+      <div class="notif" onclick="go('vendor-analytics.html')">
+        <span class="nd read"></span>
+        <div>
+          <div class="ntitle">Your week opened strong — <b>check-ins up</b> across the board.</div>
+          <div class="nmeta">Mon · weekly recap</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+<script src="../scripts/nav.js"></script>
+</body></html>

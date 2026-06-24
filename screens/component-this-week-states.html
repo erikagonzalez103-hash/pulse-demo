@@ -1,0 +1,126 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pulse · "This week" across the lifecycle</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles/tokens.css">
+<link rel="stylesheet" href="../styles/components.css">
+<style>
+/* — component study: multi-up layout, overrides the single-phone body — */
+body{display:block;padding:40px 24px 60px;}
+.head{text-align:center;max-width:560px;margin:0 auto 40px;position:relative;z-index:1;}
+.head .k{font-family:var(--font-sub);font-size:11px;letter-spacing:.3em;color:var(--gold);text-transform:uppercase;margin-bottom:6px;}
+.head h1{font-family:var(--font-display);font-weight:400;font-size:25px;color:var(--text);margin-bottom:8px;}
+.head p{font-size:13px;color:var(--text-dim);line-height:1.55;}
+.grid{display:flex;flex-wrap:wrap;gap:22px;justify-content:center;max-width:880px;margin:0 auto;position:relative;z-index:1;}
+.state{width:380px;}
+.state-tag{margin-bottom:12px;text-align:center;}
+.state-tag .n{font-family:var(--font-sub);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);}
+.state-tag .d{font-size:11.5px;color:var(--text-faint);margin-top:4px;}
+.surface{background:var(--bg);border:1px solid var(--hair);border-radius:20px;padding:22px 22px 24px;position:relative;overflow:hidden;}
+.surface::before{content:"";position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(ellipse 80% 50% at 50% 0%,rgba(202,168,113,.07),transparent 60%);}
+.sec-eye{margin-bottom:12px;position:relative;}
+.stats{position:relative;}
+.stats.nocap{margin-bottom:18px;}
+.delta-cap{margin-bottom:18px;position:relative;}
+.tip{display:flex;gap:11px;align-items:flex-start;background:rgba(255,255,255,0.02);border:1px solid var(--hair);border-radius:12px;padding:14px 16px;position:relative;}
+.tip .dot{width:6px;height:6px;border-radius:50%;background:var(--gold);box-shadow:0 0 8px var(--gold);margin-top:5px;flex-shrink:0;}
+.tip .tip-eye{font-family:var(--font-sub);font-size:9px;letter-spacing:.24em;text-transform:uppercase;color:var(--gold);margin-bottom:7px;}
+.tip .it{font-size:12.5px;color:var(--text-dim);line-height:1.5;}
+.tip .it b{color:var(--text);font-weight:500;}
+</style></head><body>
+
+<div class="head">
+  <div class="k">Vendor Dashboard · component study</div>
+  <h1>"This week," across the lifecycle</h1>
+  <p>The same block at four moments. The tip is always an honest lever — never a paid boost. Week-over-week appears only once there's a prior week to compare; up is gold, a quieter week stays muted, never alarm.</p>
+</div>
+
+<div class="grid">
+
+  <!-- 1 — just starting -->
+  <div class="state">
+    <div class="state-tag"><div class="n">Just starting</div><div class="d">First days live · no check-ins yet</div></div>
+    <div class="surface">
+      <div class="sec-eye"><span>This week</span><span class="see-all">View analytics &#8594;</span></div>
+      <div class="stats nocap">
+        <div class="stat"><div class="num muted">0</div><div class="lbl">Check-ins</div></div>
+        <div class="stat"><div class="num muted">0</div><div class="lbl">Saves</div></div>
+        <div class="stat"><div class="num muted">0%</div><div class="lbl">Claimed</div></div>
+      </div>
+      <div class="tip">
+        <span class="dot"></span>
+        <div>
+          <div class="tip-eye">First check-ins</div>
+          <div class="it"><b>Your first check-ins set your baseline.</b> The fastest lift: have your host mention Pulse once at greeting — it earns more than anything else.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2 — finding momentum -->
+  <div class="state">
+    <div class="state-tag"><div class="n">Finding momentum</div><div class="d">Week one · first numbers, no prior week</div></div>
+    <div class="surface">
+      <div class="sec-eye"><span>This week</span><span class="see-all">View analytics &#8594;</span></div>
+      <div class="stats nocap">
+        <div class="stat"><div class="num">6</div><div class="lbl">Check-ins</div></div>
+        <div class="stat"><div class="num">19</div><div class="lbl">Saves</div></div>
+        <div class="stat"><div class="num">40%</div><div class="lbl">Claimed</div></div>
+      </div>
+      <div class="tip">
+        <span class="dot"></span>
+        <div>
+          <div class="tip-eye">Building</div>
+          <div class="it"><b>You're on the board.</b> Keep your Pulse code where guests sit — most check-ins start with a glance.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3 — established, up -->
+  <div class="state">
+    <div class="state-tag"><div class="n">Established · up</div><div class="d">Prior week to compare · trending up</div></div>
+    <div class="surface">
+      <div class="sec-eye"><span>This week</span><span class="see-all">View analytics &#8594;</span></div>
+      <div class="stats">
+        <div class="stat"><div class="num">38</div><div class="lbl">Check-ins</div><div class="delta up">&#9650; 9</div></div>
+        <div class="stat"><div class="num">112</div><div class="lbl">Saves</div><div class="delta up">&#9650; 24</div></div>
+        <div class="stat"><div class="num">67%</div><div class="lbl">Claimed</div><div class="delta up">&#9650; 5</div></div>
+      </div>
+      <div class="delta-cap">vs last week</div>
+      <div class="tip">
+        <span class="dot"></span>
+        <div>
+          <div class="tip-eye">Keep it going</div>
+          <div class="it"><b>Up across the board from last week.</b> Your counter fills fastest 7&ndash;9 — keep posting your strong nights there and you'll hold the lead.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4 — quieter week, down -->
+  <div class="state">
+    <div class="state-tag"><div class="n">A quieter week · down</div><div class="d">Self-relative · gentle, never alarm</div></div>
+    <div class="surface">
+      <div class="sec-eye"><span>This week</span><span class="see-all">View analytics &#8594;</span></div>
+      <div class="stats">
+        <div class="stat"><div class="num">29</div><div class="lbl">Check-ins</div><div class="delta down">&#9660; 9</div></div>
+        <div class="stat"><div class="num">88</div><div class="lbl">Saves</div><div class="delta down">&#9660; 24</div></div>
+        <div class="stat"><div class="num">61%</div><div class="lbl">Claimed</div><div class="delta down">&#9660; 6</div></div>
+      </div>
+      <div class="delta-cap">vs last week</div>
+      <div class="tip">
+        <span class="dot"></span>
+        <div>
+          <div class="tip-eye">A quieter week</div>
+          <div class="it"><b>A little quieter than last week.</b> One lift: refresh your lead photo — it re-surfaces you in the feed for guests who haven't seen you yet.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+</body></html>

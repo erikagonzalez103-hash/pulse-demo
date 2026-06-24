@@ -1,0 +1,86 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pulse · Live Offer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles/tokens.css">
+<link rel="stylesheet" href="../styles/components.css">
+<style>
+/* — screen-specific only — */
+.atmosphere{position:absolute;inset:0;pointer-events:none;z-index:0;
+  background:radial-gradient(ellipse 90% 50% at 50% 8%,rgba(202,168,113,.14),transparent 58%),
+            radial-gradient(ellipse 70% 40% at 50% 92%,rgba(122,59,30,.08),transparent 65%);}
+.back{font-size:20px;}
+.body{padding:14px 22px 116px;}
+.live-moment{display:flex;flex-direction:column;align-items:center;text-align:center;margin-bottom:30px;}
+.pulse-mark{position:relative;width:88px;height:88px;display:flex;align-items:center;justify-content:center;margin-bottom:18px;}
+.pulse-mark .core{width:18px;height:18px;border-radius:50%;background:var(--gold);box-shadow:0 0 16px rgba(202,168,113,.7);z-index:2;}
+.pulse-mark .ring{position:absolute;inset:0;margin:auto;width:30px;height:30px;border-radius:50%;border:1.5px solid var(--gold);opacity:0;}
+.eyebrow{font-family:var(--font-sub);font-size:10px;letter-spacing:.28em;color:var(--gold);text-transform:uppercase;margin-bottom:10px;}
+.headline{font-family:var(--font-display);font-weight:400;font-size:27px;color:var(--text);line-height:1.16;margin-bottom:8px;}
+.subline{font-size:13px;color:var(--text-dim);line-height:1.5;max-width:280px;}
+/* .feedcard now lives in components.css — shared with the consumer feed & detail so this
+   "how guests see it" preview can never drift from the real card. */
+.statusline{display:flex;align-items:center;justify-content:center;gap:8px;font-size:11.5px;color:var(--text-dim);}
+.statusline .dot{width:6px;height:6px;border-radius:50%;background:var(--gold);box-shadow:0 0 8px var(--gold);}
+@media (prefers-reduced-motion: no-preference){
+  .pulse-mark .ring{animation:rip 2.6s ease-out infinite;}
+  .pulse-mark .ring.r2{animation-delay:.9s;}
+  .pulse-mark .ring.r3{animation-delay:1.8s;}
+  @keyframes rip{0%{opacity:.7;transform:scale(1);}80%{opacity:0;transform:scale(3.1);}100%{opacity:0;}}
+}
+</style></head><body>
+
+<div class="context">
+  <div class="k">Vendor Prototype · Create → Live</div>
+  <h1>Live offer</h1>
+  <p>The payoff moment — and the bridge to the consumer side. The feed card shows the vendor exactly what guests now see.</p>
+</div>
+
+<div class="phone">
+  <div class="notch"></div>
+  <div class="atmosphere"></div>
+  <div class="app-row">
+    <button class="back" onclick="go('vendor-01-dashboard.html')">&times;</button>
+    <span class="app-title">Now live</span>
+    <span class="app-pad"></span>
+  </div>
+  <div class="body">
+
+    <div class="live-moment">
+      <div class="pulse-mark">
+        <span class="ring"></span><span class="ring r2"></span><span class="ring r3"></span>
+        <span class="core"></span>
+      </div>
+      <div class="eyebrow">Published</div>
+      <h2 class="headline">Chef's counter is live.</h2>
+      <div class="subline">It's on the Pulse feed now, in front of the guests it was built for.</div>
+    </div>
+
+    <div class="sec">How guests see it</div>
+    <div class="feedcard" onclick="go('consumer-detail.html')">
+      <div class="img">
+        <span class="newpill">New on Pulse</span>
+        <span class="curation">Curated · Chef's table</span>
+        <span class="glow"></span>
+      </div>
+      <div class="fc-body">
+        <div class="venue">Laurent · Lakewood</div>
+        <div class="fc-name">Chef's counter — six seats</div>
+        <div class="fc-meta">
+          <span class="seats">Tue · 6:30 PM · 6 seats</span>
+          <span class="access">Claim in Pulse</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="statusline"><span class="dot"></span>4 of 6 claimed · updating live</div>
+  </div>
+  <div class="foot">
+    <button class="secondary" onclick="go('vendor-02-offer-management.html')">Manage</button>
+    <button class="primary" onclick="go('vendor-01-dashboard.html')">Back to dashboard</button>
+  </div>
+</div>
+<script src="../scripts/nav.js"></script>
+</body></html>

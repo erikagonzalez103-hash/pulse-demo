@@ -1,0 +1,124 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pulse · Offer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles/tokens.css">
+<link rel="stylesheet" href="../styles/components.css">
+<style>
+/* — screen-specific only — */
+.body{padding:0 0 110px;}
+.back-float{position:absolute;top:34px;left:16px;z-index:6;width:34px;height:34px;border-radius:50%;background:rgba(6,9,15,.55);border:1px solid var(--hair);color:var(--gold);font-size:17px;display:flex;align-items:center;justify-content:center;cursor:pointer;}
+.save-float{position:absolute;top:34px;right:16px;z-index:6;width:34px;height:34px;border-radius:50%;background:rgba(6,9,15,.55);border:1px solid var(--hair);color:var(--gold);font-size:14px;display:flex;align-items:center;justify-content:center;cursor:pointer;}
+.hero-img{height:212px;position:relative;
+  background:radial-gradient(ellipse 70% 90% at 68% 24%,rgba(216,132,63,.55),transparent 60%),linear-gradient(135deg,#241a12,#0c0a10 72%);}
+.hero-img .glow{position:absolute;left:0;right:0;bottom:0;height:62%;background:linear-gradient(0deg,var(--bg),transparent);}
+.heat-ring{position:absolute;top:32px;right:60px;z-index:5;width:46px;height:46px;}
+.heat-ring::before{content:"";position:absolute;inset:-2px;border-radius:50%;background:rgba(6,9,15,.45);}
+.heat-ring svg{position:relative;width:100%;height:100%;transform:rotate(-90deg);}
+.heat-ring .track{fill:none;stroke:rgba(255,255,255,.16);stroke-width:3.5;}
+.heat-ring .fill{fill:none;stroke:url(#heat);stroke-width:3.5;stroke-linecap:round;}
+#heat stop:nth-of-type(1){stop-color:var(--gold);}
+#heat stop:nth-of-type(2){stop-color:var(--heat-mid);}
+#heat stop:nth-of-type(3){stop-color:var(--red-bright);}
+.heat-ring .dotc{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;}
+.heat-ring .dotc i{width:4px;height:4px;border-radius:50%;background:var(--gold);box-shadow:0 0 6px var(--gold);}
+.content{padding:4px 22px 0;position:relative;z-index:2;margin-top:-30px;}
+.venue{font-family:var(--font-sub);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:8px;}
+.title{font-family:var(--font-display);font-weight:500;font-size:26px;color:var(--text);line-height:1.16;margin-bottom:8px;}
+.meta{font-size:12.5px;color:var(--text-dim);margin-bottom:18px;}
+/* claim status */
+.claim{background:rgba(255,255,255,.025);border:1px solid var(--border-soft);border-radius:14px;padding:14px 16px;margin-bottom:20px;}
+.claim-bar{height:6px;border-radius:3px;background:var(--bg-input);overflow:hidden;position:relative;margin-bottom:9px;}
+.claim-bar i{position:absolute;left:0;top:0;bottom:0;width:67%;background:linear-gradient(90deg,var(--gold-deep),var(--gold));border-radius:3px;}
+.claim-row{display:flex;align-items:center;justify-content:space-between;}
+.claim-row .left{font-size:12.5px;color:var(--text);}
+.claim-row .left b{color:var(--gold);font-weight:500;}
+.claim-row .live{font-size:10.5px;color:var(--text-faint);display:flex;align-items:center;gap:6px;}
+.claim-row .live .d{width:5px;height:5px;border-radius:50%;background:var(--gold);box-shadow:0 0 8px var(--gold);}
+.sec{font-family:var(--font-sub);font-size:9.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--text-faint);margin:0 0 11px;}
+.desc{font-size:13.5px;color:var(--text-dim);line-height:1.6;margin-bottom:24px;}
+/* matched / guest-fit — the loop back to the builder */
+.matched{background:rgba(255,255,255,.02);border:1px solid var(--border);border-radius:14px;padding:15px 16px;margin-bottom:24px;}
+.matched .mhead{display:flex;align-items:center;gap:8px;margin-bottom:12px;}
+.matched .mhead .d{width:6px;height:6px;border-radius:50%;background:var(--gold);box-shadow:0 0 8px var(--gold);}
+.matched .mhead .mt{font-family:var(--font-sub);font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);}
+.matched .tags{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:11px;}
+.matched .tag{border:1px solid var(--gold-deep);border-radius:999px;padding:7px 13px;font-size:11.5px;color:var(--gold);}
+.matched .mnote{font-size:11.5px;color:var(--text-dim);line-height:1.5;}
+.matched .mnote b{color:var(--text);font-weight:500;}
+.venue-row{display:flex;align-items:center;justify-content:space-between;padding:14px 0;border-top:1px solid var(--hair);}
+.venue-row .vinfo{font-size:12.5px;color:var(--text-dim);}
+.venue-row .vinfo b{color:var(--text);font-weight:500;display:block;font-family:var(--font-display);font-size:15px;margin-bottom:3px;}
+.venue-row .map{color:var(--gold);font-size:11.5px;cursor:pointer;white-space:nowrap;}
+</style></head><body>
+
+<div class="context">
+  <div class="k">Consumer Prototype · Offer detail</div>
+  <h1>Offer detail</h1>
+  <p>One offer, in full — and the loop closing back to the vendor builder: the guest-fit Laurent set ("smart elegant," "intimate," "celebration") is exactly what Pulse shows the guest as <em>why you're seeing this</em>.</p>
+</div>
+
+<div class="phone">
+  <div class="notch"></div>
+
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+    <linearGradient id="heat" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0%" stop-color="#CAA871"/><stop offset="55%" stop-color="#D8843F"/><stop offset="100%" stop-color="#BB2726"/>
+    </linearGradient>
+  </defs></svg>
+
+  <div class="body">
+    <button class="back-float" onclick="go('consumer-feed.html')">&#8249;</button>
+    <button class="save-float" onclick="sendPrompt('Save this offer to your list.')">&#9734;</button>
+
+    <div class="hero-img">
+      <span class="heat-ring">
+        <svg viewBox="0 0 46 46"><circle class="track" cx="23" cy="23" r="20"/><circle class="fill" cx="23" cy="23" r="20" stroke-dasharray="126" stroke-dashoffset="19"/></svg>
+        <span class="dotc"><i></i></span>
+      </span>
+      <span class="glow"></span>
+    </div>
+
+    <div class="content">
+      <div class="venue">Laurent · Lakewood</div>
+      <div class="title">Chef's counter — six seats</div>
+      <div class="meta">Tuesday · 6:30 PM · $175 prix fixe · a single seating</div>
+
+      <div class="claim">
+        <div class="claim-bar"><i></i></div>
+        <div class="claim-row">
+          <span class="left"><b>4</b> of 6 seats claimed</span>
+          <span class="live"><span class="d"></span>filling — updates live</span>
+        </div>
+      </div>
+
+      <div class="sec">The night</div>
+      <div class="desc">Six seats at the chef's counter — a single seating, one menu, the kitchen in front of you. Reserved for guests who want the room at its closest.</div>
+
+      <div class="sec">Why this is surfacing</div>
+      <div class="matched">
+        <div class="mhead"><span class="d"></span><span class="mt">Filling fast tonight · Pulse-vetted</span></div>
+        <div class="tags">
+          <span class="tag">Smart elegant</span>
+          <span class="tag">Intimate · 2-top</span>
+          <span class="tag">Celebration</span>
+        </div>
+        <div class="mnote"><b>The room Laurent built this for.</b> These are the night's signals — once you tell Pulse your taste, we'll match to you directly.</div>
+      </div>
+
+      <div class="venue-row">
+        <div class="vinfo"><b>Laurent</b>2823 Greenville Ave · Lakewood</div>
+        <span class="map" onclick="sendPrompt('Open Laurent in maps.')">View map &#8594;</span>
+      </div>
+
+    </div>
+  </div>
+  <div class="foot">
+    <button class="secondary" onclick="sendPrompt('Save this offer to your list.')">&#9734;</button>
+    <button class="primary" onclick="go('consumer-checkin.html')">Claim in Pulse</button>
+  </div>
+</div>
+<script src="../scripts/nav.js"></script>
+</body></html>

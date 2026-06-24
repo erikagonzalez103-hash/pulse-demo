@@ -1,0 +1,145 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pulse · Vendor Dashboard Home</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles/tokens.css">
+<link rel="stylesheet" href="../styles/components.css">
+<style>
+/* — screen-specific only — */
+.atmosphere{position:absolute;inset:0;pointer-events:none;z-index:0;
+  background:radial-gradient(ellipse 80% 50% at 50% 12%,rgba(202,168,113,.11),transparent 60%),
+            radial-gradient(ellipse 70% 40% at 50% 88%,rgba(122,59,30,.08),transparent 65%);}
+.skyline-soft{position:absolute;left:0;right:0;bottom:0;height:14%;opacity:.08;pointer-events:none;z-index:0;
+  background:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 120' preserveAspectRatio='none'><path d='M0 120 L0 75 L20 75 L20 60 L40 60 L40 70 L60 70 L60 45 L72 45 L72 35 L82 35 L82 50 L98 50 L98 30 L110 30 L110 22 L120 22 L120 50 L140 50 L140 65 L160 65 L160 40 L180 40 L180 55 L200 55 L200 30 L215 30 L215 20 L228 20 L228 38 L245 38 L245 60 L265 60 L265 50 L285 50 L285 70 L305 70 L305 55 L325 55 L325 75 L345 75 L345 65 L365 65 L365 80 L385 80 L385 70 L400 70 L400 120 Z' fill='%23CAA871'/></svg>") center bottom/100% 100% no-repeat;}
+.venue-mono{width:30px;height:30px;border-radius:50%;background:rgba(202,168,113,.12);border:1px solid var(--gold-deep);display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-size:14px;color:var(--gold);cursor:pointer;}
+.bell{color:var(--gold);font-size:16px;background:none;border:none;cursor:pointer;position:relative;line-height:1;padding:4px;}
+.bell .pip{position:absolute;top:2px;right:2px;width:6px;height:6px;border-radius:50%;background:var(--gold);box-shadow:0 0 6px var(--gold);}
+.body{padding:18px 22px 116px;}
+.greet{margin-bottom:26px;}
+.greet .eye{font-family:var(--font-sub);font-size:10px;letter-spacing:.26em;color:var(--gold);text-transform:uppercase;margin-bottom:8px;}
+.greet h2{font-family:var(--font-display);font-weight:400;font-size:25px;color:var(--text);line-height:1.15;letter-spacing:.005em;}
+.momentum{display:flex;flex-direction:column;align-items:center;text-align:center;margin-bottom:30px;}
+.ring-wrap{position:relative;width:172px;height:172px;display:flex;align-items:center;justify-content:center;margin-bottom:14px;}
+.ring-glow{position:absolute;inset:14px;border-radius:50%;background:radial-gradient(circle,rgba(187,39,38,.20),transparent 68%);}
+.ring-center{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;}
+.ring-center .score{font-family:var(--font-display);font-weight:500;font-size:48px;color:var(--text);line-height:1;letter-spacing:.01em;}
+.ring-center .score-k{font-family:var(--font-sub);font-size:8.5px;letter-spacing:.26em;text-transform:uppercase;color:var(--gold);margin-top:6px;}
+.momentum-note{font-size:13.5px;color:var(--text);margin-bottom:4px;}
+.momentum-note b{color:var(--gold);font-weight:500;}
+.momentum-sub{font-size:11px;color:var(--text-faint);letter-spacing:.02em;}
+.sec-eye .live{color:var(--gold);display:flex;align-items:center;gap:6px;}
+.sec-eye .live .dot{width:5px;height:5px;border-radius:50%;background:var(--gold);box-shadow:0 0 8px var(--gold);}
+.sec-eye .see-all:hover{text-decoration:underline;}
+.offer{position:relative;background:rgba(255,255,255,0.025);border:1px solid var(--border-soft);border-radius:15px;padding:16px 17px 17px;margin-bottom:26px;cursor:pointer;overflow:hidden;transition:border-color .2s;}
+.offer:hover{border-color:var(--gold-deep);}
+.offer-bloom{position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% 0%,rgba(202,168,113,.09),transparent 65%);pointer-events:none;}
+.offer-name{font-family:var(--font-display);font-weight:500;font-size:18px;color:var(--text);line-height:1.2;margin-bottom:5px;position:relative;}
+.offer-meta{font-size:11.5px;color:var(--text-dim);margin-bottom:14px;position:relative;}
+.claim-bar{height:5px;border-radius:3px;background:var(--bg-input);overflow:hidden;position:relative;margin-bottom:8px;}
+.claim-fill{position:absolute;left:0;top:0;bottom:0;width:67%;background:linear-gradient(90deg,var(--gold-deep),var(--gold));border-radius:3px;}
+.claim-row{display:flex;align-items:center;justify-content:space-between;position:relative;}
+.claim-row .seats{font-size:12px;color:var(--text);}
+.claim-row .seats b{color:var(--gold);font-weight:500;}
+.access-tag{font-family:var(--font-sub);font-size:8.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold-deep);}
+.delta-cap{margin-bottom:22px;}
+.insight{display:flex;gap:11px;align-items:flex-start;background:rgba(255,255,255,0.02);border:1px solid var(--hair);border-radius:12px;padding:14px 16px;}
+.insight .dot{width:6px;height:6px;border-radius:50%;background:var(--gold);box-shadow:0 0 8px var(--gold);margin-top:5px;flex-shrink:0;}
+.insight .tip-eye{font-family:var(--font-sub);font-size:9px;letter-spacing:.24em;text-transform:uppercase;color:var(--gold);margin-bottom:7px;}
+.insight .it{font-size:12.5px;color:var(--text-dim);line-height:1.5;}
+.insight .it b{color:var(--text);font-weight:500;}
+#heat stop:nth-of-type(1){stop-color:var(--gold);}
+#heat stop:nth-of-type(2){stop-color:var(--heat-mid);}
+#heat stop:nth-of-type(3){stop-color:var(--red-bright);}
+@media (prefers-reduced-motion: no-preference){
+  .ring-glow{animation:pulse 2.4s ease-in-out infinite;}
+  @keyframes pulse{0%,100%{opacity:.55;transform:scale(1);}50%{opacity:1;transform:scale(1.05);}}
+}
+</style></head><body>
+
+<div class="context">
+  <div class="k">Vendor Prototype · Dashboard home</div>
+  <h1>Dashboard home</h1>
+  <p>Where a vendor lands after registration — the hub every action returns to. Built for Laurent first; Priya's variant extends from here.</p>
+</div>
+
+<div class="phone">
+  <div class="notch"></div>
+  <div class="atmosphere"></div>
+  <div class="skyline-soft"></div>
+
+  <div class="app-row">
+    <div class="venue-mono" onclick="go('vendor-settings.html')">L</div>
+    <span class="app-title">Dashboard</span>
+    <button class="bell" onclick="go('vendor-notifications.html')">&#9788;<span class="pip"></span></button>
+  </div>
+
+  <div class="body">
+
+    <div class="greet">
+      <div class="eye">Tuesday · evening service</div>
+      <h2>Good evening, Laurent.</h2>
+    </div>
+
+    <div class="momentum">
+      <div class="ring-wrap">
+        <div class="ring-glow"></div>
+        <svg width="172" height="172" viewBox="0 0 172 172">
+          <defs>
+            <linearGradient id="heat" x1="0" y1="1" x2="1" y2="0">
+              <stop offset="0%" stop-color="#CAA871"/>
+              <stop offset="55%" stop-color="#D8843F"/>
+              <stop offset="100%" stop-color="#BB2726"/>
+            </linearGradient>
+          </defs>
+          <circle cx="86" cy="86" r="68" fill="none" stroke="rgba(255,255,255,0.07)" stroke-width="8"/>
+          <circle cx="86" cy="86" r="68" fill="none" stroke="url(#heat)" stroke-width="8" stroke-linecap="round"
+                  stroke-dasharray="427" stroke-dashoffset="98" transform="rotate(-90 86 86)"/>
+        </svg>
+        <div class="ring-center">
+          <div class="score">124</div>
+          <div class="score-k">Momentum</div>
+        </div>
+      </div>
+      <div class="momentum-note"><b>Rising</b> — ahead of your Tuesday norm</div>
+      <div class="momentum-sub">From tonight's check-ins · live</div>
+    </div>
+
+    <div class="sec-eye"><span>On Pulse now</span><span class="live"><span class="dot"></span>Live</span></div>
+    <div class="offer" onclick="go('vendor-02-offer-management.html')">
+      <div class="offer-bloom"></div>
+      <div class="offer-name">Chef's counter — six seats</div>
+      <div class="offer-meta">Tuesday · 6:30 PM · $175 prix fixe</div>
+      <div class="claim-bar"><div class="claim-fill"></div></div>
+      <div class="claim-row">
+        <span class="seats"><b>4</b> of 6 seats claimed</span>
+        <span class="access-tag">Claim in Pulse</span>
+      </div>
+    </div>
+
+    <div class="sec-eye"><span>This week</span><a class="see-all" onclick="go('vendor-analytics.html')">View analytics &#8594;</a></div>
+    <div class="stats">
+      <div class="stat"><div class="num">38</div><div class="lbl">Check-ins</div><div class="delta up">&#9650; 9</div></div>
+      <div class="stat"><div class="num">112</div><div class="lbl">Saves</div><div class="delta up">&#9650; 24</div></div>
+      <div class="stat"><div class="num">67%</div><div class="lbl">Claimed</div><div class="delta up">&#9650; 5</div></div>
+    </div>
+    <div class="delta-cap">vs last week</div>
+
+    <div class="insight">
+      <span class="dot"></span>
+      <div>
+        <div class="tip-eye">Keep it going</div>
+        <div class="it"><b>Up across the board from last week.</b> Your counter fills fastest between 7 and 9 — keep posting your strong nights there and you'll hold the lead.</div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="foot">
+    <button class="secondary" onclick="go('vendor-02-offer-management.html')">Manage</button>
+    <button class="primary" onclick="go('vendor-02a-choose-type.html')">Create offer</button>
+  </div>
+</div>
+<script src="../scripts/nav.js"></script>
+</body></html>

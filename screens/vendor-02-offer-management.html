@@ -1,0 +1,102 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pulse · Offer Management</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles/tokens.css">
+<link rel="stylesheet" href="../styles/components.css">
+<style>
+/* — screen-specific only — */
+.atmosphere{position:absolute;inset:0;pointer-events:none;z-index:0;
+  background:radial-gradient(ellipse 80% 50% at 50% 12%,rgba(202,168,113,.09),transparent 60%);}
+.add{color:var(--gold);font-size:20px;background:none;border:none;cursor:pointer;line-height:1;padding:0;}
+.body{padding:18px 20px 30px;}
+.headline{font-family:var(--font-display);font-weight:400;font-size:24px;color:var(--text);margin-bottom:18px;padding:0 2px;}
+.tabs{display:flex;gap:6px;background:var(--bg-input);border:1px solid var(--hair);border-radius:999px;padding:4px;margin-bottom:20px;}
+.tabs button{flex:1;border:none;background:none;color:var(--text-dim);font-family:var(--font-body);font-size:11.5px;padding:8px 4px;border-radius:999px;cursor:pointer;transition:all .2s;}
+.tabs button.on{background:var(--gold-soft);color:var(--gold);}
+.item{background:rgba(255,255,255,.025);border:1px solid var(--border-soft);border-radius:14px;padding:15px 16px;margin-bottom:12px;cursor:pointer;transition:border-color .2s;}
+.item:hover{border-color:var(--gold-deep);}
+.item-top{display:flex;align-items:flex-start;justify-content:space-between;gap:10px;margin-bottom:8px;}
+.item-name{font-family:var(--font-display);font-weight:500;font-size:17px;color:var(--text);line-height:1.2;}
+.pill{flex-shrink:0;font-family:var(--font-sub);font-size:8px;letter-spacing:.16em;text-transform:uppercase;border-radius:999px;padding:5px 9px;display:flex;align-items:center;gap:6px;}
+.pill.live{color:var(--gold);border:1px solid var(--gold-deep);background:var(--gold-soft);}
+.pill.live .dot{width:5px;height:5px;border-radius:50%;background:var(--gold);box-shadow:0 0 8px var(--gold);}
+.pill.sched{color:var(--text-dim);border:1px solid var(--hair);}
+.pill.past{color:var(--text-faint);border:1px solid var(--hair);}
+.item-meta{font-size:11.5px;color:var(--text-dim);margin-bottom:11px;}
+.item-foot{display:flex;align-items:center;justify-content:space-between;}
+.bar{flex:1;height:4px;border-radius:3px;background:var(--bg-input);overflow:hidden;margin-right:12px;position:relative;}
+.bar i{position:absolute;left:0;top:0;bottom:0;background:linear-gradient(90deg,var(--gold-deep),var(--gold));border-radius:3px;}
+.item-foot .seats{font-size:11px;color:var(--text);white-space:nowrap;}
+.item-foot .seats b{color:var(--gold);font-weight:500;}
+.item-foot .result{font-size:11px;color:var(--text-faint);}
+.item.dim .item-name{color:var(--text-dim);}
+.create{margin-top:6px;width:100%;background:var(--gold);color:var(--ink-on-gold);border:none;border-radius:999px;padding:13px;font-family:var(--font-body);font-weight:600;font-size:14px;cursor:pointer;transition:all .2s;}
+.create:hover{box-shadow:0 0 22px rgba(202,168,113,.35);}
+.create:active{transform:scale(.99);}
+</style></head><body>
+
+<div class="context">
+  <div class="k">Vendor Prototype · Manage</div>
+  <h1>Offer management</h1>
+  <p>The hub the dashboard's "Manage" returns to — everything live, scheduled, or past, at a glance.</p>
+</div>
+
+<div class="phone">
+  <div class="notch"></div>
+  <div class="atmosphere"></div>
+  <div class="app-row">
+    <button class="back" onclick="go('vendor-01-dashboard.html')">&#8249;</button>
+    <span class="app-title">Your offers</span>
+    <button class="add" onclick="go('vendor-02a-choose-type.html')">+</button>
+  </div>
+  <div class="body">
+    <h2 class="headline">Your offers</h2>
+    <div class="tabs">
+      <button class="on">All</button>
+      <button>Live</button>
+      <button>Scheduled</button>
+      <button>Past</button>
+    </div>
+
+    <div class="item" onclick="go('vendor-04-live-offer.html')">
+      <div class="item-top">
+        <div class="item-name">Chef's counter — six seats</div>
+        <span class="pill live"><span class="dot"></span>Live</span>
+      </div>
+      <div class="item-meta">Tue, Jun 23 · 6:30 PM · Claim in Pulse</div>
+      <div class="item-foot">
+        <span class="bar"><i style="width:67%"></i></span>
+        <span class="seats"><b>4</b> of 6 claimed</span>
+      </div>
+    </div>
+
+    <div class="item" onclick="sendPrompt('Open the Sunday supper scheduled offer.')">
+      <div class="item-top">
+        <div class="item-name">Sunday supper — long table</div>
+        <span class="pill sched">Scheduled</span>
+      </div>
+      <div class="item-meta">Sun, Jun 28 · 5:00 PM · Claim in Pulse</div>
+      <div class="item-foot">
+        <span class="result">Opens in 12 days · 10 seats</span>
+      </div>
+    </div>
+
+    <div class="item dim" onclick="sendPrompt('Open the past Spring tasting flight offer and its results.')">
+      <div class="item-top">
+        <div class="item-name">Spring tasting flight</div>
+        <span class="pill past">Completed</span>
+      </div>
+      <div class="item-meta">Jun 3 · closed</div>
+      <div class="item-foot">
+        <span class="result">Filled · 8 of 8 · 41 check-ins</span>
+      </div>
+    </div>
+
+    <button class="create" onclick="go('vendor-02a-choose-type.html')">Create offer</button>
+  </div>
+</div>
+<script src="../scripts/nav.js"></script>
+</body></html>

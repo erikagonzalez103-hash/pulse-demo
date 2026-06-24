@@ -1,0 +1,94 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pulse · You're in</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles/tokens.css">
+<link rel="stylesheet" href="../styles/components.css">
+<style>
+/* — screen-specific only — */
+.bloom-bg{position:absolute;inset:0;pointer-events:none;z-index:0;
+  background:radial-gradient(ellipse 90% 55% at 50% 40%,rgba(202,168,113,.16),transparent 62%);}
+.body{padding:30px 24px 120px;position:relative;z-index:2;}
+.close{position:absolute;top:8px;right:16px;z-index:6;color:var(--text-dim);font-size:22px;background:none;border:none;cursor:pointer;line-height:1;}
+/* the heartbeat */
+.moment{display:flex;flex-direction:column;align-items:center;text-align:center;margin:18px 0 30px;}
+.heart{position:relative;width:140px;height:140px;display:flex;align-items:center;justify-content:center;margin-bottom:26px;}
+.heart .core{width:30px;height:30px;border-radius:50%;background:var(--gold);box-shadow:0 0 28px rgba(202,168,113,.85);z-index:3;}
+.heart .halo{position:absolute;inset:0;margin:auto;width:64px;height:64px;border-radius:50%;background:radial-gradient(circle,rgba(202,168,113,.35),transparent 68%);z-index:2;}
+.heart .ring{position:absolute;inset:0;margin:auto;width:44px;height:44px;border-radius:50%;border:1.5px solid var(--gold);opacity:0;z-index:1;}
+.eyebrow{font-family:var(--font-sub);font-size:10px;letter-spacing:.3em;color:var(--gold);text-transform:uppercase;margin-bottom:12px;}
+.headline{font-family:var(--font-display);font-weight:400;font-size:30px;color:var(--text);line-height:1.14;margin-bottom:10px;}
+.subline{font-size:13.5px;color:var(--text-dim);line-height:1.55;max-width:290px;}
+/* confirmation card */
+.confirm{background:rgba(255,255,255,.025);border:1px solid var(--border-soft);border-radius:16px;padding:18px;margin-bottom:18px;}
+.confirm .cv{font-family:var(--font-sub);font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:7px;}
+.confirm .cn{font-family:var(--font-display);font-weight:500;font-size:19px;color:var(--text);line-height:1.2;margin-bottom:6px;}
+.confirm .cm{font-size:12.5px;color:var(--text-dim);margin-bottom:14px;}
+.confirm .held{display:flex;align-items:center;gap:9px;padding-top:14px;border-top:1px solid var(--hair);}
+.confirm .held .d{width:6px;height:6px;border-radius:50%;background:var(--gold);box-shadow:0 0 8px var(--gold);flex-shrink:0;}
+.confirm .held .ht{font-size:12px;color:var(--text);}
+.confirm .held .ht b{color:var(--gold);font-weight:500;}
+.next{display:flex;gap:11px;align-items:flex-start;background:rgba(255,255,255,.02);border:1px solid var(--hair);border-radius:12px;padding:14px 16px;}
+.next .d{width:6px;height:6px;border-radius:50%;background:var(--gold);box-shadow:0 0 8px var(--gold);margin-top:5px;flex-shrink:0;}
+.next .nt{font-size:12px;color:var(--text-dim);line-height:1.5;}
+.next .nt b{color:var(--text);font-weight:500;}
+@media (prefers-reduced-motion: no-preference){
+  .heart .core{animation:heartbeat 2s ease-in-out infinite;}
+  .heart .halo{animation:halobeat 2s ease-in-out infinite;}
+  .heart .ring{animation:bloom 2s ease-out infinite;}
+  .heart .ring.r2{animation-delay:.16s;}
+  .heart .ring.r3{animation-delay:1s;}
+  .bloom-bg{animation:bgbeat 2s ease-in-out infinite;}
+  /* lub-dub then rest */
+  @keyframes heartbeat{0%{transform:scale(1);}10%{transform:scale(1.22);}20%{transform:scale(1);}30%{transform:scale(1.14);}42%{transform:scale(1);}100%{transform:scale(1);}}
+  @keyframes halobeat{0%{transform:scale(1);opacity:.6;}10%{transform:scale(1.3);opacity:1;}30%{transform:scale(1.15);opacity:.85;}50%{transform:scale(1);opacity:.6;}100%{transform:scale(1);opacity:.6;}}
+  @keyframes bloom{0%{opacity:.7;transform:scale(1);}55%{opacity:0;transform:scale(3.1);}100%{opacity:0;transform:scale(3.1);}}
+  @keyframes bgbeat{0%,100%{opacity:.7;}12%{opacity:1;}}
+}
+</style></head><body>
+
+<div class="context">
+  <div class="k">Consumer Prototype · Check-in moment</div>
+  <h1>The heartbeat</h1>
+  <p>The flagship micro-interaction. Claiming a seat lands on a heartbeat — a double-beat pulse and a gold bloom radiating out, the haptic made visible. The moment Pulse earns its name.</p>
+</div>
+
+<div class="phone">
+  <div class="notch"></div>
+  <div class="bloom-bg"></div>
+  <div class="body">
+    <button class="close" onclick="go('consumer-feed.html')">&times;</button>
+
+    <div class="moment">
+      <div class="heart">
+        <span class="ring"></span><span class="ring r2"></span><span class="ring r3"></span>
+        <span class="halo"></span>
+        <span class="core"></span>
+      </div>
+      <div class="eyebrow">You're in</div>
+      <h2 class="headline">Your seat is held.</h2>
+      <div class="subline">Felt that? That's Pulse. Laurent knows you're coming.</div>
+    </div>
+
+    <div class="confirm">
+      <div class="cv">Laurent · Lakewood</div>
+      <div class="cn">Chef's counter — six seats</div>
+      <div class="cm">Tuesday, Jun 23 · 6:30 PM · $175 prix fixe</div>
+      <div class="held"><span class="d"></span><span class="ht">Seat <b>held</b> — your spot of 6, confirmed in Pulse</span></div>
+    </div>
+
+    <div class="next">
+      <span class="d"></span>
+      <div class="nt"><b>We'll remind you before service.</b> Open Pulse when you arrive and check in — that's what lifts Laurent's night, and yours.</div>
+    </div>
+
+  </div>
+  <div class="foot">
+    <button class="secondary" onclick="sendPrompt('Add this to your calendar.')">Add to plans</button>
+    <button class="primary" onclick="go('consumer-feed.html')">Back to the feed</button>
+  </div>
+</div>
+<script src="../scripts/nav.js"></script>
+</body></html>

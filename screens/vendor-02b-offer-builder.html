@@ -1,0 +1,113 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pulse · Offer Builder</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles/tokens.css">
+<link rel="stylesheet" href="../styles/components.css">
+<style>
+/* — screen-specific only — */
+.atmosphere{position:absolute;inset:0;pointer-events:none;z-index:0;
+  background:radial-gradient(ellipse 80% 50% at 50% 12%,rgba(202,168,113,.10),transparent 60%);}
+.body{padding:18px 22px 116px;}
+.eyebrow{font-family:var(--font-sub);font-size:10px;letter-spacing:.26em;color:var(--gold);text-transform:uppercase;margin-bottom:9px;}
+.headline{font-family:var(--font-display);font-weight:400;font-size:24px;color:var(--text);line-height:1.18;margin-bottom:22px;}
+.sec{margin:22px 0 11px;}
+.sec.first{margin-top:0;}
+.row2{display:flex;gap:10px;}
+.row2 .field{flex:1;}
+/* description box with AI polish */
+.descbox{background:rgba(255,255,255,.025);border:1px solid var(--border-soft);border-radius:13px;padding:14px 16px;}
+.descbox .dtext{font-size:13px;color:var(--text);line-height:1.55;}
+.descbox .dfoot{display:flex;align-items:center;justify-content:space-between;margin-top:12px;padding-top:11px;border-top:1px solid var(--hair);}
+.descbox .dhint{font-size:10.5px;color:var(--text-faint);}
+.polish{background:var(--gold-soft);border:1px solid var(--gold-deep);color:var(--gold);font-family:var(--font-body);font-size:11px;border-radius:999px;padding:6px 12px;cursor:pointer;display:flex;align-items:center;gap:5px;transition:all .2s;}
+.polish:hover{border-color:var(--gold);box-shadow:0 0 14px rgba(202,168,113,.2);}
+.fit-label{font-size:10.5px;color:var(--text-dim);margin:0 0 7px;}
+.fit-group{margin-bottom:14px;}
+.guardrail{margin-top:16px;background:rgba(255,255,255,.02);border:1px solid var(--hair);border-radius:12px;padding:13px 15px;display:flex;gap:10px;align-items:flex-start;}
+.guardrail .dot{width:6px;height:6px;border-radius:50%;background:var(--gold);box-shadow:0 0 8px var(--gold);margin-top:5px;flex-shrink:0;}
+.guardrail .gt{font-size:11.5px;color:var(--text-dim);line-height:1.5;}
+.guardrail .gt b{color:var(--text);font-weight:500;}
+</style></head><body>
+
+<div class="context">
+  <div class="k">Vendor Prototype · Create → Build</div>
+  <h1>Offer builder</h1>
+  <p>Where the offer takes shape. Guest-fit fields aren't a detail — they're how Pulse protects the room and matches the right guests.</p>
+</div>
+
+<div class="phone">
+  <div class="notch"></div>
+  <div class="atmosphere"></div>
+  <div class="app-row">
+    <button class="back" onclick="go('vendor-02a-choose-type.html')">&#8249;</button>
+    <span class="app-title">New offer · Exclusive</span>
+    <span class="app-pad"></span>
+  </div>
+  <div class="body">
+    <div class="eyebrow">Exclusive · Access</div>
+    <h2 class="headline">Build the offer</h2>
+
+    <div class="sec first">The offer</div>
+    <div class="field" onclick="sendPrompt('Edit the offer name.')">
+      <div class="fval">Chef's counter — six seats<small>Tap to edit</small></div>
+      <div class="fedit">Edit</div>
+    </div>
+    <div class="row2" style="margin-top:12px;">
+      <div class="field" onclick="sendPrompt('Edit the number of seats.')">
+        <div class="fval">6 seats</div><div class="fedit">Edit</div>
+      </div>
+      <div class="field" onclick="sendPrompt('Edit the price.')">
+        <div class="fval">$175<small>prix fixe</small></div><div class="fedit">Edit</div>
+      </div>
+    </div>
+
+    <div class="sec">Description</div>
+    <div class="descbox">
+      <div class="dtext">Six seats at the chef's counter — a single seating, one menu, the kitchen in front of you. Reserved for guests who want the room at its closest.</div>
+      <div class="dfoot">
+        <span class="dhint">Your words, sharpened — never replaced.</span>
+        <button class="polish" onclick="sendPrompt('Polish this description in Pulse\'s voice — show the refined version for my approval.')">&#10022; Polish in Pulse's voice</button>
+      </div>
+    </div>
+
+    <div class="sec">Who it's for</div>
+    <div class="fit-group">
+      <div class="fit-label">Dress code</div>
+      <div class="chips">
+        <span class="chip on">Smart elegant</span>
+        <span class="chip">Jackets suggested</span>
+        <span class="chip">Come as you are</span>
+      </div>
+    </div>
+    <div class="fit-group">
+      <div class="fit-label">Party size</div>
+      <div class="chips">
+        <span class="chip on">Intimate · 2-top</span>
+        <span class="chip">Small group</span>
+        <span class="chip">Large party</span>
+      </div>
+    </div>
+    <div class="fit-group">
+      <div class="fit-label">Occasion</div>
+      <div class="chips">
+        <span class="chip">Client dinner</span>
+        <span class="chip on">Celebration</span>
+        <span class="chip">Casual night</span>
+      </div>
+    </div>
+
+    <div class="guardrail">
+      <span class="dot"></span>
+      <div class="gt"><b>Guest-fit guides who Pulse matches</b> — it protects the room. You shape who the offer is right for, never the honesty of the signal.</div>
+    </div>
+  </div>
+  <div class="foot">
+    <button class="secondary" onclick="go('vendor-02-offer-management.html')">Save draft</button>
+    <button class="primary" onclick="go('vendor-03-schedule-publish.html')">Continue</button>
+  </div>
+</div>
+<script src="../scripts/nav.js"></script>
+</body></html>

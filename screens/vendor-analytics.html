@@ -1,0 +1,161 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pulse · Analytics</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles/tokens.css">
+<link rel="stylesheet" href="../styles/components.css">
+<style>
+/* — screen-specific only — */
+.atmosphere{position:absolute;inset:0;pointer-events:none;z-index:0;
+  background:radial-gradient(ellipse 80% 50% at 50% 10%,rgba(202,168,113,.10),transparent 60%),
+            radial-gradient(ellipse 70% 40% at 50% 90%,rgba(122,59,30,.07),transparent 65%);}
+.body{padding:18px 22px 110px;}
+.eyebrow{font-family:var(--font-sub);font-size:10px;letter-spacing:.26em;color:var(--gold);text-transform:uppercase;margin-bottom:9px;}
+.headline{font-family:var(--font-display);font-weight:400;font-size:24px;color:var(--text);line-height:1.18;margin-bottom:18px;}
+.seg{margin-bottom:22px;}
+/* trend chart */
+.chart{background:rgba(255,255,255,.025);border:1px solid var(--border-soft);border-radius:15px;padding:16px 16px 12px;margin-bottom:9px;}
+.chart .ct{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:14px;}
+.chart .ct .big{font-family:var(--font-display);font-weight:500;font-size:23px;color:var(--text);line-height:1;}
+.chart .ct .big small{font-family:var(--font-body);font-size:11px;color:var(--text-dim);margin-left:6px;font-weight:300;}
+.chart .ct .pk{font-family:var(--font-sub);font-size:8.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold-deep);}
+.spark{width:100%;height:auto;display:block;}
+.spark .area{fill:var(--gold-soft);}
+.spark .line{fill:none;stroke:var(--gold);stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
+.spark .peak{fill:var(--gold);}
+.daylabels{display:flex;justify-content:space-between;margin-top:7px;font-size:9px;color:var(--text-faint);letter-spacing:.08em;font-family:var(--font-sub);}
+.delta-cap{margin-bottom:24px;}
+/* day-part fill bars */
+.dp{margin-bottom:11px;}
+.dp:last-child{margin-bottom:0;}
+.dp .dp-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:5px;}
+.dp .dp-name{font-size:11.5px;color:var(--text-dim);}
+.dp .dp-name.peak{color:var(--text);font-weight:500;}
+.dp .dp-val{font-size:10.5px;color:var(--text-faint);}
+.dp .dp-track{height:6px;border-radius:3px;background:var(--bg-input);overflow:hidden;position:relative;}
+.dp .dp-fill{position:absolute;left:0;top:0;bottom:0;border-radius:3px;background:linear-gradient(90deg,var(--gold-deep),var(--gold));}
+.block{background:rgba(255,255,255,.02);border:1px solid var(--hair);border-radius:14px;padding:16px 17px;margin-bottom:9px;}
+/* guest-fit breakdown */
+.fit-row{display:flex;align-items:center;gap:12px;margin-bottom:12px;}
+.fit-row:last-child{margin-bottom:0;}
+.fit-row .fl{font-size:11.5px;color:var(--text-dim);width:96px;flex-shrink:0;}
+.fit-row .fl.lead{color:var(--text);font-weight:500;}
+.fit-row .ft{flex:1;height:6px;border-radius:3px;background:var(--bg-input);overflow:hidden;position:relative;}
+.fit-row .ff{position:absolute;left:0;top:0;bottom:0;border-radius:3px;background:linear-gradient(90deg,var(--gold-deep),var(--gold));}
+.fit-row .fp{font-size:10.5px;color:var(--text-faint);width:32px;text-align:right;flex-shrink:0;}
+/* offer performance */
+.operf{display:flex;align-items:center;justify-content:space-between;padding:12px 0;border-bottom:1px solid var(--hair);}
+.operf:last-child{border-bottom:none;}
+.operf .o-name{font-family:var(--font-display);font-weight:400;font-size:14.5px;color:var(--text);line-height:1.25;}
+.operf .o-sub{font-size:10.5px;color:var(--text-faint);margin-top:3px;}
+.operf .o-claim{font-size:12.5px;color:var(--text);text-align:right;white-space:nowrap;}
+.operf .o-claim b{color:var(--gold);font-weight:500;}
+.operf .o-claim .past{color:var(--text-faint);}
+.insight{display:flex;gap:11px;align-items:flex-start;background:rgba(255,255,255,0.02);border:1px solid var(--hair);border-radius:12px;padding:14px 16px;margin-top:24px;}
+.insight .dot{width:6px;height:6px;border-radius:50%;background:var(--gold);box-shadow:0 0 8px var(--gold);margin-top:5px;flex-shrink:0;}
+.insight .tip-eye{font-family:var(--font-sub);font-size:9px;letter-spacing:.24em;text-transform:uppercase;color:var(--gold);margin-bottom:7px;}
+.insight .it{font-size:12.5px;color:var(--text-dim);line-height:1.5;}
+.insight .it b{color:var(--text);font-weight:500;}
+</style></head><body>
+
+<div class="context">
+  <div class="k">Vendor Prototype · Analytics detail</div>
+  <h1>Analytics</h1>
+  <p>The "View analytics" seam from the dashboard. Insight-first and self-relative — it shows the vendor what their room is doing and where the honest levers are, never a boost to buy.</p>
+</div>
+
+<div class="phone">
+  <div class="notch"></div>
+  <div class="atmosphere"></div>
+  <div class="app-row">
+    <button class="back" onclick="go('vendor-01-dashboard.html')">&#8249;</button>
+    <span class="app-title">Analytics</span>
+    <span class="app-pad"></span>
+  </div>
+  <div class="body">
+    <div class="eyebrow">Laurent · Lakewood</div>
+    <h2 class="headline">What your room is doing</h2>
+
+    <div class="seg">
+      <button class="on">This week</button>
+      <button onclick="sendPrompt('Show the last 4 weeks.')">4 weeks</button>
+      <button onclick="sendPrompt('Show all-time analytics.')">All time</button>
+    </div>
+
+    <div class="sec-eye"><span>Check-ins · by day</span><span class="live" style="color:var(--gold);font-family:var(--font-body);font-size:10.5px;letter-spacing:.03em;text-transform:none;">38 this week</span></div>
+    <div class="chart">
+      <div class="ct">
+        <div class="big">38<small>check-ins</small></div>
+        <div class="pk">Peak · Friday</div>
+      </div>
+      <svg class="spark" viewBox="0 0 320 100" preserveAspectRatio="none" role="img" aria-label="Check-ins rising toward the weekend, peaking Friday">
+        <path class="area" d="M0,70 L53,50 L107,60 L160,40 L213,10 L267,20 L320,70 L320,100 L0,100 Z"/>
+        <path class="line" d="M0,70 L53,50 L107,60 L160,40 L213,10 L267,20 L320,70"/>
+        <circle class="peak" cx="213" cy="10" r="3.5"/>
+      </svg>
+      <div class="daylabels"><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span><span>Sun</span></div>
+    </div>
+
+    <div class="stats" style="margin-bottom:9px;">
+      <div class="stat"><div class="num">38</div><div class="lbl">Check-ins</div><div class="delta up">&#9650; 9</div></div>
+      <div class="stat"><div class="num">112</div><div class="lbl">Saves</div><div class="delta up">&#9650; 24</div></div>
+      <div class="stat"><div class="num">67%</div><div class="lbl">Claimed</div><div class="delta up">&#9650; 5</div></div>
+    </div>
+    <div class="delta-cap">vs last week</div>
+
+    <div class="sec">When your room fills</div>
+    <div class="block">
+      <div class="dp">
+        <div class="dp-row"><span class="dp-name">Happy hour</span><span class="dp-val">5–7 PM</span></div>
+        <div class="dp-track"><div class="dp-fill" style="width:34%;"></div></div>
+      </div>
+      <div class="dp">
+        <div class="dp-row"><span class="dp-name peak">Dinner · 7–9 PM</span><span class="dp-val">your fastest fill</span></div>
+        <div class="dp-track"><div class="dp-fill" style="width:88%;"></div></div>
+      </div>
+      <div class="dp">
+        <div class="dp-row"><span class="dp-name">Late night</span><span class="dp-val">9–11 PM</span></div>
+        <div class="dp-track"><div class="dp-fill" style="width:46%;"></div></div>
+      </div>
+    </div>
+
+    <div class="sec">Who's claiming</div>
+    <div class="block">
+      <div class="fit-row"><span class="fl lead">Celebration</span><span class="ft"><span class="ff" style="width:48%;"></span></span><span class="fp">48%</span></div>
+      <div class="fit-row"><span class="fl">Client dinner</span><span class="ft"><span class="ff" style="width:31%;"></span></span><span class="fp">31%</span></div>
+      <div class="fit-row"><span class="fl">Casual night</span><span class="ft"><span class="ff" style="width:21%;"></span></span><span class="fp">21%</span></div>
+    </div>
+
+    <div class="sec">Your offers</div>
+    <div class="block" style="padding:4px 17px;">
+      <div class="operf" onclick="go('vendor-04-live-offer.html')">
+        <div><div class="o-name">Chef's counter — six seats</div><div class="o-sub">Live · Tue 6:30 PM</div></div>
+        <div class="o-claim"><b>67%</b> claimed</div>
+      </div>
+      <div class="operf" onclick="sendPrompt('Open the Friday tasting flight offer.')">
+        <div><div class="o-name">Friday tasting flight</div><div class="o-sub">Scheduled · Fri 7:00 PM</div></div>
+        <div class="o-claim">54% claimed</div>
+      </div>
+      <div class="operf" onclick="sendPrompt('Open the past Sunday supper offer.')">
+        <div><div class="o-name">Last Sunday's supper</div><div class="o-sub">Ended Jun 15</div></div>
+        <div class="o-claim"><span class="past">100% · full</span></div>
+      </div>
+    </div>
+
+    <div class="insight">
+      <span class="dot"></span>
+      <div>
+        <div class="tip-eye">Your honest lever</div>
+        <div class="it"><b>Your counter fills fastest 7–9.</b> Posting your strongest nights in that window has earned the most check-ins this month — no boost, just the right room at the right hour.</div>
+      </div>
+    </div>
+
+  </div>
+  <div class="foot">
+    <button class="primary" onclick="go('vendor-01-dashboard.html')">Back to dashboard</button>
+  </div>
+</div>
+<script src="../scripts/nav.js"></script>
+</body></html>

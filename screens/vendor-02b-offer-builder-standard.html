@@ -1,0 +1,141 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pulse · Offer Builder · Standard</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles/tokens.css">
+<link rel="stylesheet" href="../styles/components.css">
+<style>
+/* — screen-specific only — */
+.atmosphere{position:absolute;inset:0;pointer-events:none;z-index:0;
+  background:radial-gradient(ellipse 80% 50% at 50% 12%,rgba(202,168,113,.10),transparent 60%);}
+.body{padding:18px 22px 116px;}
+.eyebrow{font-family:var(--font-sub);font-size:10px;letter-spacing:.26em;color:var(--gold);text-transform:uppercase;margin-bottom:9px;}
+.headline{font-family:var(--font-display);font-weight:400;font-size:24px;color:var(--text);line-height:1.18;margin-bottom:22px;}
+.sec{margin:22px 0 11px;}
+.sec.first{margin-top:0;}
+.row2{display:flex;gap:10px;}
+.row2 .field{flex:1;}
+/* price + discount box (standard-engine specific) */
+.pricebox{background:rgba(255,255,255,.025);border:1px solid var(--border-soft);border-radius:13px;padding:15px 16px;}
+.pricebox .pr-top{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:13px;}
+.pricebox .pr-now{font-family:var(--font-display);font-weight:500;font-size:21px;color:var(--text);line-height:1;}
+.pricebox .pr-now small{font-family:var(--font-body);font-size:11px;color:var(--text-dim);margin-left:7px;font-weight:300;}
+.pricebox .pr-right{text-align:right;}
+.pricebox .pr-was{font-size:12.5px;color:var(--text-faint);text-decoration:line-through;}
+.pricebox .pr-disc{font-family:var(--font-sub);font-size:8.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-top:4px;}
+/* discount-frequency cap — keeps promos special */
+.cap{margin-top:15px;padding-top:14px;border-top:1px solid var(--hair);}
+.cap .cap-row{display:flex;justify-content:space-between;align-items:baseline;font-size:11px;color:var(--text-dim);margin-bottom:7px;}
+.cap .cap-row b{color:var(--text);font-weight:500;}
+.cap .cap-track{height:5px;border-radius:3px;background:var(--bg-input);overflow:hidden;position:relative;}
+.cap .cap-fill{position:absolute;left:0;top:0;bottom:0;border-radius:3px;background:linear-gradient(90deg,var(--gold-deep),var(--gold));}
+.descbox{background:rgba(255,255,255,.025);border:1px solid var(--border-soft);border-radius:13px;padding:14px 16px;}
+.descbox .dtext{font-size:13px;color:var(--text);line-height:1.55;}
+.descbox .dfoot{display:flex;align-items:center;justify-content:space-between;margin-top:12px;padding-top:11px;border-top:1px solid var(--hair);}
+.descbox .dhint{font-size:10.5px;color:var(--text-faint);}
+.polish{background:var(--gold-soft);border:1px solid var(--gold-deep);color:var(--gold);font-family:var(--font-body);font-size:11px;border-radius:999px;padding:6px 12px;cursor:pointer;display:flex;align-items:center;gap:5px;transition:all .2s;}
+.polish:hover{border-color:var(--gold);box-shadow:0 0 14px rgba(202,168,113,.2);}
+.fit-label{font-size:10.5px;color:var(--text-dim);margin:0 0 7px;}
+.fit-group{margin-bottom:14px;}
+.guardrail{margin-top:16px;background:rgba(255,255,255,.02);border:1px solid var(--hair);border-radius:12px;padding:13px 15px;display:flex;gap:10px;align-items:flex-start;}
+.guardrail .dot{width:6px;height:6px;border-radius:50%;background:var(--gold);box-shadow:0 0 8px var(--gold);margin-top:5px;flex-shrink:0;}
+.guardrail .gt{font-size:11.5px;color:var(--text-dim);line-height:1.5;}
+.guardrail .gt b{color:var(--text);font-weight:500;}
+</style></head><body>
+
+<div class="context">
+  <div class="k">Vendor Prototype · Create → Build (Standard)</div>
+  <h1>Offer builder · Standard</h1>
+  <p>Priya's fork of the builder. The Standard engine allows a discount — so the fields lead with price and a built-in cap keeps promotions special, not the whole identity. Same shared controls as the Exclusive builder.</p>
+</div>
+
+<div class="phone">
+  <div class="notch"></div>
+  <div class="atmosphere"></div>
+  <div class="app-row">
+    <button class="back" onclick="go('vendor-02a-choose-type.html')">&#8249;</button>
+    <span class="app-title">New offer · Standard</span>
+    <span class="app-pad"></span>
+  </div>
+  <div class="body">
+    <div class="eyebrow">Standard · Offer</div>
+    <h2 class="headline">Build the offer</h2>
+
+    <div class="sec first">The offer</div>
+    <div class="field" onclick="sendPrompt('Edit the offer name.')">
+      <div class="fval">Intro pack — three classes<small>Tap to edit</small></div>
+      <div class="fedit">Edit</div>
+    </div>
+    <div class="field" style="margin-top:12px;" onclick="sendPrompt('Edit the number of spots available.')">
+      <div class="fval">20 spots</div><div class="fedit">Edit</div>
+    </div>
+
+    <div class="sec">Price &amp; discount</div>
+    <div class="pricebox">
+      <div class="pr-top">
+        <div class="pr-now">$39<small>intro pack</small></div>
+        <div class="pr-right">
+          <div class="pr-was">$66 regular</div>
+          <div class="pr-disc">41% off · newcomers</div>
+        </div>
+      </div>
+      <div class="seg" style="margin-bottom:0;">
+        <button class="on">% off</button>
+        <button onclick="sendPrompt('Switch to a flat dollar discount.')">$ off</button>
+        <button onclick="sendPrompt('Switch to a bundle offer.')">Bundle</button>
+      </div>
+      <div class="cap">
+        <div class="cap-row"><span>Promotions this quarter</span><span><b>2</b> of 4</span></div>
+        <div class="cap-track"><div class="cap-fill" style="width:50%;"></div></div>
+      </div>
+    </div>
+
+    <div class="sec">Description</div>
+    <div class="descbox">
+      <div class="dtext">Three classes to find your footing — book any time on the schedule, come as you are. Built for first-timers who want to start without committing to a full membership.</div>
+      <div class="dfoot">
+        <span class="dhint">Your words, sharpened — never replaced.</span>
+        <button class="polish" onclick="sendPrompt('Polish this description in Pulse\'s voice — show the refined version for my approval.')">&#10022; Polish in Pulse's voice</button>
+      </div>
+    </div>
+
+    <div class="sec">Who it's for</div>
+    <div class="fit-group">
+      <div class="fit-label">Best for</div>
+      <div class="chips">
+        <span class="chip on">New to the studio</span>
+        <span class="chip">Coming back</span>
+        <span class="chip">Regulars</span>
+      </div>
+    </div>
+    <div class="fit-group">
+      <div class="fit-label">Experience</div>
+      <div class="chips">
+        <span class="chip on">All levels</span>
+        <span class="chip">Some experience</span>
+        <span class="chip">Advanced</span>
+      </div>
+    </div>
+    <div class="fit-group">
+      <div class="fit-label">Best time</div>
+      <div class="chips">
+        <span class="chip on">Mornings</span>
+        <span class="chip">Midday</span>
+        <span class="chip on">Evenings</span>
+      </div>
+    </div>
+
+    <div class="guardrail">
+      <span class="dot"></span>
+      <div class="gt"><b>A discount is a tool, not your identity.</b> Pulse caps how often an offer can lead with price, so when you do run one it still feels special.</div>
+    </div>
+  </div>
+  <div class="foot">
+    <button class="secondary" onclick="go('vendor-02-offer-management.html')">Save draft</button>
+    <button class="primary" onclick="go('vendor-03-schedule-publish.html')">Continue</button>
+  </div>
+</div>
+<script src="../scripts/nav.js"></script>
+</body></html>

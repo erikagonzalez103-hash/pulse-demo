@@ -1,0 +1,46 @@
+/* ============================================================
+   PULSE — DESIGN TOKENS  (single source of truth)
+   v3 brand: one near-black field, metallic gold accent, red = heat only.
+   Change a value here and EVERY screen updates. Never hardcode a hex in a screen.
+   ============================================================ */
+:root{
+  /* — Surfaces — one near-black field (v3) — */
+  --bg:#06090F;          /* the single dark token: app surface */
+  --bg-elev:#0E1420;     /* elevated surface */
+  --bg-card:#131B2A;     /* cards */
+  --bg-input:#0B121E;    /* inputs / progress tracks */
+  --preview-bg:#02040A;  /* prototype preview chrome (outside the phone) */
+
+  /* — Gold — metallic accent, a seasoning, never a field — */
+  --gold:#CAA871;
+  --gold-deep:#A37E4F;
+  --gold-dim:#9A7B45;
+  --gold-soft:rgba(202,168,113,0.10);
+  --ink-on-gold:#0B1F3A; /* text color on a gold button */
+
+  /* — Red — heat / urgency ONLY, never a background —
+     DECISION D1 (resolved 2026-06-23): Pulse Red = v3 brand book #9C1519.
+     Rule: when v3 conflicts with a shipped value, v3 wins. --red-bright is the
+     hotter end of the heat gradient (intentionally brighter than Pulse Red). */
+  --red:#9C1519;
+  --red-bright:#BB2726;
+  --red-soft:rgba(156,21,25,0.14);
+  /* heat gradient: gold -> amber midpoint -> hot red. Used by the momentum ring
+     and the consumer heat rings. Reference these instead of hardcoding the amber. */
+  --heat-mid:#D8843F;
+
+  /* — Text — */
+  --text:#F2EEE3;
+  --text-dim:#95A0AE;
+  --text-faint:#5C6675;
+
+  /* — Lines — */
+  --border:rgba(202,168,113,0.22);
+  --border-soft:rgba(255,255,255,0.06);
+  --hair:rgba(255,255,255,0.08);
+
+  /* — Type — Fraunces display, Cinzel labels, Outfit body (v3) — */
+  --font-display:'Fraunces',Georgia,serif;
+  --font-sub:'Cinzel',serif;
+  --font-body:'Outfit',-apple-system,BlinkMacSystemFont,sans-serif;
+}
