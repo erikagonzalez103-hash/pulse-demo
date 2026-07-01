@@ -26,6 +26,8 @@
 .momentum-note{font-size:13px;color:var(--text-dim);margin-bottom:4px;}
 .momentum-note b{color:var(--text);font-weight:500;}
 .momentum-sub{font-size:11px;color:var(--text-faint);letter-spacing:.02em;}
+.starting-pill{display:inline-flex;align-items:center;gap:7px;margin-bottom:14px;font-family:var(--font-sub);font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--ok);background:var(--ok-soft);border:1px solid color-mix(in srgb,var(--ok) 35%,transparent);border-radius:999px;padding:6px 12px;}
+.starting-pill .d{width:6px;height:6px;border-radius:50%;background:var(--ok);box-shadow:0 0 8px var(--ok);}
 /* empty offer card */
 .empty-offer{background:rgba(255,255,255,0.015);border:1px dashed var(--border-soft);border-radius:15px;padding:22px 18px;margin-bottom:26px;text-align:center;cursor:pointer;transition:border-color .2s;}
 .empty-offer:hover{border-color:var(--gold-deep);}
@@ -65,6 +67,7 @@
     </div>
 
     <div class="momentum">
+      <div class="starting-pill"><span class="d"></span>Ready · no momentum yet</div>
       <div class="ring-wrap">
         <svg width="172" height="172" viewBox="0 0 172 172">
           <circle cx="86" cy="86" r="68" fill="none" stroke="rgba(255,255,255,0.07)" stroke-width="8"/>

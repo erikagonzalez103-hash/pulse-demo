@@ -24,6 +24,13 @@
    "how guests see it" preview can never drift from the real card. */
 .statusline{display:flex;align-items:center;justify-content:center;gap:8px;font-size:11.5px;color:var(--text-dim);}
 .statusline .dot{width:6px;height:6px;border-radius:50%;background:var(--gold);box-shadow:0 0 8px var(--gold);}
+/* live controls — what the vendor can do while it runs */
+.vendor-controls{display:flex;gap:8px;justify-content:center;margin-top:20px;flex-wrap:wrap;}
+.ctl{font-family:var(--font-body);font-size:11.5px;color:var(--text-dim);border:1px solid var(--hair);border-radius:999px;padding:8px 14px;cursor:pointer;transition:all .2s;}
+.ctl:hover{border-color:var(--gold-deep);color:var(--text);}
+.ctl.danger{color:var(--red-bright);border-color:color-mix(in srgb,var(--red-bright) 35%,transparent);}
+.ctl.danger:hover{border-color:var(--red-bright);}
+.ctl-note{text-align:center;font-size:10.5px;color:var(--text-faint);line-height:1.5;margin:10px auto 0;max-width:282px;}
 @media (prefers-reduced-motion: no-preference){
   .pulse-mark .ring{animation:rip 2.6s ease-out infinite;}
   .pulse-mark .ring.r2{animation-delay:.9s;}
@@ -76,6 +83,13 @@
     </div>
 
     <div class="statusline"><span class="dot"></span>4 of 6 claimed · updating live</div>
+
+    <div class="vendor-controls">
+      <span class="ctl" onclick="sendPrompt('Pause new claims on this offer.')">Pause claims</span>
+      <span class="ctl" onclick="sendPrompt('Release a held seat back to the feed.')">Release a seat</span>
+      <span class="ctl danger" onclick="go('consumer-cancelled.html')">Cancel tonight</span>
+    </div>
+    <div class="ctl-note">Cancelling auto-refunds every deposit and tells each guest in Pulse's voice. Tap to preview exactly what they'd see.</div>
   </div>
   <div class="foot">
     <button class="secondary" onclick="go('vendor-02-offer-management.html')">Manage</button>

@@ -49,7 +49,7 @@
 <div class="context">
   <div class="k">Vendor Prototype · Claim / onboarding</div>
   <h1>Claim your venue</h1>
-  <p>The front door for a vendor. Pulse is invitation-led, so the two paths — concierge for launch partners, self-serve for everyone after — both end in a reviewed, in-voice room. From the HER House anchor.</p>
+  <p>The front door for a vendor. Pulse is invitation-led — the concierge path (launch partners) is the way in for now; the self-serve path is built but hidden until vendor verification is defined (an easy toggle back on). Both end in a reviewed, in-voice room. From the HER House anchor.</p>
 </div>
 
 <div class="phone">
@@ -79,7 +79,7 @@
       <span class="vt">Find your venue — name or address</span>
     </div>
 
-    <div class="sec">How would you like to start?</div>
+    <div class="sec">Getting started</div>
 
     <div class="path primary" onclick="go('vendor-01-dashboard-new.html')">
       <div class="path-bloom"></div>
@@ -88,7 +88,8 @@
       <div class="p-desc">A Pulse partner builds your first offers with you — in your voice, matched to your room. The way the HER House venues come on.</div>
     </div>
 
-    <div class="path" onclick="go('vendor-01-dashboard-new.html')">
+    <!-- Self-serve hidden until vendor verification is defined (Team Review 02). Remove style="display:none" to re-enable. -->
+    <div class="path" style="display:none;" onclick="go('vendor-01-dashboard-new.html')">
       <div class="p-eye"><span>Self-serve</span></div>
       <div class="p-name">Claim it yourself</div>
       <div class="p-desc">Verify you run the venue, then build your first offer in minutes. We review it, then it's live.</div>

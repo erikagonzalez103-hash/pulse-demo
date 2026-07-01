@@ -29,6 +29,14 @@
      and the consumer heat rings. Reference these instead of hardcoding the amber. */
   --heat-mid:#D8843F;
 
+  /* — Semantic status — additive (Team Review 02) —
+     ok    = ready / just-starting (a restrained sage green — the one non-core hue, for "no momentum yet");
+     alert = a night slipping behind its own norm — AMBER, never red (red stays reserved for heat). */
+  --ok:#5BC787;
+  --ok-soft:rgba(91,199,135,0.12);
+  --alert:#D8843F;
+  --alert-soft:rgba(216,132,63,0.12);
+
   /* — Text — */
   --text:#F2EEE3;
   --text-dim:#95A0AE;

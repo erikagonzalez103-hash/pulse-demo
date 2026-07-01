@@ -30,6 +30,31 @@
 .guardrail .dot{width:6px;height:6px;border-radius:50%;background:var(--gold);box-shadow:0 0 8px var(--gold);margin-top:5px;flex-shrink:0;}
 .guardrail .gt{font-size:11.5px;color:var(--text-dim);line-height:1.5;}
 .guardrail .gt b{color:var(--text);font-weight:500;}
+/* how the claim holds — vendor sets the commitment model */
+.holdopt{display:flex;align-items:flex-start;gap:11px;background:rgba(255,255,255,.025);border:1px solid var(--border-soft);border-radius:13px;padding:13px 15px;margin-bottom:9px;cursor:pointer;transition:border-color .2s;}
+.holdopt:hover{border-color:var(--gold-deep);}
+.holdopt.on{border-color:var(--gold);background:var(--gold-soft);}
+.holdopt .rdo{width:16px;height:16px;border-radius:50%;border:1.5px solid var(--text-faint);flex-shrink:0;margin-top:2px;position:relative;}
+.holdopt.on .rdo{border-color:var(--gold);}
+.holdopt.on .rdo::after{content:"";position:absolute;inset:3px;border-radius:50%;background:var(--gold);box-shadow:0 0 8px var(--gold);}
+.holdopt .ht{font-size:13.5px;color:var(--text);font-family:var(--font-display);font-weight:500;margin-bottom:3px;}
+.holdopt .hs{font-size:11px;color:var(--text-dim);line-height:1.45;}
+.holdsub{margin-top:12px;}
+.holdnote{margin-top:11px;font-size:11px;color:var(--text-faint);line-height:1.5;}
+.holdnote b{color:var(--text-dim);font-weight:500;}
+/* media upload — showcase the experience */
+.media{display:flex;gap:10px;}
+.media .lead{flex:1;height:96px;border-radius:12px;position:relative;overflow:hidden;border:1px solid var(--border-soft);cursor:pointer;
+  background:radial-gradient(ellipse 70% 90% at 70% 20%,rgba(216,132,63,.5),transparent 60%),linear-gradient(135deg,#241a12,#0c0a10 70%);}
+.media .lead .tag{position:absolute;top:8px;left:8px;font-family:var(--font-sub);font-size:8px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);background:rgba(6,9,15,.6);border:1px solid var(--gold-deep);border-radius:999px;padding:4px 9px;}
+.media .lead .chg{position:absolute;bottom:8px;right:8px;font-size:10px;color:var(--text);background:rgba(6,9,15,.55);border:1px solid var(--hair);border-radius:999px;padding:4px 9px;}
+.media .add{width:96px;height:96px;border-radius:12px;border:1px dashed var(--border);background:rgba(255,255,255,.02);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;color:var(--text-dim);cursor:pointer;font-size:10.5px;text-align:center;line-height:1.3;}
+.media .add .plus{font-size:20px;color:var(--gold);line-height:1;}
+.media-hint{font-size:10.5px;color:var(--text-faint);margin-top:8px;line-height:1.5;}
+.other-field{width:100%;margin-top:10px;background:var(--bg-input);border:1px solid var(--border-soft);border-radius:10px;padding:11px 13px;color:var(--text);font-family:var(--font-body);font-size:12.5px;}
+.other-field::placeholder{color:var(--text-faint);}
+.other-field:focus{outline:none;border-color:var(--gold-deep);}
+.chip.other{border-style:dashed;color:var(--gold);}
 </style></head><body>
 
 <div class="context">
@@ -64,6 +89,18 @@
       </div>
     </div>
 
+    <div class="sec">Show the experience</div>
+    <div class="media">
+      <div class="lead" onclick="sendPrompt('Upload or change the lead photo.')">
+        <span class="tag">Lead photo</span>
+        <span class="chg">Change</span>
+      </div>
+      <div class="add" onclick="sendPrompt('Add another photo or a short video.')">
+        <span class="plus">+</span>Photo / video
+      </div>
+    </div>
+    <div class="media-hint">The lead photo is the card guests see first. Add a short video to show the room in motion.</div>
+
     <div class="sec">Description</div>
     <div class="descbox">
       <div class="dtext">Six seats at the chef's counter — a single seating, one menu, the kitchen in front of you. Reserved for guests who want the room at its closest.</div>
@@ -93,11 +130,43 @@
     <div class="fit-group">
       <div class="fit-label">Occasion</div>
       <div class="chips">
+        <span class="chip">Birthday</span>
+        <span class="chip">Anniversary</span>
+        <span class="chip">Date night</span>
         <span class="chip">Client dinner</span>
         <span class="chip on">Celebration</span>
         <span class="chip">Casual night</span>
+        <span class="chip other" onclick="document.getElementById('occ-other').style.display='block';this.classList.add('on');">+ Other</span>
+      </div>
+      <input id="occ-other" class="other-field" type="text" placeholder="Other — describe the occasion" style="display:none;">
+    </div>
+
+    <div class="sec">How this claim holds</div>
+    <div class="holdopt" onclick="sendPrompt('Set this offer to redeem at the point of sale — no card, no hold.')">
+      <span class="rdo"></span>
+      <div><div class="ht">Redeem at the counter</div><div class="hs">No card, no hold. The guest shows their claim and redeems in person. Best for perks — a drink, an app, a discount.</div></div>
+    </div>
+    <div class="holdopt on">
+      <span class="rdo"></span>
+      <div><div class="ht">Deposit becomes their tab</div><div class="hs">A hold that turns into credit when they arrive — proves they're serious without it being a discount. Right for a counter like this.</div></div>
+    </div>
+    <div class="holdopt" onclick="sendPrompt('Use a card on file with my own cancellation policy — upload the policy text.')">
+      <span class="rdo"></span>
+      <div><div class="ht">Card on file · your cancellation policy</div><div class="hs">Paste your existing no-show policy — Pulse applies it for you. Or excuse a no-show in one tap, no penalty.</div></div>
+    </div>
+    <div class="holdopt" onclick="sendPrompt('Make this a free RSVP — no card.')">
+      <span class="rdo"></span>
+      <div><div class="ht">Free RSVP</div><div class="hs">No card at all. A no-show just releases the seat — repeat no-shows quietly lose Pulse priority.</div></div>
+    </div>
+    <div class="row2 holdsub">
+      <div class="field" onclick="sendPrompt('Edit the deposit amount.')">
+        <div class="fval">$50 deposit<small>applied to their tab</small></div><div class="fedit">Edit</div>
+      </div>
+      <div class="field" onclick="sendPrompt('Edit the door-grace window.')">
+        <div class="fval">20 min<small>door grace</small></div><div class="fedit">Edit</div>
       </div>
     </div>
+    <div class="holdnote"><b>Guests see this before they claim.</b> Free to cancel until 2 hrs before · seat held 20 min past start · a no-show releases it to the waitlist.</div>
 
     <div class="guardrail">
       <span class="dot"></span>

@@ -1,0 +1,73 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pulse · What the numbers mean</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles/tokens.css">
+<link rel="stylesheet" href="../styles/components.css">
+<style>
+/* — screen-specific only — vendor glossary / reference — */
+.atmosphere{position:absolute;inset:0;pointer-events:none;z-index:0;
+  background:radial-gradient(ellipse 80% 50% at 50% 10%,rgba(202,168,113,.10),transparent 60%);}
+.body{padding:18px 22px 100px;}
+.eyebrow{font-family:var(--font-sub);font-size:10px;letter-spacing:.26em;color:var(--gold);text-transform:uppercase;margin-bottom:9px;}
+.headline{font-family:var(--font-display);font-weight:400;font-size:24px;color:var(--text);line-height:1.18;margin-bottom:10px;}
+.lead{font-size:12.5px;color:var(--text-dim);line-height:1.55;margin-bottom:20px;}
+.term{padding:16px 0;border-bottom:1px solid var(--hair);}
+.term:last-child{border-bottom:none;}
+.term .t{font-family:var(--font-display);font-weight:500;font-size:16px;color:var(--text);margin-bottom:6px;display:flex;align-items:center;gap:9px;}
+.term .t .dot{width:7px;height:7px;border-radius:50%;flex-shrink:0;}
+.term .d{font-size:12.5px;color:var(--text-dim);line-height:1.55;}
+.term .d b{color:var(--text);font-weight:500;}
+.dot.gold{background:var(--gold);box-shadow:0 0 8px var(--gold);}
+.dot.alert{background:var(--alert);box-shadow:0 0 8px var(--alert);}
+.dot.faint{background:var(--text-faint);}
+</style></head><body>
+
+<div class="context">
+  <div class="k">Vendor Prototype · Reference</div>
+  <h1>What the numbers mean</h1>
+  <p>Team Review 02: vendors kept wondering what "claimed" vs "checked-in" mean. A permanent, easy-to-find glossary — linked from both Analytics and Settings so it's never more than a tap away.</p>
+</div>
+
+<div class="phone">
+  <div class="notch"></div>
+  <div class="atmosphere"></div>
+  <div class="app-row">
+    <button class="back" onclick="go('vendor-analytics.html')">&#8249;</button>
+    <span class="app-title">What the numbers mean</span>
+    <span class="app-pad"></span>
+  </div>
+  <div class="body">
+    <div class="eyebrow">Reference</div>
+    <h2 class="headline">What the numbers mean</h2>
+    <div class="lead">Plain definitions for the words across your dashboard and analytics.</div>
+
+    <div class="term">
+      <div class="t"><span class="dot gold"></span>Momentum</div>
+      <div class="d">Your venue's live signal. Built <b>only from real check-ins</b> — never from posting an offer — and it's <b>self-relative</b>: you against your own past by day-part, never ranked against other venues.</div>
+    </div>
+    <div class="term">
+      <div class="t"><span class="dot gold"></span>Claimed</div>
+      <div class="d">A guest has <b>held a seat</b> under your offer's terms. A promise to come — not money in the door, and not yet an arrival.</div>
+    </div>
+    <div class="term">
+      <div class="t"><span class="dot gold"></span>Checked-in</div>
+      <div class="d">A guest <b>actually arrived</b> and checked in from inside your place. This is the one that <b>moves your momentum</b> — attendance, not intent.</div>
+    </div>
+    <div class="term">
+      <div class="t"><span class="dot faint"></span>Saved</div>
+      <div class="d">A guest <b>bookmarked</b> you for later. A signal of interest — not a commitment, and it doesn't move momentum on its own.</div>
+    </div>
+    <div class="term">
+      <div class="t"><span class="dot alert"></span>Slipping</div>
+      <div class="d">A night running <b>behind your own norm</b> for that day-part. Shows in <b>amber</b> (never red) and always comes with honest levers you control.</div>
+    </div>
+  </div>
+  <div class="foot">
+    <button class="primary" onclick="go('vendor-analytics.html')">Back to analytics</button>
+  </div>
+</div>
+<script src="../scripts/nav.js"></script>
+</body></html>

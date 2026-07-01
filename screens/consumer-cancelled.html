@@ -1,0 +1,82 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pulse · Plans changed</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles/tokens.css">
+<link rel="stylesheet" href="../styles/components.css">
+<style>
+/* — screen-specific only — */
+.atmosphere{position:absolute;inset:0;pointer-events:none;z-index:0;
+  background:radial-gradient(ellipse 85% 45% at 50% 16%,rgba(202,168,113,.08),transparent 62%);}
+.body{padding:18px 22px 116px;position:relative;z-index:2;}
+/* the notice */
+.notice{text-align:center;margin:10px 0 22px;}
+.notice .eyebrow{font-family:var(--font-sub);font-size:10px;letter-spacing:.3em;color:var(--gold);text-transform:uppercase;margin-bottom:12px;}
+.notice h2{font-family:var(--font-display);font-weight:400;font-size:25px;color:var(--text);line-height:1.18;margin-bottom:11px;}
+.notice p{font-size:13px;color:var(--text-dim);line-height:1.58;max-width:300px;margin:0 auto;}
+.notice p b{color:var(--text);font-weight:500;}
+/* refund card */
+.refund{background:rgba(255,255,255,.025);border:1px solid var(--border-soft);border-radius:14px;padding:15px 16px;margin-bottom:14px;display:flex;gap:11px;align-items:flex-start;}
+.refund .d{width:6px;height:6px;border-radius:50%;background:var(--gold);box-shadow:0 0 8px var(--gold);margin-top:5px;flex-shrink:0;}
+.refund .rt{font-size:12.5px;color:var(--text-dim);line-height:1.5;}
+.refund .rt b{color:var(--text);font-weight:500;}
+.refund .rt .sub{display:block;margin-top:4px;color:var(--text-faint);font-size:10.5px;}
+/* intent-matched rail */
+.sec{font-family:var(--font-sub);font-size:9.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--text-faint);margin:22px 0 4px;}
+.sec-note{font-size:11px;color:var(--text-faint);line-height:1.5;margin-bottom:9px;}
+.simrow{display:flex;align-items:center;justify-content:space-between;padding:13px 0;border-top:1px solid var(--hair);cursor:pointer;}
+.simrow:last-child{border-bottom:1px solid var(--hair);}
+.simrow .si .sn{font-family:var(--font-display);font-weight:400;font-size:15px;color:var(--text);line-height:1.2;}
+.simrow .si .ss{font-size:10.5px;color:var(--text-faint);margin-top:3px;}
+.simrow .sgo{color:var(--gold);font-size:13px;}
+</style></head><body>
+
+<div class="context">
+  <div class="k">Consumer Prototype · Vendor-cancelled state</div>
+  <h1>Plans changed</h1>
+  <p>Review 01 fix (#3): the missing other side of the claim. When a vendor cancels, the guest hears it in Pulse's voice, the deposit auto-refunds, and the "still live" rail is <em>intent-matched</em> — a cancelled dinner offers other tables, never a random free beer.</p>
+</div>
+
+<div class="phone">
+  <div class="notch"></div>
+  <div class="atmosphere"></div>
+  <div class="app-row">
+    <button class="back" onclick="go('consumer-feed.html')">&#8249;</button>
+    <span class="app-title">Plans changed</span>
+    <span class="app-pad"></span>
+  </div>
+  <div class="body">
+
+    <div class="notice">
+      <div class="eyebrow">From Laurent</div>
+      <h2>Tonight's chef's counter is off.</h2>
+      <p>Laurent had to pull tonight's seating — it happens, and they're sorry to miss you. <b>Nothing's owed, nothing's held.</b></p>
+    </div>
+
+    <div class="refund">
+      <span class="d"></span>
+      <div class="rt"><b>Your $50 deposit is already on its way back.</b>
+        <span class="sub">No fee, no penalty — a vendor cancel is on them, never on you.</span></div>
+    </div>
+
+    <div class="sec">Still live near you tonight</div>
+    <div class="sec-note">Counters with seats right now — same kind of night you were after.</div>
+    <div class="simrow" onclick="go('consumer-detail.html')">
+      <div class="si"><div class="sn">Tasting menu — eight seats</div><div class="ss">Rye · Bishop Arts · 3 left · 7:00 PM</div></div>
+      <span class="sgo">&#8594;</span>
+    </div>
+    <div class="simrow" onclick="go('consumer-detail.html')">
+      <div class="si"><div class="sn">Counter seats — wood-fire</div><div class="ss">Ember &amp; Oak · Deep Ellum · 2 left · 8:00 PM</div></div>
+      <span class="sgo">&#8594;</span>
+    </div>
+
+  </div>
+  <div class="foot">
+    <button class="secondary" onclick="sendPrompt('Notify me if Laurent reschedules this seating.')">Notify me if it's back</button>
+    <button class="primary" onclick="go('consumer-feed.html')">Back to the feed</button>
+  </div>
+</div>
+<script src="../scripts/nav.js"></script>
+</body></html>

@@ -52,6 +52,12 @@
 .venue-row .vinfo{font-size:12.5px;color:var(--text-dim);}
 .venue-row .vinfo b{color:var(--text);font-weight:500;display:block;font-family:var(--font-display);font-size:15px;margin-bottom:3px;}
 .venue-row .map{color:var(--gold);font-size:11.5px;cursor:pointer;white-space:nowrap;}
+/* how this claim holds — the honesty line before the tap */
+.holds{display:flex;gap:11px;align-items:flex-start;padding:15px 0 2px;border-top:1px solid var(--hair);}
+.holds .hd{width:6px;height:6px;border-radius:50%;background:var(--gold);box-shadow:0 0 8px var(--gold);margin-top:5px;flex-shrink:0;}
+.holds .ht{font-size:11.5px;color:var(--text-dim);line-height:1.5;}
+.holds .ht b{color:var(--text);font-weight:500;}
+.holds .ht .terms{display:block;margin-top:5px;color:var(--text-faint);font-size:10.5px;line-height:1.55;}
 </style></head><body>
 
 <div class="context">
@@ -111,6 +117,12 @@
       <div class="venue-row">
         <div class="vinfo"><b>Laurent</b>2823 Greenville Ave · Lakewood</div>
         <span class="map" onclick="sendPrompt('Open Laurent in maps.')">View map &#8594;</span>
+      </div>
+
+      <div class="holds">
+        <span class="hd"></span>
+        <div class="ht"><b>How this claim holds</b> — a $50 deposit, applied to your tab tonight.
+          <span class="terms">Free to cancel until 2 hrs before · your seat's held 20 min past 6:30 · checking in when you arrive is what keeps it.</span></div>
       </div>
 
     </div>

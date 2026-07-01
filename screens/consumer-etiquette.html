@@ -1,0 +1,91 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pulse · Pulse People</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles/tokens.css">
+<link rel="stylesheet" href="../styles/components.css">
+<style>
+/* — screen-specific only — */
+.bloom-bg{position:absolute;inset:0;pointer-events:none;z-index:0;
+  background:radial-gradient(ellipse 90% 50% at 50% 22%,rgba(202,168,113,.13),transparent 60%);}
+.body{padding:24px 24px 116px;position:relative;z-index:2;}
+.close{position:absolute;top:8px;right:16px;z-index:6;color:var(--text-dim);font-size:22px;background:none;border:none;cursor:pointer;line-height:1;}
+.intro{text-align:center;margin:6px 0 26px;}
+.mark{width:54px;height:54px;margin:0 auto 16px;position:relative;display:flex;align-items:center;justify-content:center;}
+.mark .core{width:14px;height:14px;border-radius:50%;background:var(--gold);box-shadow:0 0 18px rgba(202,168,113,.8);z-index:2;}
+.mark .ring{position:absolute;inset:0;margin:auto;width:26px;height:26px;border-radius:50%;border:1.5px solid var(--gold);opacity:0;}
+.intro .eyebrow{font-family:var(--font-sub);font-size:10px;letter-spacing:.3em;color:var(--gold);text-transform:uppercase;margin-bottom:11px;}
+.intro h2{font-family:var(--font-display);font-weight:400;font-size:27px;color:var(--text);line-height:1.16;margin-bottom:9px;}
+.intro p{font-size:13px;color:var(--text-dim);line-height:1.55;max-width:290px;margin:0 auto;}
+/* the rules */
+.rules{display:flex;flex-direction:column;gap:13px;}
+.rule{display:flex;gap:13px;align-items:flex-start;background:rgba(255,255,255,.022);border:1px solid var(--hair);border-radius:13px;padding:14px 16px;}
+.rule .n{font-family:var(--font-display);font-weight:500;font-size:16px;color:var(--gold);flex-shrink:0;width:18px;line-height:1.35;}
+.rule .rt{font-family:var(--font-display);font-weight:500;font-size:14.5px;color:var(--text);margin-bottom:4px;}
+.rule .rs{font-size:11.5px;color:var(--text-dim);line-height:1.5;}
+@media (prefers-reduced-motion: no-preference){
+  .mark .core{animation:ebeat 2.4s ease-in-out infinite;}
+  .mark .ring{animation:erip 2.4s ease-out infinite;}
+  .mark .ring.r2{animation-delay:.9s;}
+  @keyframes ebeat{0%,100%{transform:scale(1);}10%{transform:scale(1.25);}22%{transform:scale(1);}32%{transform:scale(1.12);}44%{transform:scale(1);}}
+  @keyframes erip{0%{opacity:.7;transform:scale(1);}80%{opacity:0;transform:scale(2.8);}100%{opacity:0;}}
+  .rule{opacity:0;transform:translateY(9px);animation:rise .55s ease forwards;}
+  .rule:nth-child(1){animation-delay:.25s;}
+  .rule:nth-child(2){animation-delay:.45s;}
+  .rule:nth-child(3){animation-delay:.65s;}
+  .rule:nth-child(4){animation-delay:.85s;}
+  @keyframes rise{to{opacity:1;transform:none;}}
+}
+</style></head><body>
+
+<div class="context">
+  <div class="k">Consumer Prototype · Pulse People Etiquette</div>
+  <h1>Pulse People</h1>
+  <p>The warm social contract — shown after a guest's first check-in, not as a sign-up gate. It's how the scarce-seat model stays honest without ever feeling like rules: earned, never imposed. Also lives in account / policies.</p>
+  <p style="margin-top:10px;"><b style="color:var(--gold);">Naming — under review with the team:</b> "Pulse People" is a placeholder. Candidates: <b>The Regulars</b> (lead pick) · Good Company · House Rules · How We Show Up · The Understanding · In Good Standing · The Good Guest.</p>
+</div>
+
+<div class="phone">
+  <div class="notch"></div>
+  <div class="bloom-bg"></div>
+  <div class="body">
+    <button class="close" onclick="go('consumer-feed.html')">&times;</button>
+
+    <div class="intro">
+      <div class="mark">
+        <span class="ring"></span><span class="ring r2"></span>
+        <span class="core"></span>
+      </div>
+      <div class="eyebrow">You're in</div>
+      <h2>You're Pulse People now.</h2>
+      <p>A few small things keep these places good for everyone. That's the whole deal.</p>
+    </div>
+
+    <div class="rules">
+      <div class="rule">
+        <span class="n">1</span>
+        <div><div class="rt">Claim what you'll keep.</div><div class="rs">A seat you hold is one nobody else can. Only claim the nights you mean to show up for.</div></div>
+      </div>
+      <div class="rule">
+        <span class="n">2</span>
+        <div><div class="rt">Running late? You've got 20.</div><div class="rs">Twenty minutes' grace at the door, every time. A quick heads-up keeps your seat warm.</div></div>
+      </div>
+      <div class="rule">
+        <span class="n">3</span>
+        <div><div class="rt">Show up to be counted.</div><div class="rs">Checking in from inside the room — not the sidewalk — is what makes a night hum. Presence, not a fly-by.</div></div>
+      </div>
+      <div class="rule">
+        <span class="n">4</span>
+        <div><div class="rt">Plans change — free the seat early.</div><div class="rs">Cancel ahead and it finds someone who wanted it. Show up for the rooms that show up for you, and Pulse surfaces you first.</div></div>
+      </div>
+    </div>
+
+  </div>
+  <div class="foot">
+    <button class="primary" onclick="go('consumer-feed.html')">Got it — into the feed</button>
+  </div>
+</div>
+<script src="../scripts/nav.js"></script>
+</body></html>
