@@ -1,0 +1,92 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pulse · On the list</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles/tokens.css">
+<link rel="stylesheet" href="../styles/components.css">
+<style>
+/* — screen-specific only — */
+.bloom-bg{position:absolute;inset:0;pointer-events:none;z-index:0;
+  background:radial-gradient(ellipse 90% 50% at 50% 26%,rgba(202,168,113,.13),transparent 60%);}
+.body{padding:24px 24px 116px;position:relative;z-index:2;}
+.close{position:absolute;top:8px;right:16px;z-index:6;color:var(--text-dim);font-size:22px;background:none;border:none;cursor:pointer;line-height:1;}
+.moment{display:flex;flex-direction:column;align-items:center;text-align:center;margin:8px 0 24px;}
+.mark{width:120px;height:120px;position:relative;display:flex;align-items:center;justify-content:center;margin-bottom:20px;}
+.mark .num{font-family:var(--font-display);font-weight:400;font-size:44px;color:var(--gold);line-height:1;z-index:2;}
+.mark .ring{position:absolute;inset:0;margin:auto;width:80px;height:80px;border-radius:50%;border:1.5px solid var(--gold);opacity:0;}
+.eyebrow{font-family:var(--font-sub);font-size:10px;letter-spacing:.3em;color:var(--gold);text-transform:uppercase;margin-bottom:11px;}
+.headline{font-family:var(--font-display);font-weight:400;font-size:28px;color:var(--text);line-height:1.16;margin-bottom:9px;}
+.subline{font-size:13px;color:var(--text-dim);line-height:1.55;max-width:300px;}
+.subline b{color:var(--text);font-weight:500;}
+/* how it works */
+.how{background:rgba(255,255,255,.025);border:1px solid var(--border-soft);border-radius:14px;padding:15px 16px;margin-bottom:14px;display:flex;gap:11px;align-items:flex-start;}
+.how .d{width:6px;height:6px;border-radius:50%;background:var(--gold);box-shadow:0 0 8px var(--gold);margin-top:5px;flex-shrink:0;}
+.how .ht{font-size:12.5px;color:var(--text-dim);line-height:1.55;}
+.how .ht b{color:var(--text);font-weight:500;}
+/* still live rail */
+.sec{font-family:var(--font-sub);font-size:9.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--text);font-weight:500;margin:22px 0 4px;}
+.sec-note{font-size:11px;color:var(--text);font-weight:400;line-height:1.5;margin-bottom:9px;}
+.simrow{display:flex;align-items:center;justify-content:space-between;padding:13px 0;border-top:1px solid var(--hair);cursor:pointer;}
+.simrow:last-child{border-bottom:1px solid var(--hair);}
+.simrow .si .sn{font-family:var(--font-display);font-weight:400;font-size:15px;color:var(--text);line-height:1.2;}
+.simrow .si .ss{font-size:10.5px;color:var(--text-faint);margin-top:3px;}
+.simrow .sgo{color:var(--gold);font-size:13px;}
+@media (prefers-reduced-motion: no-preference){
+  .mark .ring{animation:wrip 2.6s ease-out infinite;}
+  .mark .ring.r2{animation-delay:1.3s;}
+  @keyframes wrip{0%{opacity:.6;transform:scale(1);}80%{opacity:0;transform:scale(2.4);}100%{opacity:0;}}
+}
+</style></head><body>
+
+<div class="context">
+  <div class="k">Consumer Prototype · Waitlist — joined</div>
+  <h1>On the list</h1>
+  <p>Team Review 03: what happens after "Join the waitlist." First-dibs mechanic made concrete — your spot in line, the 15-minute window, and live options nearby so waiting never means doing nothing.</p>
+</div>
+
+<div class="phone">
+  <div class="notch"></div>
+  <div class="bloom-bg"></div>
+  <div class="body">
+    <button class="close" onclick="go('consumer-feed.html')">&times;</button>
+
+    <div class="moment">
+      <div class="mark">
+        <span class="ring"></span><span class="ring r2"></span>
+        <span class="num">3</span>
+      </div>
+      <div class="eyebrow">You're on the list</div>
+      <h2 class="headline">3rd in line.</h2>
+      <div class="subline">We'll hold your place for <b>The Marfa Room</b> and watch the counter for you.</div>
+    </div>
+
+    <div class="how">
+      <span class="d"></span>
+      <div class="ht"><b>The moment a seat frees, it's yours first.</b> Pulse texts you and gives you a <b>15-minute window</b> to claim before it reopens to everyone.</div>
+    </div>
+    <div class="how">
+      <span class="d"></span>
+      <div class="ht"><b>Nothing's held or owed</b> until you claim. Leave the list anytime — no penalty.</div>
+    </div>
+
+    <div class="sec">While you wait — still live near you</div>
+    <div class="sec-note">Counters with seats right now, same kind of night.</div>
+    <div class="simrow" onclick="go('consumer-detail.html')">
+      <div class="si"><div class="sn">Chef's counter — six seats</div><div class="ss">Laurent · Lakewood · 2 left · 6:30 PM</div></div>
+      <span class="sgo">&#8594;</span>
+    </div>
+    <div class="simrow" onclick="go('consumer-feed.html')">
+      <div class="si"><div class="sn">Opening night — new works</div><div class="ss">Continental Gin · Exposition Park · free</div></div>
+      <span class="sgo">&#8594;</span>
+    </div>
+
+  </div>
+  <div class="foot">
+    <button class="secondary" onclick="sendPrompt('Leave the waitlist for the Marfa Room.')">Leave list</button>
+    <button class="primary" onclick="go('consumer-feed.html')">Back to the feed</button>
+  </div>
+</div>
+<script src="../scripts/nav.js"></script>
+</body></html>

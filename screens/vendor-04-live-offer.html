@@ -31,6 +31,7 @@
 .ctl.danger{color:var(--red-bright);border-color:color-mix(in srgb,var(--red-bright) 35%,transparent);}
 .ctl.danger:hover{border-color:var(--red-bright);}
 .ctl-note{text-align:center;font-size:10.5px;color:var(--text-faint);line-height:1.5;margin:10px auto 0;max-width:282px;}
+.ctl-confirm{text-align:center;font-size:11px;color:var(--gold);line-height:1.5;margin:10px auto 0;max-width:290px;min-height:14px;opacity:0;transition:opacity .3s;}
 @media (prefers-reduced-motion: no-preference){
   .pulse-mark .ring{animation:rip 2.6s ease-out infinite;}
   .pulse-mark .ring.r2{animation-delay:.9s;}
@@ -82,15 +83,32 @@
       </div>
     </div>
 
-    <div class="statusline"><span class="dot"></span>4 of 6 claimed · updating live</div>
+    <div class="statusline" id="statusline"><span class="dot"></span><span id="statustext">4 of 6 claimed · updating live</span></div>
 
     <div class="vendor-controls">
-      <span class="ctl" onclick="sendPrompt('Pause new claims on this offer.')">Pause claims</span>
-      <span class="ctl" onclick="sendPrompt('Release a held seat back to the feed.')">Release a seat</span>
+      <span class="ctl" id="pausebtn" onclick="togglePause()">Pause claims</span>
+      <span class="ctl" onclick="releaseSeat()">Release a seat</span>
       <span class="ctl danger" onclick="go('consumer-cancelled.html')">Cancel tonight</span>
     </div>
-    <div class="ctl-note">Cancelling auto-refunds every deposit and tells each guest in Pulse's voice. Tap to preview exactly what they'd see.</div>
+    <div class="ctl-note">Cancelling auto-refunds every deposit and tells each guest by text and email, in Pulse's voice. Tap to preview exactly what they'd see.</div>
+    <div class="ctl-confirm" id="ctlconfirm"></div>
   </div>
+
+  <script>
+  (function(){
+    var claimed=4,total=6,paused=false,t;
+    var st=document.getElementById('statustext'),pb=document.getElementById('pausebtn'),
+        sl=document.getElementById('statusline'),cf=document.getElementById('ctlconfirm');
+    function refresh(){
+      st.textContent = paused ? 'Paused · not accepting new claims' : claimed+' of '+total+' claimed · updating live';
+      pb.textContent = paused ? 'Resume claims' : 'Pause claims';
+      sl.style.opacity = paused ? '.55' : '1';
+    }
+    function flash(m){ cf.textContent=m; cf.style.opacity='1'; clearTimeout(t); t=setTimeout(function(){cf.style.opacity='0';},2800); }
+    window.togglePause=function(){ paused=!paused; refresh(); flash(paused?'Claims paused — guests see "filling soon"; no new claims land until you resume.':'Claims resumed — back open on the feed.'); };
+    window.releaseSeat=function(){ if(claimed>0){claimed--;refresh();} flash('Seat released — back on the feed, offered to your waitlist first.'); };
+  })();
+  </script>
   <div class="foot">
     <button class="secondary" onclick="go('vendor-02-offer-management.html')">Manage</button>
     <button class="primary" onclick="go('vendor-01-dashboard.html')">Back to dashboard</button>

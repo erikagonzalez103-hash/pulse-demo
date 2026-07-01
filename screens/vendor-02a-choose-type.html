@@ -32,7 +32,7 @@
 <div class="context">
   <div class="k">Vendor Prototype · Create → Choose type</div>
   <h1>Choose offer type</h1>
-  <p>The fork that sets the rules. The engine — not a blanket platform rule — decides the mechanics and the language.</p>
+  <p>The offer-type chooser (Team Review 03: expanded from 2 to 5). Access is the Pulse signature; Discount / Bundle / Freebie / Upgrade are the "offer" family. Type + business type drive what the one global builder shows.</p>
 </div>
 
 <div class="phone">
@@ -46,24 +46,45 @@
   <div class="body">
     <div class="eyebrow">New offer</div>
     <h2 class="headline">What kind of offer?</h2>
-    <div class="subline">Pick the engine that fits the room. You can change it before you publish.</div>
+    <div class="subline">Pick the type that fits your business — Pulse tailors the builder to it. You can change it before you publish.</div>
 
     <div class="engine primary" onclick="go('vendor-02b-offer-builder.html')">
       <div class="engine-bloom"></div>
-      <div class="e-eye"><span>Exclusive engine</span><span class="rec">Recommended for Laurent</span></div>
+      <div class="e-eye"><span>Access</span><span class="rec">The Pulse signature</span></div>
       <div class="e-name">Access, not discount</div>
-      <div class="e-desc">For invitation-led rooms. The value is getting in — a table, a seat, a moment. No discounts, ever.</div>
-      <div class="e-tags"><b>Invitation</b> · Limited access · Reserve</div>
+      <div class="e-desc">The value is getting in — a seat, a table, a moment. No discount, ever.</div>
+      <div class="e-tags"><b>Invitation</b> · Limited · Reserve</div>
     </div>
 
     <div class="engine" onclick="go('vendor-02b-offer-builder-standard.html')">
-      <div class="e-eye"><span>Standard engine</span></div>
-      <div class="e-name">Offer, used with care</div>
-      <div class="e-desc">For open offers — fitness, retail, beauty, casual dining. Discounts allowed, deployed carefully, never the whole identity.</div>
-      <div class="e-tags"><b>Promotion</b> · Open offer · Claim in Pulse</div>
+      <div class="e-eye"><span>Discount</span></div>
+      <div class="e-name">A percent off, used with care</div>
+      <div class="e-desc">A straight % off — capped so it stays special, never the whole identity.</div>
+      <div class="e-tags"><b>% off</b> · Promotion · Capped</div>
     </div>
 
-    <div class="note">The engine sets the rules. Nail one, then extend.</div>
+    <div class="engine" onclick="go('vendor-02b-offer-builder-standard.html')">
+      <div class="e-eye"><span>Bundle</span></div>
+      <div class="e-name">More for the price</div>
+      <div class="e-desc">A pairing or a pack — added value without discounting the room.</div>
+      <div class="e-tags"><b>Pairing</b> · Pack · Set price</div>
+    </div>
+
+    <div class="engine" onclick="go('vendor-02b-offer-builder-standard.html')">
+      <div class="e-eye"><span>Freebie</span></div>
+      <div class="e-name">Something on the house</div>
+      <div class="e-desc">A first class, an app, a welcome pour — a warm way in for newcomers.</div>
+      <div class="e-tags"><b>On the house</b> · First-timer</div>
+    </div>
+
+    <div class="engine" onclick="go('vendor-02b-offer-builder-standard.html')">
+      <div class="e-eye"><span>Upgrade</span></div>
+      <div class="e-name">A complimentary elevation</div>
+      <div class="e-desc">A better seat, an extra course, a bigger pour — elevate without discounting.</div>
+      <div class="e-tags"><b>Elevation</b> · Comp · Surprise</div>
+    </div>
+
+    <div class="note">Every type rides the same global builder — Pulse tailors the fields to the type and to your business.</div>
   </div>
 </div>
 <script src="../scripts/nav.js"></script>
