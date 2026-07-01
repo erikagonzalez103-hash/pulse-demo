@@ -27,12 +27,52 @@ body::before{content:"";position:fixed;inset:0;pointer-events:none;background:ra
 .card.pending .step{color:var(--text-faint);}
 .foot{margin-top:48px;text-align:center;color:var(--text-faint);font-size:11.5px;line-height:1.7;}
 .foot a{color:var(--gold);text-decoration:none;}
+.whatsnew{background:rgba(202,168,113,.045);border:1px solid var(--border);border-radius:16px;padding:22px 24px;margin-bottom:44px;}
+.whatsnew .flow-title{color:var(--gold);border-bottom-color:var(--gold-deep);margin-bottom:14px;}
+.wn-intro{font-size:12.5px;color:var(--text-dim);margin:0 0 18px;line-height:1.5;}
+.wn-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px;}
+@media(max-width:640px){.wn-grid{grid-template-columns:1fr;gap:20px;}}
+.wn-h{font-family:var(--font-sub);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--text-faint);margin-bottom:10px;display:flex;align-items:center;gap:8px;}
+.wn-col a{display:block;font-size:12.5px;color:var(--text-dim);text-decoration:none;line-height:1.45;padding:8px 0;border-bottom:1px solid var(--hair);transition:color .2s;}
+.wn-col a:last-child{border-bottom:none;}
+.wn-col a:hover{color:var(--gold);}
+.wn-col a b{color:var(--text);font-weight:500;}
+.badge-new{font-family:var(--font-sub);font-size:8px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-on-gold);background:var(--gold);border-radius:999px;padding:3px 8px;}
+.badge-upd{font-family:var(--font-sub);font-size:8px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);background:var(--gold-soft);border:1px solid var(--gold-deep);border-radius:999px;padding:3px 8px;}
 </style></head><body>
 <div class="wrap">
   <div class="head">
     <div class="k">Pulse · Prototype</div>
     <h1>Prototype — every screen</h1>
     <p>The clickable Pulse prototype, grouped by flow. <b>Tap any card to open that screen</b> and walk the real click-through. Solid = built; dashed = planned. Best viewed on a phone, or narrow your window to phone width.</p>
+  </div>
+
+  <div class="whatsnew">
+    <div class="flow-title">★ This week's review — Jul 1 · what's new &amp; updated</div>
+    <p class="wn-intro">Everything that changed since the last walkthrough (Batches 07–10). Tap any name to jump straight to it. Inside any screen, use <b style="color:var(--text);">‹ Back</b> or <b style="color:var(--text);">⌂ All screens</b> (top-left) to return here.</p>
+    <div class="wn-grid">
+      <div class="wn-col">
+        <div class="wn-h"><span class="badge-new">New</span> screens</div>
+        <a href="screens/vendor-definitions.html"><b>What the numbers mean</b> — vendor glossary: claimed vs checked-in vs saved vs momentum. Linked from Analytics + Settings.</a>
+        <a href="screens/consumer-etiquette.html"><b>Pulse People etiquette</b> — the social contract after first check-in. <b>Name candidates on the caption — weigh in.</b></a>
+        <a href="screens/consumer-cancelled.html"><b>Vendor-cancelled state</b> — auto-refund, in Pulse's voice, intent-matched rooms still live nearby.</a>
+      </div>
+      <div class="wn-col">
+        <div class="wn-h"><span class="badge-upd">Updated</span> screens</div>
+        <a href="screens/vendor-02b-offer-builder.html"><b>Offer builder</b> — "how this claim holds" commitment menu + media upload + expanded occasion taxonomy.</a>
+        <a href="screens/vendor-02b-offer-builder-standard.html"><b>Standard builder</b> — commitment menu (cancellation policy / excuse) + media upload.</a>
+        <a href="screens/consumer-detail.html"><b>Offer detail</b> — the hold terms shown before you claim (deposit · grace · cancel window).</a>
+        <a href="screens/consumer-checkin.html"><b>Check-in</b> — deposit/grace terms, presence-based momentum, etiquette link.</a>
+        <a href="screens/consumer-detail-full.html"><b>Sold-out</b> — 15-min first-dibs waitlist release.</a>
+        <a href="screens/vendor-04-live-offer.html"><b>Live offer</b> — vendor live controls: pause · release a seat · cancel.</a>
+        <a href="screens/vendor-notifications.html"><b>Slipping alert</b> — now amber (not red), with a gentle pulse.</a>
+        <a href="screens/vendor-01-dashboard-new.html"><b>First-run dashboard</b> — green "no momentum yet" pill.</a>
+        <a href="screens/vendor-analytics.html"><b>Analytics</b> — glossary link under the stats.</a>
+        <a href="screens/vendor-settings.html"><b>Settings</b> — glossary row.</a>
+        <a href="screens/vendor-claim.html"><b>Claim</b> — self-serve hidden (concierge-only for now).</a>
+        <a href="screens/consumer-feed.html"><b>Feed</b> — "places" over "rooms" copy.</a>
+      </div>
+    </div>
   </div>
 
   <div class="flow">
