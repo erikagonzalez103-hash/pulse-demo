@@ -111,8 +111,8 @@
 
     <div class="sec">Team &amp; account</div>
     <div class="group">
-      <div class="srow" onclick="sendPrompt('Add a staff member to this venue.')">
-        <div class="sl">Team access<small>1 owner · add hosts &amp; managers</small></div>
+      <div class="srow" onclick="go('vendor-team.html')">
+        <div class="sl">Team access<small>Owner · managers · hosts — per location</small></div>
         <div class="sv"><span class="chev">&#8250;</span></div>
       </div>
       <div class="srow" onclick="sendPrompt('Open billing and plan details.')">
@@ -126,7 +126,7 @@
     </div>
 
     <button class="signout" onclick="go('vendor-claim.html')">Sign out</button>
-    <div class="foot-note">Pulse · Dallas</div>
+    <div class="foot-note" onclick="sendPrompt('Switch city — Pulse is live in Dallas today; more cities coming.')" style="cursor:pointer;">Pulse · Dallas &#9662;</div>
 
   </div>
   <div class="foot">

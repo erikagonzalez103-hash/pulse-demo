@@ -1,0 +1,98 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pulse · Team &amp; access</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles/tokens.css">
+<link rel="stylesheet" href="../styles/components.css">
+<style>
+/* — screen-specific only — */
+.atmosphere{position:absolute;inset:0;pointer-events:none;z-index:0;
+  background:radial-gradient(ellipse 80% 50% at 50% 10%,rgba(202,168,113,.10),transparent 60%);}
+.body{padding:18px 22px 40px;}
+.eyebrow{font-family:var(--font-sub);font-size:10px;letter-spacing:.26em;color:var(--gold);text-transform:uppercase;margin-bottom:9px;}
+.headline{font-family:var(--font-display);font-weight:400;font-size:24px;color:var(--text);line-height:1.18;margin-bottom:6px;}
+.subline{font-size:12px;color:var(--text-dim);line-height:1.5;margin-bottom:20px;}
+.group{background:rgba(255,255,255,.02);border:1px solid var(--hair);border-radius:14px;padding:2px 16px;margin-bottom:14px;}
+.member{display:flex;align-items:center;gap:12px;padding:14px 0;border-bottom:1px solid var(--hair);}
+.member:last-child{border-bottom:none;}
+.avatar{width:40px;height:40px;border-radius:50%;background:rgba(202,168,113,.12);border:1px solid var(--gold-deep);display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-size:15px;color:var(--gold);flex-shrink:0;}
+.m-info{flex:1;min-width:0;}
+.m-name{font-size:14px;color:var(--text);font-weight:500;}
+.m-name .you{font-size:10px;color:var(--text-faint);font-weight:400;margin-left:6px;}
+.m-loc{font-size:11px;color:var(--text-dim);margin-top:2px;}
+.role-pill{font-family:var(--font-sub);font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;border-radius:999px;padding:5px 10px;white-space:nowrap;flex-shrink:0;}
+.role-owner{color:var(--ink-on-gold);background:var(--gold);}
+.role-mgr{color:var(--gold);background:var(--gold-soft);border:1px solid var(--gold-deep);}
+.role-host{color:var(--text-dim);background:rgba(255,255,255,.04);border:1px solid var(--hair);}
+.invite{width:100%;background:none;border:1px dashed var(--border);color:var(--gold);border-radius:12px;padding:13px;font-family:var(--font-body);font-size:13px;cursor:pointer;margin-bottom:24px;transition:border-color .2s;}
+.invite:hover{border-color:var(--gold);}
+.role-def{display:flex;gap:12px;align-items:flex-start;padding:12px 0;border-bottom:1px solid var(--hair);}
+.role-def:last-child{border-bottom:none;}
+.role-def .rn{font-family:var(--font-display);font-weight:500;font-size:13.5px;color:var(--text);width:70px;flex-shrink:0;}
+.role-def .rd{font-size:11.5px;color:var(--text-dim);line-height:1.5;}
+.locnote{display:flex;gap:11px;align-items:flex-start;background:rgba(255,255,255,.02);border:1px solid var(--hair);border-radius:12px;padding:13px 15px;margin-top:16px;}
+.locnote .d{width:6px;height:6px;border-radius:50%;background:var(--gold);box-shadow:0 0 8px var(--gold);margin-top:5px;flex-shrink:0;}
+.locnote .lt{font-size:11.5px;color:var(--text-dim);line-height:1.5;}
+.locnote .lt b{color:var(--text);font-weight:500;}
+</style></head><body>
+
+<div class="context">
+  <div class="k">Vendor Prototype · Team &amp; access</div>
+  <h1>Team &amp; access</h1>
+  <p>Team Review 03: multi-user for live-night coverage. Three roles (Owner · Manager · Host) with access granted <em>per location</em>, so a GM and shift managers can run a busy night without touching billing or another venue.</p>
+</div>
+
+<div class="phone">
+  <div class="notch"></div>
+  <div class="atmosphere"></div>
+  <div class="app-row">
+    <button class="back" onclick="go('vendor-settings.html')">&#8249;</button>
+    <span class="app-title">Team &amp; access</span>
+    <span class="app-pad"></span>
+  </div>
+  <div class="body">
+    <div class="eyebrow">Laurent · Lakewood</div>
+    <h2 class="headline">Who runs the night</h2>
+    <div class="subline">Add the people who cover your floor. Each person gets only what their role needs.</div>
+
+    <div class="group">
+      <div class="member">
+        <div class="avatar">L</div>
+        <div class="m-info"><div class="m-name">Laurent Aubrey<span class="you">you</span></div><div class="m-loc">Lakewood</div></div>
+        <span class="role-pill role-owner">Owner</span>
+      </div>
+      <div class="member">
+        <div class="avatar">MR</div>
+        <div class="m-info"><div class="m-name">Marco Reyes</div><div class="m-loc">Lakewood</div></div>
+        <span class="role-pill role-mgr">Manager</span>
+      </div>
+      <div class="member">
+        <div class="avatar">DH</div>
+        <div class="m-info"><div class="m-name">Devon Hart</div><div class="m-loc">Lakewood · Fri–Sat</div></div>
+        <span class="role-pill role-host">Host</span>
+      </div>
+    </div>
+
+    <button class="invite" onclick="sendPrompt('Invite a teammate by phone or email, then pick their role and location.')">&#43;&nbsp; Invite a teammate</button>
+
+    <div class="sec">What each role can do</div>
+    <div class="group">
+      <div class="role-def"><span class="rn">Owner</span><span class="rd">Everything — offers, analytics, live controls, team, and <b>billing</b>.</span></div>
+      <div class="role-def"><span class="rn">Manager</span><span class="rd">Build &amp; schedule offers, see analytics, run live controls (pause / release / cancel). <b>No billing.</b></span></div>
+      <div class="role-def"><span class="rn">Host</span><span class="rd">Live-night only: check guests in, pause or release seats, see who's coming. Can't edit offers or see billing.</span></div>
+    </div>
+
+    <div class="locnote">
+      <span class="d"></span>
+      <div class="lt"><b>Access is per location.</b> A manager at Lakewood isn't automatically at Bishop Arts — add them to each venue you want them on. (Seats are counted by location, not by chain.)</div>
+    </div>
+
+  </div>
+  <div class="foot">
+    <button class="primary" onclick="go('vendor-settings.html')">Done</button>
+  </div>
+</div>
+<script src="../scripts/nav.js"></script>
+</body></html>

@@ -1,0 +1,114 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pulse · Check in</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles/tokens.css">
+<link rel="stylesheet" href="../styles/components.css">
+<style>
+/* — screen-specific only — the true arrival check-in (RFID) — */
+.bloom-bg{position:absolute;inset:0;pointer-events:none;z-index:0;
+  background:radial-gradient(ellipse 90% 55% at 50% 34%,rgba(202,168,113,.15),transparent 60%);}
+.body{padding:12px 22px 116px;position:relative;z-index:2;}
+.close{position:absolute;top:8px;right:16px;z-index:6;color:var(--text-dim);font-size:22px;background:none;border:none;cursor:pointer;line-height:1;}
+/* RFID proximity banner */
+.rfid{display:flex;align-items:center;gap:9px;justify-content:center;margin:6px 0 20px;font-family:var(--font-sub);font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);}
+.rfid .pin{width:7px;height:7px;border-radius:50%;background:var(--gold);box-shadow:0 0 10px var(--gold);}
+/* heartbeat (shared visual language w/ the claim beat) */
+.moment{display:flex;flex-direction:column;align-items:center;text-align:center;margin-bottom:22px;}
+.heart{position:relative;width:120px;height:120px;display:flex;align-items:center;justify-content:center;margin-bottom:20px;}
+.heart .core{width:26px;height:26px;border-radius:50%;background:var(--gold);box-shadow:0 0 26px rgba(202,168,113,.85);z-index:3;}
+.heart .halo{position:absolute;inset:0;margin:auto;width:56px;height:56px;border-radius:50%;background:radial-gradient(circle,rgba(202,168,113,.35),transparent 68%);z-index:2;}
+.heart .ring{position:absolute;inset:0;margin:auto;width:40px;height:40px;border-radius:50%;border:1.5px solid var(--gold);opacity:0;z-index:1;}
+.eyebrow{font-family:var(--font-sub);font-size:10px;letter-spacing:.3em;color:var(--gold);text-transform:uppercase;margin-bottom:11px;}
+.headline{font-family:var(--font-display);font-weight:400;font-size:29px;color:var(--text);line-height:1.14;margin-bottom:9px;}
+.subline{font-size:13px;color:var(--text-dim);line-height:1.55;max-width:290px;}
+.subline b{color:var(--text);font-weight:500;}
+.dwell{font-size:10.5px;color:var(--text-faint);margin-top:12px;}
+/* gated offers */
+.sec{font-family:var(--font-sub);font-size:9.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--text);font-weight:500;margin:20px 0 11px;display:flex;align-items:center;gap:8px;}
+.sec .unlock{font-family:var(--font-body);font-size:9.5px;letter-spacing:.02em;text-transform:none;color:var(--gold);font-weight:400;}
+.offer{display:flex;align-items:center;justify-content:space-between;background:rgba(255,255,255,.025);border:1px solid var(--border);border-radius:14px;padding:14px 16px;margin-bottom:22px;cursor:pointer;}
+.offer .oi .on{font-family:var(--font-display);font-weight:500;font-size:15px;color:var(--text);line-height:1.2;}
+.offer .oi .os{font-size:11px;color:var(--text-dim);margin-top:3px;}
+.offer .oc{font-family:var(--font-sub);font-size:8.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);white-space:nowrap;}
+/* mini-survey */
+.survey{background:rgba(255,255,255,.02);border:1px solid var(--hair);border-radius:15px;padding:16px 17px;}
+.survey .qt{font-family:var(--font-display);font-weight:500;font-size:15px;color:var(--text);margin-bottom:4px;}
+.survey .qs{font-size:11.5px;color:var(--text-dim);line-height:1.5;margin-bottom:13px;}
+.survey .chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px;}
+.survey .chip{border:1px solid var(--hair);border-radius:999px;padding:8px 13px;font-size:12px;color:var(--text-dim);cursor:pointer;transition:all .2s;}
+.survey .chip:hover{border-color:var(--gold-deep);color:var(--text);}
+.survey .chip.on{border-color:var(--gold);color:var(--gold);background:var(--gold-soft);}
+.survey .open{width:100%;background:var(--bg-input);border:1px solid var(--border-soft);border-radius:10px;padding:11px 13px;color:var(--text);font-family:var(--font-body);font-size:12.5px;margin-bottom:12px;}
+.survey .open::placeholder{color:var(--text-faint);}
+.survey .open:focus{outline:none;border-color:var(--gold-deep);}
+.survey .send{width:100%;background:var(--gold-soft);border:1px solid var(--gold-deep);color:var(--gold);border-radius:999px;padding:11px;font-family:var(--font-body);font-size:12.5px;cursor:pointer;}
+.survey .send:hover{border-color:var(--gold);}
+.survey .why{font-size:10px;color:var(--text-faint);text-align:center;margin-top:10px;line-height:1.5;}
+@media (prefers-reduced-motion: no-preference){
+  .heart .core{animation:heartbeat 2s ease-in-out infinite;}
+  .heart .halo{animation:halobeat 2s ease-in-out infinite;}
+  .heart .ring{animation:bloom 2s ease-out infinite;}
+  .heart .ring.r2{animation-delay:.16s;}
+  @keyframes heartbeat{0%{transform:scale(1);}10%{transform:scale(1.22);}20%{transform:scale(1);}30%{transform:scale(1.14);}42%{transform:scale(1);}100%{transform:scale(1);}}
+  @keyframes halobeat{0%{transform:scale(1);opacity:.6;}10%{transform:scale(1.3);opacity:1;}30%{transform:scale(1.15);opacity:.85;}50%{transform:scale(1);opacity:.6;}100%{transform:scale(1);opacity:.6;}}
+  @keyframes bloom{0%{opacity:.7;transform:scale(1);}55%{opacity:0;transform:scale(3);}100%{opacity:0;transform:scale(3);}}
+}
+</style></head><body>
+
+<div class="context">
+  <div class="k">Consumer Prototype · Arrival check-in</div>
+  <h1>Check in (the real one)</h1>
+  <p>Team Review 03: the <em>true</em> check-in — you physically arrived and RFID detected you (distinct from claiming a seat). This is the beat that actually lifts the venue's momentum. Offers unlock on check-in; if nothing fits, a one-tap survey tells the vendor what you came for.</p>
+</div>
+
+<div class="phone">
+  <div class="notch"></div>
+  <div class="bloom-bg"></div>
+  <div class="body">
+    <button class="close" onclick="go('consumer-feed.html')">&times;</button>
+
+    <div class="rfid"><span class="pin"></span>Pulse sensed you at Laurent</div>
+
+    <div class="moment">
+      <div class="heart">
+        <span class="ring"></span><span class="ring r2"></span>
+        <span class="halo"></span>
+        <span class="core"></span>
+      </div>
+      <div class="eyebrow">Checked in</div>
+      <h2 class="headline">You're here.</h2>
+      <div class="subline">Laurent knows you're in the room — <b>that's what lifts tonight's momentum.</b></div>
+      <div class="dwell">Settle in for a few minutes and it counts — a walk-by doesn't.</div>
+    </div>
+
+    <div class="sec">Live here right now <span class="unlock">&#10022; unlocked by checking in</span></div>
+    <div class="offer" onclick="go('consumer-detail.html')">
+      <div class="oi"><div class="on">Chef's counter — six seats</div><div class="os">2 left · 6:30 PM · $175</div></div>
+      <span class="oc">Claim &#8594;</span>
+    </div>
+
+    <div class="survey">
+      <div class="qt">Nothing catching your eye?</div>
+      <div class="qs">Tell Laurent what you came in for — it shapes what they offer you next.</div>
+      <div class="chips">
+        <span class="chip" onclick="this.classList.toggle('on')">Celebrating</span>
+        <span class="chip" onclick="this.classList.toggle('on')">Date night</span>
+        <span class="chip" onclick="this.classList.toggle('on')">Just hungry</span>
+        <span class="chip" onclick="this.classList.toggle('on')">Drinks &amp; bar</span>
+        <span class="chip" onclick="this.classList.toggle('on')">Business</span>
+      </div>
+      <input class="open" type="text" placeholder="…or say it in your words (craving oysters?)">
+      <button class="send" onclick="sendPrompt('Send what you came in for to the venue.')">Send to Laurent</button>
+      <div class="why">Only the vibe — never your name or a receipt. Helps the next offer actually fit.</div>
+    </div>
+
+  </div>
+  <div class="foot">
+    <button class="primary" onclick="go('consumer-feed.html')">Back to the feed</button>
+  </div>
+</div>
+<script src="../scripts/nav.js"></script>
+</body></html>
