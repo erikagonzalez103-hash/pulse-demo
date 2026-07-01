@@ -59,10 +59,10 @@ body::before{content:"";position:fixed;inset:0;pointer-events:none;
 .delta-cap{font-size:9.5px;color:var(--text-faint);text-align:center;letter-spacing:.08em;text-transform:uppercase;font-family:var(--font-sub);}
 
 /* — Section eyebrow — */
-.sec-eye{font-family:var(--font-sub);font-size:9.5px;letter-spacing:.26em;text-transform:uppercase;color:var(--text-faint);
+.sec-eye{font-family:var(--font-sub);font-size:9.5px;letter-spacing:.26em;text-transform:uppercase;color:var(--text);font-weight:500;
   margin-bottom:11px;display:flex;align-items:center;justify-content:space-between;}
 .sec-eye .see-all{font-family:var(--font-body);font-size:10.5px;letter-spacing:.03em;text-transform:none;color:var(--gold);cursor:pointer;text-decoration:none;}
-.sec{font-family:var(--font-sub);font-size:9.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--text-faint);margin:0 0 12px;}
+.sec{font-family:var(--font-sub);font-size:9.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--text);font-weight:500;margin:0 0 12px;}
 
 /* — Form controls (shared by schedule & offer builder) — */
 .field{background:rgba(255,255,255,.025);border:1px solid var(--border-soft);border-radius:13px;padding:14px 16px;display:flex;align-items:center;justify-content:space-between;cursor:pointer;transition:border-color .2s;}

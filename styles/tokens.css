@@ -40,7 +40,7 @@
   /* — Text — */
   --text:#F2EEE3;
   --text-dim:#95A0AE;
-  --text-faint:#5C6675;
+  --text-faint:#8C95A3;  /* lifted for legibility on the near-black surface (was #5C6675) */
 
   /* — Lines — */
   --border:rgba(202,168,113,0.22);
