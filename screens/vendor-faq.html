@@ -1,0 +1,105 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pulse · Help · Ask Pulse</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles/tokens.css">
+<link rel="stylesheet" href="../styles/components.css">
+<style>
+/* — screen-specific only — AI help / FAQ — */
+.atmosphere{position:absolute;inset:0;pointer-events:none;z-index:0;
+  background:radial-gradient(ellipse 80% 50% at 50% 8%,rgba(202,168,113,.10),transparent 58%);}
+.body{padding:18px 22px 40px;}
+.eyebrow{font-family:var(--font-sub);font-size:10px;letter-spacing:.26em;color:var(--gold);text-transform:uppercase;margin-bottom:9px;}
+.headline{font-family:var(--font-display);font-weight:400;font-size:24px;color:var(--text);line-height:1.18;margin-bottom:16px;}
+/* ask box */
+.askbox{display:flex;align-items:center;gap:9px;background:var(--bg-input);border:1px solid var(--gold-deep);border-radius:14px;padding:12px 14px;margin-bottom:12px;}
+.askbox .ai{color:var(--gold);font-size:15px;line-height:1;}
+.askbox input{flex:1;background:none;border:none;color:var(--text);font-family:var(--font-body);font-size:13.5px;}
+.askbox input::placeholder{color:var(--text-faint);}
+.askbox input:focus{outline:none;}
+.askbox .send{background:var(--gold);color:var(--ink-on-gold);border:none;border-radius:999px;padding:8px 15px;font-family:var(--font-body);font-weight:600;font-size:12px;cursor:pointer;}
+.suggest{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px;}
+.suggest .chip{border:1px solid var(--hair);border-radius:999px;padding:7px 12px;font-size:11.5px;color:var(--text-dim);cursor:pointer;transition:all .2s;}
+.suggest .chip:hover{border-color:var(--gold-deep);color:var(--text);}
+/* worked answer */
+.answer{background:rgba(255,255,255,.025);border:1px solid var(--border);border-radius:15px;padding:16px 17px;margin-bottom:24px;}
+.answer .q{font-family:var(--font-display);font-weight:500;font-size:15px;color:var(--text);margin-bottom:10px;}
+.answer .a-eye{font-family:var(--font-sub);font-size:8.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:8px;display:flex;align-items:center;gap:6px;}
+.answer .a-body{font-size:12.5px;color:var(--text-dim);line-height:1.6;}
+.answer .a-body b{color:var(--text);font-weight:500;}
+.answer .a-cta{margin-top:12px;color:var(--gold);font-size:12px;cursor:pointer;}
+/* common questions */
+.sec{font-family:var(--font-sub);font-size:9.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--text);font-weight:500;margin:0 0 6px;}
+.qrow{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 0;border-bottom:1px solid var(--hair);cursor:pointer;}
+.qrow:last-child{border-bottom:none;}
+.qrow .qt{font-size:13px;color:var(--text);line-height:1.4;}
+.qrow .qc{color:var(--gold);font-size:13px;flex-shrink:0;}
+.group{background:rgba(255,255,255,.02);border:1px solid var(--hair);border-radius:14px;padding:2px 16px;margin-bottom:16px;}
+.concierge{font-size:11px;color:var(--text-faint);text-align:center;line-height:1.5;margin-top:6px;}
+.concierge a{color:var(--gold);cursor:pointer;}
+</style></head><body>
+
+<div class="context">
+  <div class="k">Vendor Prototype · Help · Ask Pulse</div>
+  <h1>AI FAQ — Ask Pulse</h1>
+  <p>Team Review 03: an AI help desk so vendors self-serve — "how do I…?" answered in Pulse's voice, on the spot, instead of flooding the concierge. Worked example shown; the ask box + suggestions are the live hooks (real answers wire in with the AI).</p>
+</div>
+
+<div class="phone">
+  <div class="notch"></div>
+  <div class="atmosphere"></div>
+  <div class="app-row">
+    <button class="back" onclick="go('vendor-settings.html')">&#8249;</button>
+    <span class="app-title">Help</span>
+    <span class="app-pad"></span>
+  </div>
+  <div class="body">
+    <div class="eyebrow">Help</div>
+    <h2 class="headline">Ask Pulse anything</h2>
+
+    <div class="askbox">
+      <span class="ai">&#10022;</span>
+      <input type="text" placeholder="How do I…?" onkeydown="if(event.key==='Enter')sendPrompt('Ask Pulse this question.')">
+      <button class="send" onclick="sendPrompt('Ask Pulse this question.')">Ask</button>
+    </div>
+    <div class="suggest">
+      <span class="chip" onclick="sendPrompt('Why is my momentum at zero?')">Why is my momentum zero?</span>
+      <span class="chip" onclick="sendPrompt('How do refunds work when I cancel?')">How do refunds work?</span>
+      <span class="chip" onclick="go('vendor-team.html')">How do I add my team?</span>
+      <span class="chip" onclick="go('vendor-definitions.html')">What does "claimed" mean?</span>
+    </div>
+
+    <div class="answer">
+      <div class="a-eye"><span>&#10022;</span> Pulse answered</div>
+      <div class="q">How do I create my first offer?</div>
+      <div class="a-body">Tap <b>Create offer</b>, then pick a type — <b>Access</b> (a seat, no discount) or an offer like <b>Discount / Bundle / Freebie / Upgrade</b>. The builder tailors its fields to your business. Add who it's for, how the claim holds, a photo or short video, then <b>Schedule &amp; publish</b>. We review it, then it's live — usually within the hour.</div>
+      <div class="a-cta" onclick="go('vendor-02a-choose-type.html')">Start one with me &#8594;</div>
+    </div>
+
+    <div class="sec">Popular with vendors</div>
+    <div class="group">
+      <div class="qrow" onclick="go('vendor-definitions.html')">
+        <span class="qt">What's the difference between claimed, checked-in, and saved?</span><span class="qc">&#8250;</span>
+      </div>
+      <div class="qrow" onclick="sendPrompt('Why is my momentum at zero, and how do I grow it?')">
+        <span class="qt">Why is my momentum at zero?</span><span class="qc">&#8250;</span>
+      </div>
+      <div class="qrow" onclick="sendPrompt('How do discounts and the promotion cap work?')">
+        <span class="qt">Can I run a discount? How often?</span><span class="qc">&#8250;</span>
+      </div>
+      <div class="qrow" onclick="sendPrompt('What happens when I cancel — how fast are refunds?')">
+        <span class="qt">If I cancel, how fast do guests get refunded?</span><span class="qc">&#8250;</span>
+      </div>
+      <div class="qrow" onclick="go('vendor-team.html')">
+        <span class="qt">How do I give my managers and hosts access?</span><span class="qc">&#8250;</span>
+      </div>
+    </div>
+
+    <div class="concierge">Still stuck? <a onclick="sendPrompt('Connect me with my Pulse concierge.')">Reach your concierge</a> — a real person, same day.</div>
+
+  </div>
+</div>
+<script src="../scripts/nav.js"></script>
+</body></html>

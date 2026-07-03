@@ -1,0 +1,121 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pulse · Alerts</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles/tokens.css">
+<link rel="stylesheet" href="../styles/components.css">
+<style>
+/* — screen-specific only — consumer notification center — */
+.atmosphere{position:absolute;inset:0;pointer-events:none;z-index:0;
+  background:radial-gradient(ellipse 80% 50% at 50% 8%,rgba(202,168,113,.10),transparent 58%);}
+.body{padding:18px 22px 40px;}
+.headline{font-family:var(--font-display);font-weight:400;font-size:24px;color:var(--text);line-height:1.18;margin-bottom:20px;}
+/* featured — a seat just freed (time-sensitive, amber attention) */
+.freed{position:relative;background:var(--alert-soft);border:1px solid color-mix(in srgb, var(--alert) 40%, transparent);border-radius:15px;padding:16px 17px;margin-bottom:24px;}
+.freed .f-eye{font-family:var(--font-sub);font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:var(--alert);margin-bottom:8px;display:flex;align-items:center;gap:7px;}
+.freed .f-eye .beat{width:6px;height:6px;border-radius:50%;background:var(--alert);box-shadow:0 0 8px var(--alert);}
+.freed .f-name{font-family:var(--font-display);font-weight:500;font-size:17px;color:var(--text);line-height:1.25;margin-bottom:6px;}
+.freed .f-body{font-size:12.5px;color:var(--text-dim);line-height:1.5;margin-bottom:13px;}
+.freed .f-body b{color:var(--text);font-weight:500;}
+.freed .f-row{display:flex;align-items:center;gap:12px;}
+.freed .claim{background:var(--gold);color:var(--ink-on-gold);border:none;border-radius:999px;padding:10px 20px;font-family:var(--font-body);font-weight:600;font-size:13px;cursor:pointer;}
+.freed .count{font-family:var(--font-sub);font-size:11px;letter-spacing:.08em;color:var(--alert);}
+.freed .count b{font-family:var(--font-body);font-weight:500;}
+/* feed */
+.day{font-family:var(--font-sub);font-size:9.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--text-faint);margin:0 0 10px;}
+.notif{display:flex;gap:12px;align-items:flex-start;padding:13px 0;border-bottom:1px solid var(--hair);cursor:pointer;}
+.notif:last-child{border-bottom:none;}
+.notif .nd{width:7px;height:7px;border-radius:50%;margin-top:5px;flex-shrink:0;background:var(--gold);box-shadow:0 0 8px var(--gold);}
+.notif .nd.warn{background:var(--alert);box-shadow:0 0 8px var(--alert);}
+.notif .nd.read{background:var(--text-faint);box-shadow:none;}
+.notif .ntitle{font-size:13px;color:var(--text);line-height:1.45;}
+.notif .ntitle b{color:var(--gold);font-weight:500;}
+.notif .ntitle .star{color:var(--gold);}
+.notif .nmeta{font-size:10.5px;color:var(--text-faint);margin-top:4px;}
+.group{margin-bottom:24px;}
+.group:last-child{margin-bottom:0;}
+</style></head><body>
+
+<div class="context">
+  <div class="k">Consumer Prototype · Alerts</div>
+  <h1>Notification center</h1>
+  <p>The home for every alert Pulse promises — a freed waitlist seat (with the 15-min window ticking), a starred offer about to close (the deferred expiring-offer alert, now homed), claim reminders, RFID check-in nudges, and vendor-cancel notices. Time-sensitive = amber, never red.</p>
+</div>
+
+<div class="phone">
+  <div class="notch"></div>
+  <div class="atmosphere"></div>
+  <div class="app-row">
+    <button class="back" onclick="go('consumer-feed.html')">&#8249;</button>
+    <span class="app-title">Alerts</span>
+    <span class="app-pad"></span>
+  </div>
+  <div class="body">
+    <h2 class="headline">What's happening</h2>
+
+    <div class="freed">
+      <div class="f-eye"><span class="beat"></span>A seat just freed — you're first</div>
+      <div class="f-name">The Marfa Room — a spot opened up</div>
+      <div class="f-body">You were next on the waitlist. It's <b>yours to claim first</b> before it reopens to everyone.</div>
+      <div class="f-row">
+        <button class="claim" onclick="go('consumer-detail.html')">Claim it</button>
+        <span class="count"><b id="cd">14:57</b> left</span>
+      </div>
+    </div>
+
+    <div class="group">
+      <div class="day">Today</div>
+      <div class="notif" onclick="go('consumer-detail.html')">
+        <span class="nd warn"></span>
+        <div>
+          <div class="ntitle"><span class="star">&#9733;</span> <b>Chef's counter</b> at Laurent is down to <b>2 left</b> and closes at 6:30.</div>
+          <div class="nmeta">18 min ago · your saved offer, ending soon</div>
+        </div>
+      </div>
+      <div class="notif" onclick="go('consumer-arrival.html')">
+        <span class="nd"></span>
+        <div>
+          <div class="ntitle">Your <b>Laurent</b> seat is tonight at 6:30 — check in when you arrive.</div>
+          <div class="nmeta">2 hr ago · claim reminder</div>
+        </div>
+      </div>
+      <div class="notif" onclick="go('consumer-arrival.html')">
+        <span class="nd"></span>
+        <div>
+          <div class="ntitle">You're near <b>Laurent</b> — check in to see what's live and lift the night.</div>
+          <div class="nmeta">Just now · you're close by</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="group">
+      <div class="day">Earlier this week</div>
+      <div class="notif" onclick="go('consumer-cancelled.html')">
+        <span class="nd read"></span>
+        <div>
+          <div class="ntitle">Laurent had to pull Thursday's counter — your <b>$50 was refunded</b>.</div>
+          <div class="nmeta">Thu · vendor cancelled</div>
+        </div>
+      </div>
+      <div class="notif" onclick="go('consumer-feed.html')">
+        <span class="nd read"></span>
+        <div>
+          <div class="ntitle"><b>Studio Priya</b> filled fast last night — worth a save next time.</div>
+          <div class="nmeta">Wed · filling fast near you</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+<script src="../scripts/nav.js"></script>
+<script>
+(function(){
+  var el=document.getElementById('cd'); if(!el) return;
+  var s=14*60+57;
+  setInterval(function(){ if(s<=0)return; s--; var m=Math.floor(s/60),x=s%60; el.textContent=m+':'+(x<10?'0':'')+x; },1000);
+})();
+</script>
+</body></html>
