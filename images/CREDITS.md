@@ -1,10 +1,11 @@
 # Image credits & license
 
-All photos sourced from **Pexels** (pexels.com) under the [Pexels License](https://www.pexels.com/license/) — free for commercial use, no attribution required, modification allowed. Downloaded 2026-07-27; committed to the repo (not hotlinked) so the demo never breaks.
+**dallas-skyline-hero.jpg** — Dallas skyline at blue hour (Reunion Tower + Trinity reflection). **Licensed photograph purchased by Erika** (original: `DSC_0076-2.jpg`, added 2026-07-27). Used for the consumer login hero.
+
+All other photos sourced from **Pexels** (pexels.com) under the [Pexels License](https://www.pexels.com/license/) — free for commercial use, no attribution required, modification allowed. Downloaded 2026-07-27; committed to the repo (not hotlinked) so the demo never breaks.
 
 | File | Pexels photo ID | Used for |
 |---|---|---|
-| dallas-night-reunion.jpg | 2061222 | Consumer login skyline |
 | dallas-golden-hour.jpg | 19205515 | Welcome porthole (golden-hour city) |
 | dallas-bishop-arts-night.jpg | 2061211 | Location step backdrop |
 | venue-laurent.jpg | 260922 | Laurent — feed card, detail hero, builder lead |
