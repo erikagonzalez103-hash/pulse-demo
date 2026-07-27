@@ -9,10 +9,12 @@
 <style>
 /* — screen-specific only — */
 .body{padding:0;}
-/* hero — Dallas skyline over a near-black sky */
+/* hero — the real Reunion Tower at night, resolving out of the near-black
+   (photo: images/dallas-night-reunion.jpg · brand treatment layered in CSS) */
 .hero{position:relative;height:404px;overflow:hidden;
-  background:radial-gradient(ellipse 90% 60% at 50% 78%,rgba(202,168,113,.16),transparent 62%),
-            linear-gradient(180deg,var(--bg) 0%,#0a0e16 60%,#0c1119 100%);}
+  background:linear-gradient(180deg,var(--bg) 0%,rgba(6,9,15,.45) 26%,rgba(6,9,15,.12) 55%,rgba(6,9,15,.78) 100%),
+            radial-gradient(ellipse 90% 60% at 50% 78%,rgba(202,168,113,.14),transparent 62%),
+            url('../images/dallas-night-reunion.jpg') center/cover;}
 .stars{position:absolute;inset:0;pointer-events:none;
   background:radial-gradient(1px 1px at 20% 24%,rgba(242,238,227,.5),transparent),
             radial-gradient(1px 1px at 68% 16%,rgba(242,238,227,.35),transparent),
@@ -62,27 +64,10 @@
   <div class="body">
 
     <div class="hero">
-      <div class="stars"></div>
       <div class="brandmark">
         <div class="pulse-mark"><span class="ring"></span><span class="ring r2"></span><span class="core"></span></div>
         <div class="wordmark">PUL<span class="s">S</span>E</div>
         <div class="tagline">Dallas, check your Pulse.</div>
-      </div>
-      <div class="horizon"></div>
-      <div class="skyline">
-        <svg viewBox="0 0 380 150" preserveAspectRatio="none" aria-label="Dallas skyline">
-          <!-- Reunion Tower: mast + ball, left of centre -->
-          <line x1="92" y1="150" x2="92" y2="58" stroke="var(--gold-deep)" stroke-width="3"/>
-          <circle cx="92" cy="52" r="11" fill="none" stroke="var(--gold)" stroke-width="2.5"/>
-          <circle cx="92" cy="52" r="3" fill="var(--gold)"/>
-          <!-- skyline silhouette -->
-          <path d="M0 150 L0 110 L24 110 L24 96 L44 96 L44 104 L60 104 L60 70 L74 70 L74 150
-                   L108 150 L108 84 L122 84 L122 74 L132 74 L132 84 L150 84 L150 44 L162 44 L162 30 L172 30 L172 44 L186 44 L186 150
-                   L210 150 L210 64 L226 64 L226 54 L238 54 L238 64 L256 64 L256 150
-                   L284 150 L284 90 L300 90 L300 78 L312 78 L312 90 L328 90 L328 150
-                   L350 150 L350 100 L368 100 L368 88 L380 88 L380 150 Z"
-                fill="var(--bg)" stroke="var(--gold-deep)" stroke-width="1.5"/>
-        </svg>
       </div>
     </div>
 

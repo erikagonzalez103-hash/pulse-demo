@@ -20,8 +20,8 @@
   border:1px solid var(--gold-deep);
   box-shadow:0 0 0 6px rgba(202,168,113,.06),0 22px 50px rgba(0,0,0,.55),inset 0 0 40px rgba(0,0,0,.55);}
 .porthole .scene{position:absolute;inset:0;
-  background:radial-gradient(ellipse 90% 70% at 50% 86%,rgba(216,132,63,.55),transparent 60%),
-            linear-gradient(180deg,#0b1019 0%,#161019 55%,#1d130d 100%);}
+  background:linear-gradient(180deg,rgba(6,9,15,.28),rgba(6,9,15,.06) 45%,rgba(29,19,13,.32)),
+            url('../images/dallas-golden-hour.jpg') center/cover;}
 .porthole .pstars{position:absolute;inset:0;
   background:radial-gradient(1px 1px at 30% 26%,rgba(242,238,227,.5),transparent),
             radial-gradient(1px 1px at 64% 20%,rgba(242,238,227,.4),transparent),
@@ -56,18 +56,7 @@
 
     <div class="porthole-wrap">
       <div class="porthole">
-        <div class="scene"></div>
-        <div class="pstars"></div>
-        <div class="psky">
-          <svg viewBox="0 0 212 98" preserveAspectRatio="none" aria-label="City at golden hour">
-            <line x1="58" y1="98" x2="58" y2="40" stroke="var(--gold-deep)" stroke-width="2"/>
-            <circle cx="58" cy="36" r="7" fill="none" stroke="var(--gold)" stroke-width="2"/>
-            <circle cx="58" cy="36" r="2" fill="var(--gold)"/>
-            <path d="M0 98 L0 72 L16 72 L16 80 L30 80 L30 50 L42 50 L42 98 L70 98 L70 56 L82 56 L82 48 L90 48 L90 56 L104 56
-                     L104 30 L114 30 L114 20 L122 20 L122 30 L134 30 L134 98 L158 98 L158 62 L172 62 L172 54 L182 54 L182 62 L196 62 L196 74 L212 74 L212 98 Z"
-                  fill="rgba(6,9,15,.82)" stroke="var(--gold-deep)" stroke-width="1.2"/>
-          </svg>
-        </div>
+        <div class="scene" role="img" aria-label="Reunion Tower at golden hour"></div>
         <div class="pglow"></div>
       </div>
     </div>
