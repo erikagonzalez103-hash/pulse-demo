@@ -48,29 +48,37 @@ body::before{content:"";position:fixed;inset:0;pointer-events:none;background:ra
   </div>
 
   <div class="whatsnew">
-    <div class="flow-title">★ This week's review — Jul 1 · what's new &amp; updated</div>
-    <p class="wn-intro">Everything that changed since the last walkthrough (Batches 07–10). Tap any name to jump straight to it. Inside any screen, use <b style="color:var(--text);">‹ Back</b> or <b style="color:var(--text);">⌂ All screens</b> (top-left) to return here.</p>
+    <div class="flow-title">★ New &amp; updated — current build</div>
+    <p class="wn-intro">Everything that's changed in the latest build — kept current with each push. Tap any name to jump to it; inside a screen use <b style="color:var(--text);">‹ Back</b> or <b style="color:var(--text);">⌂ All screens</b> (top-left) to return here.</p>
     <div class="wn-grid">
       <div class="wn-col">
         <div class="wn-h"><span class="badge-new">New</span> screens</div>
-        <a href="screens/vendor-definitions.html"><b>What the numbers mean</b> — vendor glossary: claimed vs checked-in vs saved vs momentum. Linked from Analytics + Settings.</a>
-        <a href="screens/consumer-etiquette.html"><b>House Rules</b> — the social contract after first check-in (renamed from "Pulse People"; now with gentle consequences).</a>
-        <a href="screens/consumer-cancelled.html"><b>Vendor-cancelled state</b> — auto-refund, in Pulse's voice, intent-matched rooms still live nearby.</a>
+        <a href="screens/consumer-payment.html"><b>Confirm &amp; claim</b> — the deposit capture: card on file or Apple / Google / Cash App Pay, before the heartbeat.</a>
+        <a href="screens/consumer-location.html"><b>Location</b> — "where are you?" so "near you" is real, plus an "I'm visiting" path.</a>
+        <a href="screens/consumer-arrival.html"><b>Arrival check-in (RFID)</b> — the real check-in: momentum lifts, offers unlock, mini-survey of what you came for.</a>
+        <a href="screens/consumer-notifications.html"><b>Notification center</b> — freed waitlist seat (live timer), expiring-offer + claim/check-in alerts.</a>
+        <a href="screens/consumer-waitlist.html"><b>Waitlist — joined</b> — your place in line + the 15-min first-dibs window.</a>
+        <a href="screens/consumer-cancelled.html"><b>Vendor-cancelled</b> — auto-refund, in Pulse's voice, intent-matched options nearby.</a>
+        <a href="screens/consumer-etiquette.html"><b>House Rules</b> — the guest social contract after first check-in (with gentle consequences).</a>
+        <a href="screens/vendor-definitions.html"><b>What the numbers mean</b> — vendor glossary: claimed vs checked-in vs saved vs momentum.</a>
+        <a href="screens/vendor-team.html"><b>Team &amp; access</b> — Owner / Manager / Host roles, per location.</a>
+        <a href="screens/vendor-faq.html"><b>AI FAQ — Ask Pulse</b> — self-serve vendor help, with a concierge fallback.</a>
       </div>
       <div class="wn-col">
         <div class="wn-h"><span class="badge-upd">Updated</span> screens</div>
-        <a href="screens/vendor-02b-offer-builder.html"><b>Offer builder</b> — "how this claim holds" commitment menu + media upload + expanded occasion taxonomy.</a>
-        <a href="screens/vendor-02b-offer-builder-standard.html"><b>Standard builder</b> — commitment menu (cancellation policy / excuse) + media upload.</a>
-        <a href="screens/consumer-detail.html"><b>Offer detail</b> — the hold terms shown before you claim (deposit · grace · cancel window).</a>
-        <a href="screens/consumer-checkin.html"><b>Check-in</b> — deposit/grace terms, presence-based momentum, etiquette link.</a>
-        <a href="screens/consumer-detail-full.html"><b>Sold-out</b> — 15-min first-dibs waitlist release.</a>
-        <a href="screens/vendor-04-live-offer.html"><b>Live offer</b> — vendor live controls: pause · release a seat · cancel.</a>
-        <a href="screens/vendor-notifications.html"><b>Slipping alert</b> — now amber (not red), with a gentle pulse.</a>
+        <a href="screens/vendor-02a-choose-type.html"><b>Choose offer type</b> — expanded to 5: Access · Discount · Bundle · Freebie · Upgrade.</a>
+        <a href="screens/vendor-02b-offer-builder.html"><b>Offer builder</b> — commitment menu + media upload + occasion + party-size stepper + "tailored for [business]".</a>
+        <a href="screens/vendor-02b-offer-builder-standard.html"><b>Standard builder</b> — commitment menu + media + tailored-for.</a>
+        <a href="screens/consumer-feed.html"><b>Feed</b> — real family / dog / patio filters, distances, and the alerts bell.</a>
+        <a href="screens/consumer-detail.html"><b>Offer detail</b> — hold terms + "good to know" amenities; claim now captures the deposit.</a>
+        <a href="screens/consumer-checkin.html"><b>Claim confirmed</b> — renamed from "check-in"; deposit/grace terms; links to arrival.</a>
+        <a href="screens/consumer-detail-full.html"><b>Sold-out</b> — 15-min first-dibs release; Marfa now a seated format.</a>
+        <a href="screens/vendor-04-live-offer.html"><b>Live offer</b> — working pause · release · cancel controls.</a>
+        <a href="screens/vendor-notifications.html"><b>Slipping alert</b> — amber (not red) + a "boost to matched guests" lever.</a>
+        <a href="screens/vendor-analytics.html"><b>Analytics</b> — glossary link + honest numbers (no fabricated %).</a>
         <a href="screens/vendor-01-dashboard-new.html"><b>First-run dashboard</b> — green "no momentum yet" pill.</a>
-        <a href="screens/vendor-analytics.html"><b>Analytics</b> — glossary link under the stats.</a>
-        <a href="screens/vendor-settings.html"><b>Settings</b> — glossary row.</a>
-        <a href="screens/vendor-claim.html"><b>Claim</b> — self-serve hidden (concierge-only for now).</a>
-        <a href="screens/consumer-feed.html"><b>Feed</b> — "places" over "rooms" copy.</a>
+        <a href="screens/vendor-settings.html"><b>Settings</b> — team access, glossary, AI FAQ, default offer type, city switcher.</a>
+        <a href="screens/consumer-vibe.html"><b>Pick your vibe</b> — starts blank (no pre-selects); carries family &amp; dog-friendly.</a>
       </div>
     </div>
   </div>
@@ -162,12 +170,18 @@ body::before{content:"";position:fixed;inset:0;pointer-events:none;background:ra
       <a class="card" href="screens/consumer-vibe.html">
         <div class="step">Consumer · 02d</div><div class="name">Pick your vibe</div>
         <div class="desc">The photo-grid taste capture — makes "matched" honest, and carries family &amp; dog-friendly.</div></a>
+      <a class="card" href="screens/consumer-location.html">
+        <div class="step">Consumer · 02e</div><div class="name">Location</div>
+        <div class="desc">Review 04 fix: "where are you?" so "near you" is real — plus an "I'm visiting" path for out-of-towners.</div></a>
       <a class="card" href="screens/consumer-feed.html">
         <div class="step">Consumer · 03</div><div class="name">Card feed</div>
         <div class="desc">Dallas right now, ranked by live momentum. Heat rings, time / category filters, the shared feed card.</div></a>
       <a class="card" href="screens/consumer-detail.html">
         <div class="step">Consumer · 04</div><div class="name">Offer detail</div>
         <div class="desc">One offer in full — and the loop back to the builder: the guest-fit shown as "why you're seeing this."</div></a>
+      <a class="card" href="screens/consumer-payment.html">
+        <div class="step">Consumer · 04b</div><div class="name">Confirm &amp; claim (deposit)</div>
+        <div class="desc">Review 04 fix (P0): the $50 hold is actually captured — card on file or Apple/Google/Cash App Pay — before the heartbeat.</div></a>
       <a class="card" href="screens/consumer-checkin.html">
         <div class="step">Consumer · 05</div><div class="name">Claim confirmed</div>
         <div class="desc">The heartbeat when you claim a seat — "your seat is held." (Renamed from "check-in" — that's the arrival beat.)</div></a>

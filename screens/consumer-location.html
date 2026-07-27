@@ -1,0 +1,87 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pulse · Where are you?</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles/tokens.css">
+<link rel="stylesheet" href="../styles/components.css">
+<style>
+/* — screen-specific only — location step — */
+.bloom-bg{position:absolute;inset:0;pointer-events:none;z-index:0;
+  background:radial-gradient(ellipse 90% 55% at 50% 32%,rgba(202,168,113,.14),transparent 60%);}
+.body{padding:20px 24px 116px;position:relative;z-index:2;}
+.pinwrap{display:flex;justify-content:center;margin:14px 0 24px;}
+.pin{position:relative;width:96px;height:96px;display:flex;align-items:center;justify-content:center;}
+.pin .glyph{font-size:40px;color:var(--gold);z-index:2;}
+.pin .ping{position:absolute;inset:0;margin:auto;width:56px;height:56px;border-radius:50%;border:1.5px solid var(--gold);opacity:0;}
+.intro{text-align:center;margin-bottom:24px;}
+.eyebrow{font-family:var(--font-sub);font-size:10px;letter-spacing:.3em;color:var(--gold);text-transform:uppercase;margin-bottom:11px;}
+.headline{font-family:var(--font-display);font-weight:400;font-size:27px;color:var(--text);line-height:1.16;margin-bottom:9px;}
+.subline{font-size:13px;color:var(--text-dim);line-height:1.55;max-width:290px;margin:0 auto;}
+.use{width:100%;background:var(--gold);color:var(--ink-on-gold);border:none;border-radius:999px;padding:14px;font-family:var(--font-body);font-weight:600;font-size:14px;cursor:pointer;margin-bottom:12px;}
+.use:hover{box-shadow:0 0 22px rgba(202,168,113,.35);}
+.visiting{width:100%;background:none;border:1px solid var(--hair);color:var(--text-dim);border-radius:999px;padding:13px;font-family:var(--font-body);font-size:13px;cursor:pointer;transition:border-color .2s;margin-bottom:16px;}
+.visiting:hover{border-color:var(--gold-deep);color:var(--text);}
+.stay{display:none;margin-bottom:16px;}
+.stay.show{display:block;}
+.stay .lbl{font-size:11.5px;color:var(--text-dim);margin-bottom:9px;text-align:center;}
+.chips{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;}
+.chip{border:1px solid var(--hair);border-radius:999px;padding:9px 14px;font-size:12.5px;color:var(--text-dim);cursor:pointer;transition:all .2s;}
+.chip:hover{border-color:var(--gold-deep);color:var(--text);}
+.chip.on{border-color:var(--gold);color:var(--gold);background:var(--gold-soft);}
+.skip{display:block;text-align:center;margin-top:8px;color:var(--text-faint);font-size:12px;cursor:pointer;background:none;border:none;width:100%;}
+.why{font-size:10.5px;color:var(--text-faint);text-align:center;line-height:1.5;margin-top:18px;}
+@media (prefers-reduced-motion: no-preference){
+  .pin .ping{animation:lping 2.6s ease-out infinite;}
+  .pin .ping.p2{animation-delay:1.3s;}
+  @keyframes lping{0%{opacity:.6;transform:scale(1);}80%{opacity:0;transform:scale(2.6);}100%{opacity:0;}}
+}
+</style></head><body>
+
+<div class="context">
+  <div class="k">Consumer Prototype · Location</div>
+  <h1>Where are you?</h1>
+  <p>Review 04 fix (P0 #4): Pulse promised "near you" on six screens but never asked. This step captures location so distance is real — plus an <em>"I'm visiting"</em> path that sets a home base for out-of-towners (also the visitor gap).</p>
+</div>
+
+<div class="phone">
+  <div class="notch"></div>
+  <div class="bloom-bg"></div>
+  <div class="body">
+
+    <div class="pinwrap">
+      <div class="pin">
+        <span class="ping"></span><span class="ping p2"></span>
+        <span class="glyph">&#9906;</span>
+      </div>
+    </div>
+
+    <div class="intro">
+      <div class="eyebrow">One more thing</div>
+      <h2 class="headline">Where should we look?</h2>
+      <div class="subline">Pulse ranks tonight by what's live <b style="color:var(--text);font-weight:500;">near you</b> — so we need a starting point.</div>
+    </div>
+
+    <button class="use" onclick="go('consumer-feed.html')">Use my location</button>
+    <button class="visiting" onclick="document.getElementById('stay').classList.add('show');this.style.display='none';">I'm visiting — set where I'm staying</button>
+
+    <div class="stay" id="stay">
+      <div class="lbl">Staying around…</div>
+      <div class="chips">
+        <span class="chip" onclick="this.parentNode.querySelectorAll('.chip').forEach(function(c){c.classList.remove('on')});this.classList.add('on');">Uptown</span>
+        <span class="chip" onclick="this.parentNode.querySelectorAll('.chip').forEach(function(c){c.classList.remove('on')});this.classList.add('on');">Deep Ellum</span>
+        <span class="chip" onclick="this.parentNode.querySelectorAll('.chip').forEach(function(c){c.classList.remove('on')});this.classList.add('on');">Bishop Arts</span>
+        <span class="chip" onclick="this.parentNode.querySelectorAll('.chip').forEach(function(c){c.classList.remove('on')});this.classList.add('on');">Downtown</span>
+      </div>
+      <button class="use" style="margin-top:16px;" onclick="go('consumer-feed.html')">Show me what's near</button>
+    </div>
+
+    <button class="skip" onclick="go('consumer-feed.html')">Skip — just show me Dallas</button>
+
+    <div class="why">Only to rank what's near — never shared with venues, never tracked in the background.</div>
+
+  </div>
+</div>
+<script src="../scripts/nav.js"></script>
+</body></html>

@@ -58,6 +58,10 @@
 .holds .ht{font-size:11.5px;color:var(--text-dim);line-height:1.5;}
 .holds .ht b{color:var(--text);font-weight:500;}
 .holds .ht .terms{display:block;margin-top:5px;color:var(--text-faint);font-size:10.5px;line-height:1.55;}
+/* amenities / good-to-know — surfaced per venue (family, patio, dogs, access) */
+.amenities{display:flex;flex-wrap:wrap;align-items:center;gap:7px;padding:15px 0 2px;border-top:1px solid var(--hair);}
+.amenities .eye{font-family:var(--font-sub);font-size:8.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--text-faint);margin-right:2px;}
+.amenities .am{font-family:var(--font-sub);font-size:8.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--text-dim);border:1px solid var(--hair);border-radius:999px;padding:5px 10px;}
 </style></head><body>
 
 <div class="context">
@@ -119,6 +123,13 @@
         <span class="map" onclick="sendPrompt('Open Laurent in maps.')">View map &#8594;</span>
       </div>
 
+      <div class="amenities">
+        <span class="eye">Good to know</span>
+        <span class="am">Smart elegant</span>
+        <span class="am">Adults · intimate</span>
+        <span class="am">Valet nearby</span>
+      </div>
+
       <div class="holds">
         <span class="hd"></span>
         <div class="ht"><b>How this claim holds</b> — a $50 deposit, applied to your tab tonight.
@@ -129,7 +140,7 @@
   </div>
   <div class="foot">
     <button class="secondary" onclick="sendPrompt('Save this offer to your list.')">&#9734;</button>
-    <button class="primary" onclick="go('consumer-checkin.html')">Claim in Pulse</button>
+    <button class="primary" onclick="go('consumer-payment.html')">Claim in Pulse</button>
   </div>
 </div>
 <script src="../scripts/nav.js"></script>

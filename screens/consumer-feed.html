@@ -83,16 +83,17 @@
       <button onclick="pulseWhen(this,'Anytime','The places worth planning around.')">Anytime</button>
     </div>
     <div class="catscroll">
-      <span class="chip on">All</span>
-      <span class="chip" onclick="sendPrompt('Filter to Dining.')">Dining</span>
-      <span class="chip" onclick="sendPrompt('Filter to Nightlife.')">Nightlife</span>
-      <span class="chip" onclick="sendPrompt('Filter to Wellness.')">Wellness</span>
-      <span class="chip" onclick="sendPrompt('Filter to Culture.')">Culture</span>
-      <span class="chip" onclick="sendPrompt('Open neighborhood and more filters.')">Neighborhood &#9662;</span>
+      <span class="chip on" onclick="filterFeed(this,'all')">All</span>
+      <span class="chip" onclick="filterFeed(this,'dining')">Dining</span>
+      <span class="chip" onclick="filterFeed(this,'nightlife')">Nightlife</span>
+      <span class="chip" onclick="filterFeed(this,'wellness')">Wellness</span>
+      <span class="chip" onclick="filterFeed(this,'culture')">Culture</span>
+      <span class="chip" onclick="filterFeed(this,'family')">Family</span>
+      <span class="chip" onclick="filterFeed(this,'petpatio')">Patios &amp; dogs</span>
     </div>
 
     <!-- 1 · Laurent — hot (continuity with the vendor flow) -->
-    <div class="feedcard" onclick="go('consumer-detail.html')">
+    <div class="feedcard" data-tags="dining" onclick="go('consumer-detail.html')">
       <div class="img">
         <span class="newpill">Filling fast</span>
         <span class="heat-ring">
@@ -102,7 +103,7 @@
         <span class="glow"></span>
       </div>
       <div class="fc-body">
-        <div class="venue">Laurent · Lakewood</div>
+        <div class="venue">Laurent · Lakewood · 1.2 mi</div>
         <div class="fc-name">Chef's counter — six seats</div>
         <div class="fc-meta">
           <span class="seats">Tue · 6:30 PM · 2 of 6 left</span>
@@ -112,7 +113,7 @@
     </div>
 
     <!-- 2 · cocktail bar — nightlife, warming -->
-    <div class="feedcard" onclick="go('consumer-detail-full.html')">
+    <div class="feedcard" data-tags="nightlife petpatio" onclick="go('consumer-detail-full.html')">
       <div class="img">
         <span class="newpill soldout">Claimed out</span>
         <span class="heat-ring">
@@ -122,17 +123,18 @@
         <span class="glow"></span>
       </div>
       <div class="fc-body">
-        <div class="venue">The Marfa Room · Deep Ellum</div>
+        <div class="venue">The Marfa Room · Deep Ellum · 2.4 mi</div>
         <div class="fc-name">Last-call flight — agave &amp; amaro</div>
         <div class="fc-meta">
           <span class="seats">Tonight · 9 PM · full</span>
           <span class="heat-word wait">Waitlist open</span>
         </div>
+        <div class="fc-attr"><span class="tag">Patio</span><span class="tag">Dog-friendly</span></div>
       </div>
     </div>
 
     <!-- 3 · Priya's studio — wellness, new (Standard engine continuity) -->
-    <div class="feedcard" onclick="sendPrompt('Open Priya\'s intro pack offer.')">
+    <div class="feedcard" data-tags="wellness" onclick="sendPrompt('Open Priya\'s intro pack offer.')">
       <div class="img">
         <span class="newpill">New on Pulse</span>
         <span class="heat-ring">
@@ -142,7 +144,7 @@
         <span class="glow"></span>
       </div>
       <div class="fc-body">
-        <div class="venue">Studio Priya · Bishop Arts</div>
+        <div class="venue">Studio Priya · Bishop Arts · 3.1 mi</div>
         <div class="fc-name">Intro pack — three classes</div>
         <div class="fc-meta">
           <span class="seats">All week · $39 for newcomers</span>
@@ -152,7 +154,7 @@
     </div>
 
     <!-- 4 · gallery — culture -->
-    <div class="feedcard" onclick="sendPrompt('Open the Continental Gin gallery opening.')">
+    <div class="feedcard" data-tags="culture family petpatio" onclick="sendPrompt('Open the Continental Gin gallery opening.')">
       <div class="img">
         <span class="newpill">Tonight only</span>
         <span class="heat-ring">
@@ -162,12 +164,13 @@
         <span class="glow"></span>
       </div>
       <div class="fc-body">
-        <div class="venue">Continental Gin · Exposition Park</div>
+        <div class="venue">Continental Gin · Exposition Park · 2.8 mi</div>
         <div class="fc-name">Opening night — new works</div>
         <div class="fc-meta">
           <span class="seats">Tonight · 7–10 PM · free</span>
           <span class="heat-word">RSVP in Pulse</span>
         </div>
+        <div class="fc-attr"><span class="tag">Family-friendly</span><span class="tag">Patio</span></div>
       </div>
     </div>
 
@@ -180,6 +183,14 @@
   </div>
 </div>
 <script>
+  function filterFeed(btn, key){
+    document.querySelectorAll('.catscroll .chip').forEach(function(c){ c.classList.remove('on'); });
+    btn.classList.add('on');
+    document.querySelectorAll('.feedcard').forEach(function(card){
+      var tags = (card.getAttribute('data-tags')||'').split(' ');
+      card.style.display = (key==='all' || tags.indexOf(key) >= 0) ? '' : 'none';
+    });
+  }
   function pulseWhen(btn, eye, head){
     document.querySelectorAll('.timeseg button').forEach(function(b){ b.classList.remove('on'); });
     btn.classList.add('on');

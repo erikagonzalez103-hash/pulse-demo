@@ -1,0 +1,98 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pulse · Confirm &amp; claim</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles/tokens.css">
+<link rel="stylesheet" href="../styles/components.css">
+<style>
+/* — screen-specific only — the deposit capture step (before the heartbeat) — */
+.atmosphere{position:absolute;inset:0;pointer-events:none;z-index:0;
+  background:radial-gradient(ellipse 80% 50% at 50% 10%,rgba(202,168,113,.10),transparent 60%);}
+.body{padding:18px 22px 116px;}
+.eyebrow{font-family:var(--font-sub);font-size:10px;letter-spacing:.26em;color:var(--gold);text-transform:uppercase;margin-bottom:9px;}
+.headline{font-family:var(--font-display);font-weight:400;font-size:24px;color:var(--text);line-height:1.18;margin-bottom:20px;}
+/* offer summary */
+.summary{background:rgba(255,255,255,.025);border:1px solid var(--border-soft);border-radius:14px;padding:15px 16px;margin-bottom:14px;}
+.summary .sv{font-family:var(--font-sub);font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:6px;}
+.summary .sn{font-family:var(--font-display);font-weight:500;font-size:17px;color:var(--text);line-height:1.2;margin-bottom:5px;}
+.summary .sm{font-size:12px;color:var(--text-dim);}
+.summary .dep{display:flex;align-items:center;justify-content:space-between;margin-top:13px;padding-top:13px;border-top:1px solid var(--hair);}
+.summary .dep .dl{font-size:12.5px;color:var(--text);}
+.summary .dep .dv{font-family:var(--font-display);font-weight:500;font-size:18px;color:var(--gold);}
+.depterms{font-size:10.5px;color:var(--text-faint);line-height:1.5;margin:8px 2px 22px;}
+/* pay with */
+.sec{font-family:var(--font-sub);font-size:9.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--text);font-weight:500;margin:0 0 11px;}
+.saved{display:flex;align-items:center;gap:12px;background:var(--gold-soft);border:1px solid var(--gold-deep);border-radius:12px;padding:13px 15px;margin-bottom:10px;cursor:pointer;}
+.saved .rdo{width:16px;height:16px;border-radius:50%;border:1.5px solid var(--gold);position:relative;flex-shrink:0;}
+.saved .rdo::after{content:"";position:absolute;inset:3px;border-radius:50%;background:var(--gold);box-shadow:0 0 8px var(--gold);}
+.saved .ci{flex:1;}
+.saved .cn{font-size:13px;color:var(--text);}
+.saved .cs{font-size:10.5px;color:var(--text-dim);margin-top:2px;}
+.saved .brand{font-family:var(--font-sub);font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);}
+.taprow{display:flex;gap:9px;flex-wrap:wrap;margin-bottom:14px;}
+.tap{flex:1;min-width:92px;background:var(--bg-input);border:1px solid var(--border-soft);border-radius:12px;padding:12px 8px;color:var(--text);font-family:var(--font-body);font-size:12px;cursor:pointer;text-align:center;transition:border-color .2s;}
+.tap:hover{border-color:var(--gold-deep);}
+.tap .m{font-size:15px;display:block;margin-bottom:3px;}
+.secure{display:flex;gap:9px;align-items:flex-start;background:rgba(255,255,255,.02);border:1px solid var(--hair);border-radius:12px;padding:12px 14px;}
+.secure .d{width:6px;height:6px;border-radius:50%;background:var(--gold);box-shadow:0 0 8px var(--gold);margin-top:5px;flex-shrink:0;}
+.secure .st{font-size:11px;color:var(--text-dim);line-height:1.5;}
+.secure .st b{color:var(--text);font-weight:500;}
+</style></head><body>
+
+<div class="context">
+  <div class="k">Consumer Prototype · Deposit capture</div>
+  <h1>Confirm &amp; claim</h1>
+  <p>Review 04 fix (P0 #1): the missing step. The $50 hold is actually captured here — one-tap with a card on file, or Apple / Google / Cash App Pay — <em>before</em> the "seat is held" heartbeat, so the deposit and the refund story are real, not asserted. Held by Stripe; Pulse never stores the card.</p>
+</div>
+
+<div class="phone">
+  <div class="notch"></div>
+  <div class="atmosphere"></div>
+  <div class="app-row">
+    <button class="back" onclick="go('consumer-detail.html')">&#8249;</button>
+    <span class="app-title">Confirm &amp; claim</span>
+    <span class="app-pad"></span>
+  </div>
+  <div class="body">
+    <div class="eyebrow">One step to hold your seat</div>
+    <h2 class="headline">Confirm your deposit</h2>
+
+    <div class="summary">
+      <div class="sv">Laurent · Lakewood</div>
+      <div class="sn">Chef's counter — six seats</div>
+      <div class="sm">Tonight · 6:30 PM · $175 prix fixe</div>
+      <div class="dep">
+        <span class="dl">Deposit hold — applied to your tab</span>
+        <span class="dv">$50</span>
+      </div>
+    </div>
+    <div class="depterms">Free to cancel until 2 hrs before · a no-show keeps the $50. The rest of your bill is settled at the table.</div>
+
+    <div class="sec">Pay with</div>
+    <div class="saved" onclick="go('consumer-checkin.html')">
+      <span class="rdo"></span>
+      <div class="ci"><div class="cn">Visa ending 4242</div><div class="cs">Your default card</div></div>
+      <span class="brand">On file</span>
+    </div>
+    <div class="taprow">
+      <button class="tap" onclick="go('consumer-checkin.html')"><span class="m">&#63743;</span>Apple Pay</button>
+      <button class="tap" onclick="go('consumer-checkin.html')"><span class="m">G</span>Google Pay</button>
+      <button class="tap" onclick="go('consumer-checkin.html')"><span class="m">$</span>Cash App</button>
+      <button class="tap" onclick="sendPrompt('Add a new card.')"><span class="m">&#43;</span>New card</button>
+    </div>
+
+    <div class="secure">
+      <span class="d"></span>
+      <div class="st"><b>Held securely by Stripe.</b> Pulse never sees or stores your card number — just a token. The $50 is a hold, not a charge, until you settle at the table.</div>
+    </div>
+
+  </div>
+  <div class="foot">
+    <button class="secondary" onclick="go('consumer-detail.html')">Back</button>
+    <button class="primary" onclick="go('consumer-checkin.html')">Confirm &amp; hold $50</button>
+  </div>
+</div>
+<script src="../scripts/nav.js"></script>
+</body></html>
