@@ -1,0 +1,115 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pulse · Saved</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles/tokens.css">
+<link rel="stylesheet" href="../styles/components.css">
+<style>
+/* — screen-specific only — the Saved tab — */
+.atmosphere{position:absolute;inset:0;pointer-events:none;z-index:0;
+  background:radial-gradient(ellipse 80% 50% at 50% 8%,rgba(202,168,113,.10),transparent 58%);}
+.body{padding:18px 22px 96px;}
+.headline{font-family:var(--font-display);font-weight:400;font-size:24px;color:var(--text);line-height:1.18;margin-bottom:6px;}
+.sub{font-size:13px;color:var(--text-dim);margin-bottom:20px;}
+/* saved rows */
+.saverow{display:flex;gap:13px;align-items:center;padding:13px 0;border-bottom:1px solid var(--hair);cursor:pointer;}
+.saverow:last-child{border-bottom:none;}
+.thumb{width:62px;height:62px;border-radius:12px;flex-shrink:0;border:1px solid var(--border-soft);background-size:cover;background-position:center;}
+.si{flex:1;min-width:0;}
+.si .sn{font-family:var(--font-display);font-weight:500;font-size:16px;color:var(--text);line-height:1.2;}
+.si .sv{font-family:var(--font-sub);font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-top:3px;}
+.si .ss{font-size:12px;color:var(--text-dim);margin-top:4px;}
+.si .ss.ending{color:var(--alert);}
+.si .ss.ended{color:var(--text-faint);}
+.star{color:var(--gold);font-size:17px;flex-shrink:0;cursor:pointer;background:none;border:none;line-height:1;}
+.saverow.past .thumb{filter:grayscale(.6) brightness(.7);}
+.saverow.past .sn{color:var(--text-dim);}
+/* empty state (?empty=1) */
+.empty{display:none;text-align:center;padding:56px 20px 30px;}
+.empty .bigstar{font-size:44px;color:var(--gold);display:block;margin-bottom:18px;}
+.empty .et{font-family:var(--font-display);font-weight:400;font-size:22px;color:var(--text);line-height:1.25;margin-bottom:10px;}
+.empty .es{font-size:13.5px;color:var(--text-dim);line-height:1.55;max-width:270px;margin:0 auto 24px;}
+.empty .go-feed{background:var(--gold);color:var(--ink-on-gold);border:none;border-radius:999px;padding:13px 26px;font-family:var(--font-body);font-weight:600;font-size:14px;cursor:pointer;}
+body.show-empty .savedlist,body.show-empty .sub{display:none;}
+body.show-empty .empty{display:block;}
+</style></head><body>
+
+<div class="context">
+  <div class="k">Consumer Prototype · Saved tab</div>
+  <h1>Saved</h1>
+  <p>The Saved tab, finally real (the tab bar's oldest stub — Review 01 #30). Bookmarks with live status — an offer ending soon goes amber, a full one shows its waitlist, a past one dims. Add <b>?empty=1</b> to the URL to preview the warm empty state.</p>
+</div>
+
+<div class="phone">
+  <div class="notch"></div>
+  <div class="atmosphere"></div>
+  <div class="app-row">
+    <span class="app-pad"></span>
+    <span class="app-title">Saved</span>
+    <span class="app-pad"></span>
+  </div>
+  <div class="body">
+    <h2 class="headline">Your saved nights</h2>
+    <div class="sub">Pulse watches these for you — you'll hear the moment one starts filling or closing.</div>
+
+    <div class="savedlist">
+      <div class="saverow" onclick="go('consumer-detail.html')">
+        <div class="thumb" style="background-image:url('../images/venue-laurent.jpg');"></div>
+        <div class="si">
+          <div class="sn">Chef's counter — six seats</div>
+          <div class="sv">Laurent · Lakewood</div>
+          <div class="ss ending">Ending soon — 2 left · tonight 6:30</div>
+        </div>
+        <button class="star" onclick="event.stopPropagation();sendPrompt('Remove this from your saved list.')">&#9733;</button>
+      </div>
+
+      <div class="saverow" onclick="go('consumer-detail-full.html')">
+        <div class="thumb" style="background-image:url('../images/venue-marfa.jpg');"></div>
+        <div class="si">
+          <div class="sn">Last-call flight — agave &amp; amaro</div>
+          <div class="sv">The Marfa Room · Deep Ellum</div>
+          <div class="ss">Full — waitlist open · tonight 9 PM</div>
+        </div>
+        <button class="star" onclick="event.stopPropagation();sendPrompt('Remove this from your saved list.')">&#9733;</button>
+      </div>
+
+      <div class="saverow" onclick="sendPrompt('Open Priya\'s intro pack offer.')">
+        <div class="thumb" style="background-image:url('../images/venue-priya.jpg');"></div>
+        <div class="si">
+          <div class="sn">Intro pack — three classes</div>
+          <div class="sv">Studio Priya · Bishop Arts</div>
+          <div class="ss">All week · $39 for newcomers</div>
+        </div>
+        <button class="star" onclick="event.stopPropagation();sendPrompt('Remove this from your saved list.')">&#9733;</button>
+      </div>
+
+      <div class="saverow past" onclick="sendPrompt('This one has ended — see what\'s live now.')">
+        <div class="thumb" style="background-image:url('../images/venue-gallery.jpg');"></div>
+        <div class="si">
+          <div class="sn">Opening night — new works</div>
+          <div class="sv">Continental Gin · Exposition Park</div>
+          <div class="ss ended">Ended last night — keep an eye on their next one</div>
+        </div>
+        <button class="star" onclick="event.stopPropagation();sendPrompt('Remove this from your saved list.')">&#9733;</button>
+      </div>
+    </div>
+
+    <div class="empty">
+      <span class="bigstar">&#9734;</span>
+      <div class="et">Nothing saved yet.</div>
+      <div class="es">Tap the &#9734; on any offer and Pulse keeps watch — you'll know the moment it starts filling.</div>
+      <button class="go-feed" onclick="go('consumer-feed.html')">See what's live tonight</button>
+    </div>
+
+  </div>
+  <div class="tabbar">
+    <button class="tab" onclick="go('consumer-feed.html')"><span class="ti">&#9906;</span>Feed</button>
+    <button class="tab on"><span class="ti">&#9733;</span>Saved</button>
+    <button class="tab" onclick="go('consumer-you.html')"><span class="ti">&#9788;</span>You</button>
+  </div>
+</div>
+<script src="../scripts/nav.js"></script>
+<script>if(/[?&]empty=1/.test(location.search))document.body.classList.add('show-empty');</script>
+</body></html>

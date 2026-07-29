@@ -1,0 +1,145 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pulse · You</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles/tokens.css">
+<link rel="stylesheet" href="../styles/components.css">
+<style>
+/* — screen-specific only — the You tab — */
+.atmosphere{position:absolute;inset:0;pointer-events:none;z-index:0;
+  background:radial-gradient(ellipse 80% 50% at 50% 8%,rgba(202,168,113,.10),transparent 58%);}
+.body{padding:18px 22px 96px;}
+/* profile header */
+.me{display:flex;align-items:center;gap:14px;margin-bottom:22px;}
+.me .mono{width:54px;height:54px;border-radius:50%;background:rgba(202,168,113,.12);border:1px solid var(--gold-deep);display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-size:24px;color:var(--gold);flex-shrink:0;}
+.me .mn{font-family:var(--font-display);font-weight:500;font-size:21px;color:var(--text);line-height:1.1;}
+.me .ms{font-size:12.5px;color:var(--text-dim);margin-top:5px;}
+.me .medit{margin-left:auto;color:var(--gold);font-size:12.5px;cursor:pointer;white-space:nowrap;}
+/* standing card — House Rules made personal */
+.standing{background:rgba(255,255,255,.025);border:1px solid var(--border);border-radius:15px;padding:15px 16px;margin-bottom:22px;}
+.standing .sh{display:flex;align-items:center;gap:8px;margin-bottom:9px;}
+.standing .sh .d{width:7px;height:7px;border-radius:50%;background:var(--ok);box-shadow:0 0 8px var(--ok);}
+.standing .sh .st{font-family:var(--font-sub);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--ok);}
+.standing .sb{font-size:13px;color:var(--text-dim);line-height:1.55;}
+.standing .sb b{color:var(--text);font-weight:500;}
+.standing .rules-link{display:inline-block;margin-top:9px;color:var(--gold);font-size:12.5px;cursor:pointer;}
+/* tonight (upcoming claim) */
+.sec{font-family:var(--font-sub);font-size:10.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--text);font-weight:500;margin:0 0 10px;}
+.claimcard{background:rgba(255,255,255,.025);border:1px solid var(--border-soft);border-radius:15px;padding:15px 16px;margin-bottom:22px;}
+.claimcard .cv{font-family:var(--font-sub);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:6px;}
+.claimcard .cn{font-family:var(--font-display);font-weight:500;font-size:17px;color:var(--text);line-height:1.2;margin-bottom:5px;}
+.claimcard .cm{font-size:12.5px;color:var(--text-dim);}
+.claimcard .held{font-size:12px;color:var(--text-dim);margin-top:9px;padding-top:10px;border-top:1px solid var(--hair);}
+.claimcard .held b{color:var(--gold);font-weight:500;}
+.claimcard .acts{display:flex;gap:9px;margin-top:13px;}
+.claimcard .checkin{flex:1;background:var(--gold);color:var(--ink-on-gold);border:none;border-radius:999px;padding:11px;font-family:var(--font-body);font-weight:600;font-size:13.5px;cursor:pointer;}
+.claimcard .cancel{background:none;border:1px solid var(--hair);color:var(--text-dim);border-radius:999px;padding:11px 16px;font-family:var(--font-body);font-size:13px;cursor:pointer;white-space:nowrap;}
+.claimcard .cancel:hover{border-color:var(--gold-deep);color:var(--text);}
+/* history */
+.hrow{display:flex;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid var(--hair);}
+.hrow:last-child{border-bottom:none;}
+.hrow .hd{width:7px;height:7px;border-radius:50%;background:var(--gold);box-shadow:0 0 8px var(--gold);flex-shrink:0;}
+.hrow .ht{flex:1;font-size:13.5px;color:var(--text);}
+.hrow .ht small{display:block;font-size:11.5px;color:var(--text-faint);margin-top:2px;}
+.history{margin-bottom:22px;}
+/* settings */
+.group{background:rgba(255,255,255,.02);border:1px solid var(--hair);border-radius:14px;padding:2px 16px;margin-bottom:20px;}
+.srow{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:14px 0;border-bottom:1px solid var(--hair);cursor:pointer;}
+.srow:last-child{border-bottom:none;}
+.srow .sl{font-size:14px;color:var(--text);}
+.srow .sl small{display:block;font-size:11.5px;color:var(--text-faint);margin-top:3px;line-height:1.4;}
+.srow .sv{font-size:13px;color:var(--text-dim);display:flex;align-items:center;gap:9px;white-space:nowrap;}
+.srow .sv .chev{color:var(--gold);font-size:13px;}
+.toggle{width:40px;height:23px;border-radius:999px;background:var(--bg-input);border:1px solid var(--hair);position:relative;cursor:pointer;transition:all .2s;flex-shrink:0;}
+.toggle.on{background:var(--gold-soft);border-color:var(--gold-deep);}
+.toggle .knob{position:absolute;top:2px;left:2px;width:17px;height:17px;border-radius:50%;background:var(--text-faint);transition:all .2s;}
+.toggle.on .knob{left:19px;background:var(--gold);box-shadow:0 0 8px rgba(202,168,113,.6);}
+.signout{width:100%;background:none;border:1px solid var(--hair);color:var(--text-dim);border-radius:999px;padding:13px;font-family:var(--font-body);font-size:13.5px;cursor:pointer;transition:all .2s;}
+.signout:hover{border-color:var(--gold-deep);color:var(--text);}
+.foot-note{text-align:center;font-size:11.5px;color:var(--text-faint);margin-top:14px;letter-spacing:.04em;}
+</style></head><body>
+
+<div class="context">
+  <div class="k">Consumer Prototype · You tab</div>
+  <h1>You</h1>
+  <p>The other tab-bar stub, made real: your standing under the House Rules (reliability = quiet priority, shown warmly), tonight's claim with check-in and cancel-in-window actions, your recent nights, and the consumer settings — including the haptic toggle the team asked for.</p>
+</div>
+
+<div class="phone">
+  <div class="notch"></div>
+  <div class="atmosphere"></div>
+  <div class="app-row">
+    <span class="app-pad"></span>
+    <span class="app-title">You</span>
+    <span class="app-pad"></span>
+  </div>
+  <div class="body">
+
+    <div class="me">
+      <div class="mono">A</div>
+      <div>
+        <div class="mn">Alex</div>
+        <div class="ms">Pulse People since July · Lakewood</div>
+      </div>
+      <span class="medit" onclick="sendPrompt('Edit your name and photo.')">Edit</span>
+    </div>
+
+    <div class="standing">
+      <div class="sh"><span class="d"></span><span class="st">In good standing</span></div>
+      <div class="sb"><b>12 check-ins · 0 no-shows.</b> You show up — so Pulse surfaces you first when seats free up and rooms get scarce.</div>
+      <span class="rules-link" onclick="go('consumer-etiquette.html')">The House Rules &#8594;</span>
+    </div>
+
+    <div class="sec">Tonight</div>
+    <div class="claimcard">
+      <div class="cv">Laurent · Lakewood</div>
+      <div class="cn">Chef's counter — six seats</div>
+      <div class="cm">Tonight · 6:30 PM · $175 prix fixe</div>
+      <div class="held"><b>$50 held</b> — applied to your tab when you arrive · free to cancel until 4:30 PM</div>
+      <div class="acts">
+        <button class="checkin" onclick="go('consumer-arrival.html')">I'm here — check in</button>
+        <button class="cancel" onclick="sendPrompt('Cancel this claim — you\'re inside the free window until 4:30 PM, so the $50 hold is released in full.')">Cancel</button>
+      </div>
+    </div>
+
+    <div class="sec">Recent nights</div>
+    <div class="history">
+      <div class="hrow"><span class="hd"></span><div class="ht">The Marfa Room — last-call flight<small>Fri · checked in · Deep Ellum</small></div></div>
+      <div class="hrow"><span class="hd"></span><div class="ht">Studio Priya — intro class<small>Tue · checked in · Bishop Arts</small></div></div>
+      <div class="hrow"><span class="hd"></span><div class="ht">Continental Gin — opening night<small>Last week · checked in · Exposition Park</small></div></div>
+    </div>
+
+    <div class="sec">Settings</div>
+    <div class="group">
+      <div class="srow" style="cursor:default;">
+        <div class="sl">The heartbeat haptic<small>Feel the double-beat when you claim &amp; check in</small></div>
+        <div class="toggle on" onclick="this.classList.toggle('on')"><span class="knob"></span></div>
+      </div>
+      <div class="srow" style="cursor:default;">
+        <div class="sl">Texts from Pulse<small>Seat freed, offer ending, plans changed</small></div>
+        <div class="toggle on" onclick="this.classList.toggle('on')"><span class="knob"></span></div>
+      </div>
+      <div class="srow" onclick="go('consumer-location.html')">
+        <div class="sl">Home base</div>
+        <div class="sv">Lakewood<span class="chev">&#8250;</span></div>
+      </div>
+      <div class="srow" onclick="go('consumer-etiquette.html')">
+        <div class="sl">House Rules</div>
+        <div class="sv"><span class="chev">&#8250;</span></div>
+      </div>
+    </div>
+
+    <button class="signout" onclick="go('consumer-login.html')">Sign out</button>
+    <div class="foot-note" onclick="sendPrompt('Switch city — Pulse is live in Dallas today; more cities coming.')" style="cursor:pointer;">Pulse · Dallas &#9662;</div>
+
+  </div>
+  <div class="tabbar">
+    <button class="tab" onclick="go('consumer-feed.html')"><span class="ti">&#9906;</span>Feed</button>
+    <button class="tab" onclick="go('consumer-saved.html')"><span class="ti">&#9734;</span>Saved</button>
+    <button class="tab on"><span class="ti">&#9788;</span>You</button>
+  </div>
+</div>
+<script src="../scripts/nav.js"></script>
+</body></html>
