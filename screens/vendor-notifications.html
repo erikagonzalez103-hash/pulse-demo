@@ -11,34 +11,34 @@
 .atmosphere{position:absolute;inset:0;pointer-events:none;z-index:0;
   background:radial-gradient(ellipse 80% 50% at 50% 10%,rgba(202,168,113,.10),transparent 60%);}
 .body{padding:18px 22px 40px;}
-.eyebrow{font-family:var(--font-sub);font-size:10px;letter-spacing:.26em;color:var(--gold);text-transform:uppercase;margin-bottom:9px;}
+.eyebrow{font-family:var(--font-sub);font-size:11px;letter-spacing:.26em;color:var(--gold);text-transform:uppercase;margin-bottom:9px;}
 .headline{font-family:var(--font-display);font-weight:400;font-size:24px;color:var(--text);line-height:1.18;margin-bottom:22px;}
 /* the slipping alert — heat / time-sensitive, gentle never alarm */
 .alert{position:relative;background:var(--alert-soft);border:1px solid color-mix(in srgb, var(--alert) 40%, transparent);border-radius:15px;padding:16px 17px;margin-bottom:24px;overflow:hidden;}
-.alert .a-eye{font-family:var(--font-sub);font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:var(--alert);margin-bottom:8px;display:flex;align-items:center;gap:7px;}
+.alert .a-eye{font-family:var(--font-sub);font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--alert);margin-bottom:8px;display:flex;align-items:center;gap:7px;}
 .alert .a-eye .heat{width:6px;height:6px;border-radius:50%;background:var(--alert);box-shadow:0 0 8px var(--alert);}
 @media (prefers-reduced-motion: no-preference){
   .alert .a-eye .heat{animation:slippulse 2.2s ease-in-out infinite;}
   @keyframes slippulse{0%,100%{transform:scale(1);opacity:.9;}50%{transform:scale(1.5);opacity:.45;}}
 }
 .alert .a-name{font-family:var(--font-display);font-weight:500;font-size:17px;color:var(--text);line-height:1.25;margin-bottom:7px;}
-.alert .a-body{font-size:12.5px;color:var(--text-dim);line-height:1.55;margin-bottom:14px;}
+.alert .a-body{font-size:13.5px;color:var(--text-dim);line-height:1.55;margin-bottom:14px;}
 .alert .a-body b{color:var(--text);font-weight:500;}
 .alert .levers{display:flex;flex-wrap:wrap;gap:8px;}
-.lever{border:1px solid var(--gold-deep);background:var(--gold-soft);color:var(--gold);border-radius:999px;padding:8px 14px;font-size:11.5px;font-family:var(--font-body);cursor:pointer;transition:all .2s;}
+.lever{border:1px solid var(--gold-deep);background:var(--gold-soft);color:var(--gold);border-radius:999px;padding:8px 14px;font-size:12.5px;font-family:var(--font-body);cursor:pointer;transition:all .2s;}
 .lever:hover{border-color:var(--gold);box-shadow:0 0 14px rgba(202,168,113,.2);}
 .lever.ghost{background:none;border-color:var(--hair);color:var(--text-dim);}
 .lever.ghost:hover{border-color:var(--gold-deep);color:var(--text);box-shadow:none;}
-.honest-note{font-size:10.5px;color:var(--text-faint);margin-top:11px;font-style:italic;line-height:1.5;}
+.honest-note{font-size:11.5px;color:var(--text-faint);margin-top:11px;font-style:italic;line-height:1.5;}
 /* notification feed */
-.day{font-family:var(--font-sub);font-size:9.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--text-faint);margin:0 0 12px;}
+.day{font-family:var(--font-sub);font-size:10.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--text-faint);margin:0 0 12px;}
 .notif{display:flex;gap:12px;align-items:flex-start;padding:13px 0;border-bottom:1px solid var(--hair);}
 .notif:last-child{border-bottom:none;}
 .notif .nd{width:7px;height:7px;border-radius:50%;margin-top:5px;flex-shrink:0;background:var(--gold);box-shadow:0 0 8px var(--gold);}
 .notif .nd.read{background:var(--text-faint);box-shadow:none;}
-.notif .ntitle{font-size:13px;color:var(--text);line-height:1.45;}
+.notif .ntitle{font-size:14px;color:var(--text);line-height:1.45;}
 .notif .ntitle b{color:var(--gold);font-weight:500;}
-.notif .nmeta{font-size:10.5px;color:var(--text-faint);margin-top:4px;}
+.notif .nmeta{font-size:11.5px;color:var(--text-faint);margin-top:4px;}
 .group{margin-bottom:24px;}
 .group:last-child{margin-bottom:0;}
 </style></head><body>

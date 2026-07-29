@@ -15,13 +15,13 @@
 .steps i{height:3px;flex:1;border-radius:2px;background:var(--hair);}
 .steps i.on{background:var(--gold);}
 .headline{font-family:var(--font-display);font-weight:400;font-size:23px;color:var(--text);line-height:1.18;margin-bottom:6px;}
-.subline{font-size:12px;color:var(--text-dim);line-height:1.5;margin-bottom:20px;}
+.subline{font-size:13px;color:var(--text-dim);line-height:1.5;margin-bottom:20px;}
 .vibegrid{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
 .tile{position:relative;aspect-ratio:1/1;border-radius:14px;overflow:hidden;cursor:pointer;border:1px solid var(--border-soft);transition:transform .15s,border-color .15s;}
 .tile:hover{transform:translateY(-2px);border-color:var(--gold-deep);}
 .tile.sel{border:2px solid var(--gold);}
-.tile .lbl{position:absolute;left:0;right:0;bottom:0;padding:11px 12px;font-family:var(--font-display);font-weight:500;font-size:14px;color:var(--text);line-height:1.15;background:linear-gradient(0deg,rgba(6,9,15,.88),rgba(6,9,15,.2) 70%,transparent);}
-.tile .check{position:absolute;top:8px;right:8px;width:22px;height:22px;border-radius:50%;background:var(--gold);color:var(--ink-on-gold);display:none;align-items:center;justify-content:center;font-size:11px;font-weight:700;box-shadow:0 0 12px rgba(202,168,113,.6);}
+.tile .lbl{position:absolute;left:0;right:0;bottom:0;padding:11px 12px;font-family:var(--font-display);font-weight:500;font-size:15px;color:var(--text);line-height:1.15;background:linear-gradient(0deg,rgba(6,9,15,.88),rgba(6,9,15,.2) 70%,transparent);}
+.tile .check{position:absolute;top:8px;right:8px;width:22px;height:22px;border-radius:50%;background:var(--gold);color:var(--ink-on-gold);display:none;align-items:center;justify-content:center;font-size:12px;font-weight:700;box-shadow:0 0 12px rgba(202,168,113,.6);}
 .tile.sel .check{display:flex;}
 </style></head><body>
 
@@ -47,7 +47,9 @@
     <div class="vibegrid">
       <div class="tile" style="background:linear-gradient(rgba(6,9,15,.28),rgba(6,9,15,.28)),url('../images/vibe-intimate.jpg') center/cover;" onclick="this.classList.toggle('sel')">
         <span class="check">&#10003;</span><span class="lbl">Intimate dinners</span></div>
-      <div class="tile" style="background:linear-gradient(rgba(6,9,15,.28),rgba(6,9,15,.28)),url('../images/vibe-late.jpg') center/cover;" onclick="this.classList.toggle('sel')">
+      <!-- source photo is B&W — gold-duotone blend keeps it warm with the color tiles
+           until a color late-night shot is curated -->
+      <div class="tile" style="background:linear-gradient(rgba(6,9,15,.28),rgba(6,9,15,.28)),linear-gradient(180deg,var(--gold),var(--heat-mid)),url('../images/vibe-late.jpg') center/cover;background-blend-mode:normal,color,normal;" onclick="this.classList.toggle('sel')">
         <span class="check">&#10003;</span><span class="lbl">Lively &amp; late</span></div>
       <div class="tile" style="background:linear-gradient(rgba(6,9,15,.28),rgba(6,9,15,.28)),url('../images/vibe-culture.jpg') center/cover;" onclick="this.classList.toggle('sel')">
         <span class="check">&#10003;</span><span class="lbl">Culture &amp; openings</span></div>

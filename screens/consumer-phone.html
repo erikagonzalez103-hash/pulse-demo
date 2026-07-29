@@ -17,21 +17,25 @@
 .headline{font-family:var(--font-display);font-weight:400;font-size:23px;color:var(--text);line-height:1.18;margin-bottom:14px;}
 .reason{background:var(--gold-soft);border:1px solid var(--border);border-radius:13px;padding:13px 15px;margin-bottom:22px;display:flex;gap:11px;align-items:flex-start;}
 .reason .d{width:6px;height:6px;border-radius:50%;background:var(--gold);box-shadow:0 0 8px var(--gold);margin-top:5px;flex-shrink:0;}
-.reason .rt{font-size:12px;color:var(--text-dim);line-height:1.5;}
+.reason .rt{font-size:13px;color:var(--text-dim);line-height:1.5;}
 .reason .rt b{color:var(--gold);font-weight:500;}
 .phonefield{display:flex;gap:9px;margin-bottom:14px;}
-.cc{background:rgba(255,255,255,.025);border:1px solid var(--border-soft);border-radius:13px;padding:14px 14px;color:var(--text-dim);font-size:15px;font-family:var(--font-display);white-space:nowrap;}
+.cc{background:rgba(255,255,255,.025);border:1px solid var(--border-soft);border-radius:13px;padding:14px 14px;color:var(--text-dim);font-size:16px;font-family:var(--font-display);white-space:nowrap;}
 .inp{flex:1;background:rgba(255,255,255,.025);border:1px solid var(--border-soft);border-radius:13px;padding:14px 16px;color:var(--text);font-family:var(--font-display);font-size:16px;outline:none;transition:border-color .2s;}
 .inp::placeholder{color:var(--text-faint);font-family:var(--font-body);font-weight:300;}
 .inp:focus{border-color:var(--gold-deep);}
-.sendcode{width:100%;background:var(--gold);color:var(--ink-on-gold);border:none;border-radius:999px;padding:14px;font-family:var(--font-body);font-weight:600;font-size:14px;cursor:pointer;transition:all .2s;}
+.inp.bad{border-color:var(--alert);}
+/* amber = attention, never red (red stays heat-only) */
+.field-alert{display:none;font-size:13.5px;color:var(--alert);line-height:1.5;margin:-4px 2px 12px;}
+.field-alert.show{display:block;}
+.sendcode{width:100%;background:var(--gold);color:var(--ink-on-gold);border:none;border-radius:999px;padding:14px;font-family:var(--font-body);font-weight:600;font-size:15px;cursor:pointer;transition:all .2s;}
 .sendcode:hover{box-shadow:0 0 22px rgba(202,168,113,.35);}
-.divider{display:flex;align-items:center;gap:12px;margin:18px 0;color:var(--text-faint);font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;font-family:var(--font-sub);}
+.divider{display:flex;align-items:center;gap:12px;margin:18px 0;color:var(--text-faint);font-size:11.5px;letter-spacing:.18em;text-transform:uppercase;font-family:var(--font-sub);}
 .divider::before,.divider::after{content:"";flex:1;height:1px;background:var(--hair);}
 .alts{display:flex;gap:9px;}
-.alt{flex:1;background:none;border:1px solid var(--hair);color:var(--text);border-radius:999px;padding:12px;font-family:var(--font-body);font-size:13px;cursor:pointer;transition:all .2s;}
+.alt{flex:1;background:none;border:1px solid var(--hair);color:var(--text);border-radius:999px;padding:12px;font-family:var(--font-body);font-size:14px;cursor:pointer;transition:all .2s;}
 .alt:hover{border-color:var(--gold-deep);}
-.fineprint{text-align:center;font-size:10px;color:var(--text-faint);line-height:1.6;margin-top:18px;}
+.fineprint{text-align:center;font-size:11px;color:var(--text-faint);line-height:1.6;margin-top:18px;}
 </style></head><body>
 
 <div class="context">
@@ -59,9 +63,10 @@
 
     <div class="phonefield">
       <span class="cc">&#127482;&#127480; +1</span>
-      <input class="inp" type="tel" placeholder="Phone number" autocomplete="tel">
+      <input class="inp" id="ph" type="tel" inputmode="numeric" maxlength="14" placeholder="Phone number" autocomplete="tel" aria-describedby="ph-alert">
     </div>
-    <button class="sendcode" onclick="go('consumer-personalize.html')">Send code</button>
+    <div class="field-alert" id="ph-alert" role="alert"></div>
+    <button class="sendcode" onclick="sendCode()">Send code</button>
 
     <div class="divider">or continue with</div>
     <div class="alts">
@@ -73,4 +78,22 @@
   </div>
 </div>
 <script src="../scripts/nav.js"></script>
+<script>
+// live (XXX) XXX-XXXX formatting; typing clears any warning
+const ph=document.getElementById('ph'),phAlert=document.getElementById('ph-alert');
+ph.addEventListener('input',()=>{
+  const d=ph.value.replace(/\D/g,'').slice(0,10);
+  ph.value=d.length>6?'('+d.slice(0,3)+') '+d.slice(3,6)+'-'+d.slice(6)
+          :d.length>3?'('+d.slice(0,3)+') '+d.slice(3):d;
+  ph.classList.remove('bad');phAlert.classList.remove('show');
+});
+function sendCode(){
+  const d=ph.value.replace(/\D/g,'');
+  const msg=d.length<10?'That number looks short — a full 10 digits gets you in.'
+           :(d[0]==='0'||d[0]==='1')?'That doesn’t look like a US number — check the area code.':'';
+  if(msg){phAlert.textContent=msg;phAlert.classList.add('show');ph.classList.add('bad');ph.focus();return;}
+  sessionStorage.setItem('pulsePhone',ph.value);
+  go('consumer-code.html');
+}
+</script>
 </body></html>

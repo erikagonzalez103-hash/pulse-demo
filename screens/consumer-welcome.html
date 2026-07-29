@@ -12,39 +12,41 @@
   background:radial-gradient(ellipse 80% 45% at 50% 30%,rgba(202,168,113,.12),transparent 60%);}
 .body{padding:14px 24px 120px;}
 .skip{display:flex;justify-content:flex-end;}
-.skip a{font-size:11.5px;color:var(--text-dim);cursor:pointer;letter-spacing:.02em;}
+.skip a{font-size:13.5px;color:var(--text-dim);cursor:pointer;letter-spacing:.02em;}
 .skip a:hover{color:var(--text);}
-/* the porthole — a circular window onto the golden-hour city */
+/* the porthole — a circular window onto the city (Erika's purchased
+   blue-hour skyline, same photo as the login hero; positioned to keep
+   Reunion Tower + the lit cluster in the circle) */
 .porthole-wrap{display:flex;justify-content:center;margin:6px 0 30px;}
 .porthole{position:relative;width:212px;height:212px;border-radius:50%;overflow:hidden;
   border:1px solid var(--gold-deep);
   box-shadow:0 0 0 6px rgba(202,168,113,.06),0 22px 50px rgba(0,0,0,.55),inset 0 0 40px rgba(0,0,0,.55);}
 .porthole .scene{position:absolute;inset:0;
-  background:linear-gradient(180deg,rgba(6,9,15,.28),rgba(6,9,15,.06) 45%,rgba(29,19,13,.32)),
-            url('../images/dallas-golden-hour.jpg') center/cover;}
+  background:linear-gradient(180deg,rgba(6,9,15,.28),rgba(6,9,15,.06) 45%,rgba(6,9,15,.32)),
+            url('../images/dallas-skyline-hero.jpg') 32% 30%/cover;}
 .porthole .pstars{position:absolute;inset:0;
   background:radial-gradient(1px 1px at 30% 26%,rgba(242,238,227,.5),transparent),
             radial-gradient(1px 1px at 64% 20%,rgba(242,238,227,.4),transparent),
             radial-gradient(1px 1px at 78% 34%,rgba(242,238,227,.4),transparent);}
 .porthole .psky{position:absolute;left:0;right:0;bottom:0;height:46%;}
 .porthole .psky svg{width:100%;height:100%;display:block;}
-.porthole .pglow{position:absolute;inset:0;border-radius:50%;box-shadow:inset 0 -26px 40px rgba(216,132,63,.2);pointer-events:none;}
-.eyebrow{font-family:var(--font-sub);font-size:10px;letter-spacing:.28em;color:var(--gold);text-transform:uppercase;margin-bottom:11px;text-align:center;}
-.headline{font-family:var(--font-display);font-weight:400;font-size:26px;color:var(--text);line-height:1.18;margin-bottom:10px;text-align:center;}
-.subline{font-size:13px;color:var(--text-dim);line-height:1.55;text-align:center;max-width:300px;margin:0 auto 26px;}
+.porthole .pglow{position:absolute;inset:0;border-radius:50%;box-shadow:inset 0 -26px 40px rgba(202,168,113,.16);pointer-events:none;}
+.eyebrow{font-family:var(--font-sub);font-size:12px;letter-spacing:.28em;color:var(--gold);text-transform:uppercase;margin-bottom:11px;text-align:center;}
+.headline{font-family:var(--font-display);font-weight:400;font-size:27px;color:var(--text);line-height:1.18;margin-bottom:10px;text-align:center;}
+.subline{font-size:15px;color:var(--text-dim);line-height:1.55;text-align:center;max-width:310px;margin:0 auto 26px;}
 .vals{display:flex;flex-direction:column;gap:14px;margin-bottom:6px;}
 .val{display:flex;gap:12px;align-items:flex-start;}
 .val .dot{width:6px;height:6px;border-radius:50%;background:var(--gold);box-shadow:0 0 8px var(--gold);margin-top:5px;flex-shrink:0;}
-.val .vt{font-size:12.5px;color:var(--text-dim);line-height:1.5;}
+.val .vt{font-size:14.5px;color:var(--text-dim);line-height:1.5;}
 .val .vt b{color:var(--text);font-weight:500;}
-.locrow{display:flex;align-items:center;justify-content:center;gap:8px;margin-top:24px;font-size:11.5px;color:var(--text-dim);}
+.locrow{display:flex;align-items:center;justify-content:center;gap:8px;margin-top:24px;font-size:13.5px;color:var(--text-dim);}
 .locrow .pin{color:var(--gold);}
 </style></head><body>
 
 <div class="context">
   <div class="k">Consumer Prototype · Welcome</div>
   <h1>Welcome (porthole)</h1>
-  <p>The first-run orientation. The circular porthole — a Pulse brand device — frames the golden-hour city: a window onto what's happening, before you step into the feed.</p>
+  <p>The first-run orientation. The circular porthole — a Pulse brand device — frames Erika's blue-hour Dallas skyline: a window onto what's happening, before you step into the feed.</p>
 </div>
 
 <div class="phone">
@@ -56,7 +58,7 @@
 
     <div class="porthole-wrap">
       <div class="porthole">
-        <div class="scene" role="img" aria-label="Reunion Tower at golden hour"></div>
+        <div class="scene" role="img" aria-label="The Dallas skyline at blue hour, Reunion Tower lit"></div>
         <div class="pglow"></div>
       </div>
     </div>

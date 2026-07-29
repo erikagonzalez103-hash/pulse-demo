@@ -1,0 +1,106 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pulse · Verify your number</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles/tokens.css">
+<link rel="stylesheet" href="../styles/components.css">
+<style>
+/* — screen-specific only — */
+.atmosphere{position:absolute;inset:0;pointer-events:none;z-index:0;
+  background:radial-gradient(ellipse 80% 45% at 50% 14%,rgba(202,168,113,.11),transparent 60%);}
+.body{padding:16px 24px 30px;}
+.steps{display:flex;gap:6px;margin-bottom:26px;}
+.steps i{height:3px;flex:1;border-radius:2px;background:var(--hair);}
+.steps i.on{background:var(--gold);}
+.headline{font-family:var(--font-display);font-weight:400;font-size:23px;color:var(--text);line-height:1.18;margin-bottom:10px;}
+.sub{font-size:14.5px;color:var(--text-dim);line-height:1.55;margin-bottom:26px;}
+.sub b{color:var(--text);font-weight:500;white-space:nowrap;}
+/* the six digit boxes */
+.otp{display:flex;gap:9px;margin-bottom:18px;}
+.otp input{flex:1;min-width:0;text-align:center;padding:16px 0;font-size:22px;
+  color:var(--text);font-family:var(--font-display);
+  background:rgba(255,255,255,.025);border:1px solid var(--border-soft);border-radius:13px;
+  outline:none;transition:border-color .2s,box-shadow .2s;caret-color:var(--gold);}
+.otp input:focus{border-color:var(--gold-deep);}
+.otp input.filled{border-color:var(--border);}
+.otp.ok input{border-color:var(--gold);box-shadow:0 0 14px rgba(202,168,113,.22);}
+.okline{display:none;font-size:13.5px;color:var(--gold);margin-bottom:18px;}
+.okline.show{display:block;}
+.resend{font-size:13.5px;color:var(--text-dim);}
+.resend a{color:var(--gold);cursor:pointer;}
+.resend a:hover{text-decoration:underline;}
+.fineprint{text-align:center;font-size:11px;color:var(--text-faint);line-height:1.6;margin-top:26px;}
+</style></head><body>
+
+<div class="context">
+  <div class="k">Consumer Prototype · Onboarding — Verify</div>
+  <h1>Verify code (six digits)</h1>
+  <p>The proof beat after "Send code" — the texted six-digit code makes the number real. In the MVP this is a live SMS one-time passcode; here any six digits verify.</p>
+</div>
+
+<div class="phone">
+  <div class="notch"></div>
+  <div class="atmosphere"></div>
+  <div class="app-row">
+    <button class="back" onclick="go('consumer-phone.html')">&#8249;</button>
+    <span class="app-title">Create account</span>
+    <span class="app-pad"></span>
+  </div>
+  <div class="body">
+    <div class="steps"><i class="on"></i><i class="on"></i><i></i></div>
+    <h2 class="headline">Check your texts.</h2>
+    <div class="sub">We sent a six-digit code to <b id="sentto">(214) 555-0134</b>. Enter it and you're in.</div>
+
+    <div class="otp" id="otp">
+      <input type="tel" inputmode="numeric" maxlength="1" aria-label="Digit 1" autofocus>
+      <input type="tel" inputmode="numeric" maxlength="1" aria-label="Digit 2">
+      <input type="tel" inputmode="numeric" maxlength="1" aria-label="Digit 3">
+      <input type="tel" inputmode="numeric" maxlength="1" aria-label="Digit 4">
+      <input type="tel" inputmode="numeric" maxlength="1" aria-label="Digit 5">
+      <input type="tel" inputmode="numeric" maxlength="1" aria-label="Digit 6">
+    </div>
+    <div class="okline" id="okline">Verified — welcome in.</div>
+
+    <div class="resend" id="resend">Didn't get it? <a onclick="resendCode(this)">Send it again</a></div>
+
+    <div class="fineprint">We text live offers &amp; check-in confirmations. Standard rates may apply.</div>
+  </div>
+</div>
+<script src="../scripts/nav.js"></script>
+<script>
+// the number the phone step stashed (fallback for direct preview)
+const saved=sessionStorage.getItem('pulsePhone');
+if(saved)document.getElementById('sentto').textContent=saved;
+
+const boxes=[...document.querySelectorAll('#otp input')];
+boxes.forEach((b,i)=>{
+  b.addEventListener('input',()=>{
+    b.value=b.value.replace(/\D/g,'').slice(-1);
+    b.classList.toggle('filled',!!b.value);
+    if(b.value&&i<5)boxes[i+1].focus();
+    if(boxes.every(x=>x.value))verified();
+  });
+  b.addEventListener('keydown',e=>{
+    if(e.key==='Backspace'&&!b.value&&i>0)boxes[i-1].focus();
+  });
+  b.addEventListener('paste',e=>{
+    e.preventDefault();
+    const d=(e.clipboardData.getData('text')||'').replace(/\D/g,'').slice(0,6);
+    d.split('').forEach((ch,j)=>{boxes[j].value=ch;boxes[j].classList.add('filled');});
+    boxes[Math.min(d.length,5)].focus();
+    if(d.length===6)verified();
+  });
+});
+function verified(){
+  document.getElementById('otp').classList.add('ok');
+  document.getElementById('okline').classList.add('show');
+  boxes.forEach(b=>b.disabled=true);
+  setTimeout(()=>go('consumer-personalize.html'),700);
+}
+function resendCode(a){
+  a.parentElement.innerHTML='Sent again just now — give it a few seconds.';
+}
+</script>
+</body></html>
