@@ -57,6 +57,10 @@
   document.head.appendChild(mf);
   var th = document.createElement('meta'); th.name = 'theme-color'; th.content = '#06090F';
   document.head.appendChild(th);
+  var fav = document.createElement('link'); fav.rel = 'icon'; fav.type = 'image/png';
+  fav.href = root + 'images/favicon-32.png'; document.head.appendChild(fav);
+  var ati = document.createElement('link'); ati.rel = 'apple-touch-icon';
+  ati.href = root + 'images/icon-180.png'; document.head.appendChild(ati);
 
   /* Service worker: https or localhost only (file:// preview stays untouched). */
   if ('serviceWorker' in navigator && (location.protocol === 'https:' || location.hostname === 'localhost')) {

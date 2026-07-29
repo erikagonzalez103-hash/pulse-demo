@@ -1,7 +1,7 @@
 /* Pulse — minimal service worker (MVP shell).
    Strategy: network-first for screens (always fresh), cache-first for
    styles/scripts/images (fast + offline-tolerant). Bump VERSION to invalidate. */
-const VERSION = 'pulse-v1';
+const VERSION = 'pulse-v2';  // bumped: compass-mark icons
 const STATIC = /\.(css|js|jpg|jpeg|png|webmanifest)($|\?)/;
 
 self.addEventListener('install', (e) => self.skipWaiting());
