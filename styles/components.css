@@ -8,6 +8,18 @@
 *{margin:0;padding:0;box-sizing:border-box;}
 html{scroll-behavior:smooth;}
 
+/* — APP MODE — the same screens, as the installed app. —
+   nav.js sets body.app-mode when running standalone (installed PWA) or with
+   ?app=1. The preview chrome (context caption, phone bezel, review nav)
+   collapses and the screen fills the real device. One codebase, both jobs. */
+body.app-mode{padding:0;display:block;background:var(--bg);min-height:100dvh;}
+body.app-mode::before{display:none;}
+body.app-mode .context{display:none;}
+body.app-mode .review-nav{display:none;}
+body.app-mode .phone{width:100%;max-width:520px;margin:0 auto;min-height:100dvh;border:none;border-radius:0;box-shadow:none;}
+body.app-mode .notch{display:none;}
+body.app-mode .foot{position:fixed;max-width:520px;left:50%;transform:translateX(-50%);width:100%;}
+
 /* — Prototype preview chrome (the page AROUND the phone) — */
 body{
   background:var(--preview-bg);color:var(--text);font-family:var(--font-body);font-weight:300;

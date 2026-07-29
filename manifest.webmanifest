@@ -1,0 +1,13 @@
+{
+  "name": "Pulse — Dallas, while it's happening",
+  "short_name": "Pulse",
+  "description": "The real-time pulse of Dallas. Live offers, real momentum, tonight.",
+  "start_url": "screens/consumer-login.html?app=1",
+  "display": "standalone",
+  "background_color": "#06090F",
+  "theme_color": "#06090F",
+  "icons": [
+    { "src": "images/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "images/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" }
+  ]
+}

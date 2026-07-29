@@ -37,4 +37,29 @@
   map.href = '../index.html'; map.innerHTML = '&#8962; All screens';
   nav.appendChild(back); nav.appendChild(map);
   document.body.appendChild(nav);
+
+  /* — APP MODE (the PWA shell) —
+     Standalone install, ?app=1, or a prior app-mode visit this tab → the
+     preview chrome collapses (see components.css) and the screen IS the app. */
+  var isStandalone = (window.matchMedia && matchMedia('(display-mode: standalone)').matches) ||
+                     window.navigator.standalone === true;
+  var wantsApp = /[?&]app=1/.test(location.search);
+  try {
+    if (wantsApp) sessionStorage.setItem('pulse-app-mode', '1');
+    if (isStandalone || sessionStorage.getItem('pulse-app-mode') === '1') {
+      document.body.classList.add('app-mode');
+    }
+  } catch (e) { if (isStandalone || wantsApp) document.body.classList.add('app-mode'); }
+
+  /* Manifest + theme-color injected once here instead of edited into 33 screens. */
+  var root = /\/screens\//.test(location.pathname) ? '../' : '';
+  var mf = document.createElement('link'); mf.rel = 'manifest'; mf.href = root + 'manifest.webmanifest';
+  document.head.appendChild(mf);
+  var th = document.createElement('meta'); th.name = 'theme-color'; th.content = '#06090F';
+  document.head.appendChild(th);
+
+  /* Service worker: https or localhost only (file:// preview stays untouched). */
+  if ('serviceWorker' in navigator && (location.protocol === 'https:' || location.hostname === 'localhost')) {
+    navigator.serviceWorker.register(root + 'sw.js').catch(function () {});
+  }
 })();
